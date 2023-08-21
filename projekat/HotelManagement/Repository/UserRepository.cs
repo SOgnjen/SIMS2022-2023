@@ -1,4 +1,6 @@
+using HotelManagement.Model;
 using System;
+using System.Collections.Generic;
 
 namespace HotelManagement.Repository
 {

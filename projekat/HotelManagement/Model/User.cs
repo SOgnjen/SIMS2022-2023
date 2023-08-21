@@ -4,12 +4,12 @@ namespace HotelManagement.Model
 {
    public class User
    {
-      public String Jmbg { get; set; }
-      public String Email { get; set; }
-      public String Password { get; set; }
-      public String Name { get; set;  }
-      public String Surname { get; set; }
-      public String Phone { get; set; }
+      public string Jmbg { get; set; }
+      public string Email { get; set; }
+      public string Password { get; set; }
+      public string Name { get; set;  }
+      public string Surname { get; set; }
+      public string Phone { get; set; }
       public UserType Type { get; set; }
       public Boolean Blocked { get; set; } = false;
       public int Unsuccessful { get; set; } = 0;

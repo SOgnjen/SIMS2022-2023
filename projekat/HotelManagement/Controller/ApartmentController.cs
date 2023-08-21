@@ -1,3 +1,4 @@
+using HotelManagement.Model;
 using HotelManagement.Service;
 using System;
 
@@ -12,12 +13,12 @@ namespace HotelManagement.Controller
             _service = service;
         }
 
-        public HotelManagement.Model.Apartment CreateApartment(HotelManagement.Model.Apartment apartment)
+        public Apartment CreateApartment(Apartment apartment)
         {
             return _service.CreateApartment(apartment);
         }
 
-        public Boolean IsNameValid(String name)
+        public Boolean IsNameValid(string name)
         {
             return _service.IsNameValid(name);
         }

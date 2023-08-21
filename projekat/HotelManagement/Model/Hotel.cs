@@ -6,14 +6,14 @@ namespace HotelManagement.Model
 {
    public class Hotel
    {
-      public String Code { get; set; }
-      public String Name { get; set; }
+      public string Code { get; set; }
+      public string Name { get; set; }
       public int BuiltIn { get; set; }
       public int Stars { get; set; }
-      public String OwnersJmbg { get; set; }
+      public string OwnersJmbg { get; set; }
       public Boolean Accepted { get; set; } = false;
       public HotelStatus Status { get; set; }
-      public Dictionary<String, Apartment> Appartments { get; set; }
+      public Dictionary<string, Apartment> Appartments { get; set; }
       
       public System.Collections.Generic.List<Apartment> apartment;
       

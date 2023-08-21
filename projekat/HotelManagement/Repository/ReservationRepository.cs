@@ -1,4 +1,6 @@
+using HotelManagement.Model;
 using System;
+using System.Collections.Generic;
 
 namespace HotelManagement.Repository
 {
@@ -11,17 +13,17 @@ namespace HotelManagement.Repository
          throw new NotImplementedException();
       }
       
-      public List<Reservations> WaitingReservations()
+      public List<Reservation> WaitingReservations()
       {
          throw new NotImplementedException();
       }
       
-      public List<Reservations> AcceptedReservations()
+      public List<Reservation> AcceptedReservations()
       {
          throw new NotImplementedException();
       }
       
-      public List<Reservations> DeclinedReservations()
+      public List<Reservation> DeclinedReservations()
       {
          throw new NotImplementedException();
       }

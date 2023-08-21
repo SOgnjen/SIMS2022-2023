@@ -1,40 +1,49 @@
+using HotelManagement.Model;
+using HotelManagement.Service;
 using System;
 
 namespace HotelManagement.Controller
 {
    public class UserController
    {
-      public HotelManagement.Model.User Login(String email, String password)
-      {
-         throw new NotImplementedException();
-      }
+
+        private readonly UserService _service;
+
+        public UserController(UserService service)
+        {
+            _service = service;
+        }
+
+        public User Login(string email, string password)
+        {
+            return _service.Login(email, password);
+        }
+
+        public Boolean IsJmbgValid(string jmbg)
+        {
+            return _service.IsJmbgValid(jmbg);
+        }
       
-      public Boolean IsJmbgValid(String jmbg)
-      {
-         throw new NotImplementedException();
-      }
+        public Boolean IsEmailValid(string email)
+        {
+            return _service.IsEmailValid(email);
+        }
       
-      public Boolean IsEmailValid(String email)
-      {
-         throw new NotImplementedException();
-      }
+        public User Register( User user)
+        {
+            return _service.Register(user);
+        }
       
-      public HotelManagement.Model.User Register(HotelManagement.Model.User user)
-      {
-         throw new NotImplementedException();
-      }
+        public User Block(string email)
+        {
+            return _service.Block(email);
+        }
       
-      public HotelManagement.Model.User Block(String email)
-      {
-         throw new NotImplementedException();
-      }
+        public User Unblock(string email)
+        {
+            return _service.Unblock(email);
+        }
       
-      public HotelManagement.Model.User Unblock(String email)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public HotelManagement.Service.UserService userService;
    
    }
 }

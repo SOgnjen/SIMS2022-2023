@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\srdic\\source\\repos\\HotelManagement\\HotelManagement.csproj",
+      "projectUniqueName": "C:\\Users\\srdic\\OneDrive\\Documents\\GitHub\\SIMS2022-2023\\projekat\\HotelManagement\\HotelManagement.csproj",
       "projectName": "HotelManagement",
-      "projectPath": "C:\\Users\\srdic\\source\\repos\\HotelManagement\\HotelManagement.csproj",
+      "projectPath": "C:\\Users\\srdic\\OneDrive\\Documents\\GitHub\\SIMS2022-2023\\projekat\\HotelManagement\\HotelManagement.csproj",
       "packagesPath": "C:\\Users\\srdic\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\srdic\\source\\repos\\HotelManagement\\obj\\",
+      "outputPath": "C:\\Users\\srdic\\OneDrive\\Documents\\GitHub\\SIMS2022-2023\\projekat\\HotelManagement\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\srdic\\AppData\\Roaming\\NuGet\\NuGet.Config",

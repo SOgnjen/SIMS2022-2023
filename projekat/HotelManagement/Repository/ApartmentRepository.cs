@@ -1,17 +1,19 @@
+using HotelManagement.Model;
 using System;
+using System.Collections.Generic;
 
 namespace HotelManagement.Repository
 {
    public class ApartmentRepository
    {
-      private String fileLocation;
+      private string fileLocation;
       
       public List<Apartment> GetAll()
       {
          throw new NotImplementedException();
       }
       
-      public HotelManagement.Model.Apartment GetByName(String name)
+      public HotelManagement.Model.Apartment GetByName(string name)
       {
          throw new NotImplementedException();
       }
