@@ -1,0 +1,62 @@
+[
+  {
+    "Jmbg": "1234567890123",
+    "Email": "admin@example.com",
+    "Password": "admin123",
+    "Name": "Admin",
+    "Surname": "Smith",
+    "Phone": "123-456-7890",
+    "Type": 0,
+    "Blocked": false,
+    "Unsuccessful": 0,
+    "hotels": []
+  },
+  {
+    "Jmbg": "9876543210987",
+    "Email": "guest@example.com",
+    "Password": "guest123",
+    "Name": "Guest",
+    "Surname": "Johnson",
+    "Phone": "987-654-3210",
+    "Type": 1,
+    "Blocked": false,
+    "Unsuccessful": 0,
+    "hotels": []
+  },
+  {
+    "Jmbg": "5555555555555",
+    "Email": "owner@example.com",
+    "Password": "owner123",
+    "Name": "Owner",
+    "Surname": "Williams",
+    "Phone": "555-555-5555",
+    "Type": 2,
+    "Blocked": false,
+    "Unsuccessful": 0,
+    "hotels": []
+  },
+  {
+    "Jmbg": "2222222222222",
+    "Email": "user@example.com",
+    "Password": "user123",
+    "Name": "Regular",
+    "Surname": "User",
+    "Phone": "222-222-2222",
+    "Type": 1,
+    "Blocked": false,
+    "Unsuccessful": 0,
+    "hotels": []
+  },
+  {
+    "Jmbg": "9999999999999",
+    "Email": "manager@example.com",
+    "Password": "manager123",
+    "Name": "Hotel",
+    "Surname": "Manager",
+    "Phone": "999-999-9999",
+    "Type": 0,
+    "Blocked": false,
+    "Unsuccessful": 0,
+    "hotels": []
+  }
+]

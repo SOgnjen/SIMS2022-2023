@@ -43,6 +43,11 @@ namespace HotelManagement.Controller
         {
             return _service.Unblock(email);
         }
+
+        public User getByEmail(string email)
+        {
+            return _service.GetByEmail(email);
+        }
       
    
    }

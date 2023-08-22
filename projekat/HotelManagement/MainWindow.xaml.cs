@@ -1,17 +1,24 @@
 ﻿using System.Windows;
+using HotelManagement.Model;
 using MaterialDesignThemes.Wpf;
 
 namespace HotelManagement
 {
     public partial class MainWindow : Window
     {
+        public bool IsDarkTheme { get; set; }
+        private readonly PaletteHelper paletteHelper = new PaletteHelper();
+
+        public App app = (App)Application.Current;
+
+        public User loggedUser;
+        public int counter;
+
         public MainWindow()
         {
             InitializeComponent();
+            counter = 0;
         }
-
-        public bool IsDarkTheme { get; set; }
-        private readonly PaletteHelper paletteHelper = new PaletteHelper();
 
         private void toggleTheme(object sender, RoutedEventArgs e)
         {
@@ -35,9 +42,39 @@ namespace HotelManagement
             Application.Current.Shutdown();
         }
 
-        private void loginBtn_Click()
-        {
 
+        private void loginBtn_Click(object sender, RoutedEventArgs e)
+        {
+            string email = txtEmail.Text;
+            string password = txtPassword.Password;
+            loggedUser = app.userController.getByEmail(email);
+
+            if(counter == 2)
+            {
+                if (loggedUser == null || loggedUser.Password != password)
+                {
+                    MessageBox.Show("Too many unsuccessful login attempts. Closing the application.");
+                    Application.Current.Shutdown();
+                    return;
+                }
+            }
+
+            if(loggedUser == null) 
+            {
+                MessageBox.Show("Invalid email");
+                counter++;
+            }
+            else if(loggedUser.Password != password)
+            {
+                MessageBox.Show("Invalid password");
+                counter++;
+            }
+            else
+            {
+                MessageBox.Show("Successuful Login");
+                counter = 0;
+            }
+            
         }
     }
 }

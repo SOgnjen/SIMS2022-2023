@@ -7,6 +7,11 @@ namespace HotelManagement.Repository
    public class HotelRepository
    {
       private String fileLocation;
+
+        public HotelRepository(string fileLocation = null) 
+        {
+            this.fileLocation = fileLocation ?? "Resources/hotels.json";
+        }
       
       public List<Hotel> GetAll()
       {

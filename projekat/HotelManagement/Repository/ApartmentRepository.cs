@@ -7,8 +7,13 @@ namespace HotelManagement.Repository
    public class ApartmentRepository
    {
       private string fileLocation;
-      
-      public List<Apartment> GetAll()
+
+        public ApartmentRepository(string fileLocation = null)
+        {
+            this.fileLocation = fileLocation ?? "Resources/apartments.json";
+        }
+
+        public List<Apartment> GetAll()
       {
          throw new NotImplementedException();
       }

@@ -1,9 +1,19 @@
+using HotelManagement.Model;
+using HotelManagement.Repository;
 using System;
 
 namespace HotelManagement.Service
 {
    public class UserService
    {
+
+        private UserRepository userRepository;
+
+        public UserService(UserRepository userRepository)
+        {
+            this.userRepository = userRepository;
+        }
+
       public HotelManagement.Model.User Login(String email, String password)
       {
          throw new NotImplementedException();
@@ -33,8 +43,12 @@ namespace HotelManagement.Service
       {
          throw new NotImplementedException();
       }
+
+        public User GetByEmail(string email)
+        {
+            return userRepository.GetByEmail(email);
+        }
       
-      public HotelManagement.Repository.UserRepository userRepository;
    
    }
 }
