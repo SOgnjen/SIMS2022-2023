@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
 C:\Users\srdic\OneDrive\Documents\GitHub\SIMS2022-2023\projekat\HotelManagement\App.xaml
-11407045341
+4981799708
 
-22-969492321
+25-1734082918
 1961428104650
-MainWindow.xaml;
+MainWindow.xaml;View\AdminMain.xaml;View\GuestMain.xaml;View\OwnerMain.xaml;
 
 False
 

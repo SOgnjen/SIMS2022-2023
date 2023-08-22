@@ -7,7 +7,27 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="View\AdminMain.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\GuestMain.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\OwnerMain.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\AdminMain.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\GuestMain.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\OwnerMain.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

@@ -25,3 +25,9 @@ C:\Users\srdic\OneDrive\Documents\GitHub\SIMS2022-2023\projekat\HotelManagement\
 C:\Users\srdic\OneDrive\Documents\GitHub\SIMS2022-2023\projekat\HotelManagement\bin\Debug\net5.0-windows\Microsoft.Xaml.Behaviors.dll
 C:\Users\srdic\OneDrive\Documents\GitHub\SIMS2022-2023\projekat\HotelManagement\obj\Debug\net5.0-windows\App.baml
 C:\Users\srdic\OneDrive\Documents\GitHub\SIMS2022-2023\projekat\HotelManagement\obj\Debug\net5.0-windows\HotelManagement.csproj.CopyComplete
+C:\Users\srdic\OneDrive\Documents\GitHub\SIMS2022-2023\projekat\HotelManagement\obj\Debug\net5.0-windows\View\GuestMain.g.cs
+C:\Users\srdic\OneDrive\Documents\GitHub\SIMS2022-2023\projekat\HotelManagement\obj\Debug\net5.0-windows\View\GuestMain.baml
+C:\Users\srdic\OneDrive\Documents\GitHub\SIMS2022-2023\projekat\HotelManagement\obj\Debug\net5.0-windows\View\AdminMain.g.cs
+C:\Users\srdic\OneDrive\Documents\GitHub\SIMS2022-2023\projekat\HotelManagement\obj\Debug\net5.0-windows\View\OwnerMain.g.cs
+C:\Users\srdic\OneDrive\Documents\GitHub\SIMS2022-2023\projekat\HotelManagement\obj\Debug\net5.0-windows\View\AdminMain.baml
+C:\Users\srdic\OneDrive\Documents\GitHub\SIMS2022-2023\projekat\HotelManagement\obj\Debug\net5.0-windows\View\OwnerMain.baml

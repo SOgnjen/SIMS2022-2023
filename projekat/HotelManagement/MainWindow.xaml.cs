@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using HotelManagement.Model;
+using HotelManagement.View;
 using MaterialDesignThemes.Wpf;
 
 namespace HotelManagement
@@ -71,8 +72,24 @@ namespace HotelManagement
             }
             else
             {
-                MessageBox.Show("Successuful Login");
-                counter = 0;
+                if(loggedUser.Type == 0)
+                {
+                    this.Hide();
+                    AdminMain adminMain = new AdminMain();
+                    adminMain.Show();
+                }
+                else if(loggedUser.Type == (UserType)1)
+                {
+                    this.Hide();
+                    GuestMain guestMain = new GuestMain();
+                    guestMain.Show();
+                }
+                else
+                {
+                    this.Hide();
+                    OwnerMain ownerMain = new OwnerMain();
+                    ownerMain.Show();
+                }
             }
             
         }
