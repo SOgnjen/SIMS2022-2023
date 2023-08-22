@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "aDnheJ3Hvn4ogOh3OXzOnoIUmeOKBYAgIjNAHjSp/5kc2CzamL3zvz84RpsTSDNXyqtCAbKEtTHYUYU7zqwTbw==",
+  "dgSpecHash": "ZwfdK0S/WQXQDcjJ1oLGEKJL3ygRM/n4dMOMAKam+1RMV5KWY+dzEzFtEx1pJI8l89+pSQ6kM0+nT5Yj/7BGvA==",
   "success": true,
   "projectFilePath": "C:\\Users\\srdic\\OneDrive\\Documents\\GitHub\\SIMS2022-2023\\projekat\\HotelManagement\\HotelManagement.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\srdic\\.nuget\\packages\\materialdesigncolors\\2.1.4\\materialdesigncolors.2.1.4.nupkg.sha512",
+    "C:\\Users\\srdic\\.nuget\\packages\\materialdesignthemes\\4.9.0\\materialdesignthemes.4.9.0.nupkg.sha512",
+    "C:\\Users\\srdic\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.39\\microsoft.xaml.behaviors.wpf.1.1.39.nupkg.sha512"
+  ],
   "logs": []
 }

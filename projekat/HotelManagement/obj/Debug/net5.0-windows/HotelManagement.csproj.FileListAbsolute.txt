@@ -20,3 +20,8 @@ C:\Users\srdic\OneDrive\Documents\GitHub\SIMS2022-2023\projekat\HotelManagement\
 C:\Users\srdic\OneDrive\Documents\GitHub\SIMS2022-2023\projekat\HotelManagement\obj\Debug\net5.0-windows\HotelManagement.pdb
 C:\Users\srdic\OneDrive\Documents\GitHub\SIMS2022-2023\projekat\HotelManagement\obj\Debug\net5.0-windows\HotelManagement.genruntimeconfig.cache
 C:\Users\srdic\OneDrive\Documents\GitHub\SIMS2022-2023\projekat\HotelManagement\obj\Debug\net5.0-windows\ref\HotelManagement.dll
+C:\Users\srdic\OneDrive\Documents\GitHub\SIMS2022-2023\projekat\HotelManagement\bin\Debug\net5.0-windows\MaterialDesignColors.dll
+C:\Users\srdic\OneDrive\Documents\GitHub\SIMS2022-2023\projekat\HotelManagement\bin\Debug\net5.0-windows\MaterialDesignThemes.Wpf.dll
+C:\Users\srdic\OneDrive\Documents\GitHub\SIMS2022-2023\projekat\HotelManagement\bin\Debug\net5.0-windows\Microsoft.Xaml.Behaviors.dll
+C:\Users\srdic\OneDrive\Documents\GitHub\SIMS2022-2023\projekat\HotelManagement\obj\Debug\net5.0-windows\App.baml
+C:\Users\srdic\OneDrive\Documents\GitHub\SIMS2022-2023\projekat\HotelManagement\obj\Debug\net5.0-windows\HotelManagement.csproj.CopyComplete

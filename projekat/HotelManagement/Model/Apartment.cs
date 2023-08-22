@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace HotelManagement.Model
 {
@@ -9,54 +10,15 @@ namespace HotelManagement.Model
         public int Rooms { get; set; }
         public int MaxGuests { get; set; }
       
-      public System.Collections.Generic.List<Reservation> reservation;
-      
-      public System.Collections.Generic.List<Reservation> Reservation
-      {
-         get
-         {
-            if (reservation == null)
-               reservation = new System.Collections.Generic.List<Reservation>();
-            return reservation;
-         }
-         set
-         {
-            RemoveAllReservation();
-            if (value != null)
-            {
-               foreach (Reservation oReservation in value)
-                  AddReservation(oReservation);
-            }
-         }
-      }
-      
-      
-      public void AddReservation(Reservation newReservation)
-      {
-         if (newReservation == null)
-            return;
-         if (this.reservation == null)
-            this.reservation = new System.Collections.Generic.List<Reservation>();
-         if (!this.reservation.Contains(newReservation))
-            this.reservation.Add(newReservation);
-      }
-      
-      
-      public void RemoveReservation(Reservation oldReservation)
-      {
-         if (oldReservation == null)
-            return;
-         if (this.reservation != null)
-            if (this.reservation.Contains(oldReservation))
-               this.reservation.Remove(oldReservation);
-      }
-      
-      
-      public void RemoveAllReservation()
-      {
-         if (reservation != null)
-            reservation.Clear();
-      }
-   
-   }
+        public List<Reservation> Reservations { get; set; }
+
+        public Apartment(string name, string description, int rooms, int maxGuests, List<Reservation> reservations)
+        {
+            Name = name;
+            Description = description;
+            Rooms = rooms;
+            MaxGuests = maxGuests;
+            Reservations = reservations;
+        }
+    }
 }
