@@ -1,10 +1,50 @@
-{
-  "exclude": [
-    "**/bin",
-    "**/bower_components",
-    "**/jspm_packages",
-    "**/node_modules",
-    "**/obj",
-    "**/platforms"
-  ]
-}
+[
+  {
+    "ApartmentNumber": "A001",
+    "Name": "Luxury Suite",
+    "Description": "Spacious suite with a view",
+    "Rooms": 3,
+    "MaxGuests": 6,
+    "Reservations": []
+  },
+  {
+    "ApartmentNumber": "A002",
+    "Name": "Standard Room",
+    "Description": "Comfortable standard room",
+    "Rooms": 1,
+    "MaxGuests": 2,
+    "Reservations": []
+  },
+  {
+    "ApartmentNumber": "A003",
+    "Name": "Ocean View Suite",
+    "Description": "Suite with a stunning ocean view",
+    "Rooms": 2,
+    "MaxGuests": 4,
+    "Reservations": []
+  },
+  {
+    "ApartmentNumber": "A004",
+    "Name": "Family Room",
+    "Description": "Spacious room for families",
+    "Rooms": 2,
+    "MaxGuests": 4,
+    "Reservations": []
+  },
+  {
+    "ApartmentNumber": "A005",
+    "Name": "City View Suite",
+    "Description": "Suite with a city view",
+    "Rooms": 2,
+    "MaxGuests": 4,
+    "Reservations": []
+  },
+  {
+    "ApartmentNumber": "A006",
+    "Name": "Riverside Cabin",
+    "Description": "Cozy cabin by the river",
+    "Rooms": 1,
+    "MaxGuests": 2,
+    "Reservations": []
+  }
+]

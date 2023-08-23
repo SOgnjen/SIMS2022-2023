@@ -102,32 +102,41 @@
                 Background="{DynamicResource PrimaryTextColor}"
                 Padding="30"
                 VerticalAlignment="Center"
-                HorizontalAlignment="Center">
-            <TabControl Width="600" Height="450" Style="{DynamicResource TabControlStyle}">
+                HorizontalAlignment="Center" Height="563">
+            <TabControl Width="600" Height="508" Style="{DynamicResource TabControlStyle}">
                 <TabItem Header="Hotels" Style="{DynamicResource TabItemStyle}">
-                    <DataGrid x:Name="medicineDataGrid"
-                            AutoGenerateColumns="False"
-                            IsReadOnly="True" Margin="10,232,0,20.2" Width="753" HorizontalAlignment="Left" Grid.ColumnSpan="2" Background="#FF8585B1" >
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Šifra" 
-                            Binding="{Binding Code}" />
-                            <DataGridTextColumn Header="Ime" 
-                            Binding="{Binding Name}" />
-                            <DataGridTextColumn Header="Proizvođač"
-                            Binding="{Binding Manufacturer}" />
-                            <DataGridTextColumn Header="Cena"
-                            Binding="{Binding Price}" />
-                            <DataGridTextColumn Header="Količina"
-                            Binding="{Binding Amount}" />
-                            <DataGridTemplateColumn Header="Sastojci">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <ItemsControl ItemsSource="{Binding Ingredients}" DisplayMemberPath="Name"/>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                        </DataGrid.Columns>
-                    </DataGrid>
+                    <Grid>
+                        <StackPanel Margin="5">
+                            <DataGrid x:Name="hotelDataGrid"
+                                AutoGenerateColumns="False"
+                                IsReadOnly="True"
+                                Width="753"
+                                HorizontalAlignment="Left"
+                                Grid.ColumnSpan="2"
+                                Background="#FF8585B1"
+                                ItemsSource="{Binding AllHotels}">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Code" Binding="{Binding Code}" CanUserSort="False" />
+                                    <DataGridTextColumn Header="Name" Binding="{Binding Name}" CanUserSort="True"/>
+                                    <DataGridTextColumn Header="Built In" Binding="{Binding BuiltIn}" CanUserSort="False" />
+                                    <DataGridTextColumn Header="Stars" Binding="{Binding Stars}" CanUserSort="True" />
+                                    <DataGridTemplateColumn Header="Apartments" Width="*">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <ItemsControl ItemsSource="{Binding Apartments}" HorizontalAlignment="Left">
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock Text="{Binding Value.Name}" Margin="2"/>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </StackPanel>
+                    </Grid>
                 </TabItem>
 
                 <TabItem Header="Reservations" Style="{DynamicResource TabItemStyle}" HorizontalAlignment="Center" VerticalAlignment="Stretch">

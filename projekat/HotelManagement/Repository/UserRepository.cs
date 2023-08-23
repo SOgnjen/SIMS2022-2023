@@ -1,40 +1,45 @@
 using HotelManagement.Model;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
+using System.Xml.Linq;
 
 namespace HotelManagement.Repository
 {
    public class UserRepository
    {
         private List<User> users;
-        private readonly string fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Resources\\users.json";
+        private string fileLocation;
 
         public UserRepository()
         {
-            users = LoadData();
+            fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Resources\\users.json";
+            ReadJson();
+        }
 
-            foreach (var user in users)
+        private void ReadJson()
+        {
+            if (!File.Exists(fileLocation))
             {
-                Console.WriteLine($"Loaded user: {user.Name} {user.Surname}, Email: {user.Email}");
+                File.Create(fileLocation).Close();
+            }
+
+            StreamReader r = new StreamReader(fileLocation);
+
+            string json = r.ReadToEnd();
+            if (json != "")
+            {
+                users = JsonConvert.DeserializeObject<List<User>>(json);
             }
         }
 
-        private List<User> LoadData() 
+        private void WriteToJson()
         {
-            if (File.Exists(fileLocation))
-            {
-                string json = File.ReadAllText(fileLocation);
-                return JsonSerializer.Deserialize<List<User>>(json);
-            }
-            return new List<User>();
-        }
-
-        private void SaveData()
-        {
-            string json = JsonSerializer.Serialize(users, new JsonSerializerOptions { WriteIndented = true });
+            string json = JsonConvert.SerializeObject(users, Formatting.Indented);
             File.WriteAllText(fileLocation, json);
         }
 

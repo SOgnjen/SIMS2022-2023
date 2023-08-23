@@ -31,3 +31,4 @@ C:\Users\srdic\OneDrive\Documents\GitHub\SIMS2022-2023\projekat\HotelManagement\
 C:\Users\srdic\OneDrive\Documents\GitHub\SIMS2022-2023\projekat\HotelManagement\obj\Debug\net5.0-windows\View\OwnerMain.g.cs
 C:\Users\srdic\OneDrive\Documents\GitHub\SIMS2022-2023\projekat\HotelManagement\obj\Debug\net5.0-windows\View\AdminMain.baml
 C:\Users\srdic\OneDrive\Documents\GitHub\SIMS2022-2023\projekat\HotelManagement\obj\Debug\net5.0-windows\View\OwnerMain.baml
+C:\Users\srdic\OneDrive\Documents\GitHub\SIMS2022-2023\projekat\HotelManagement\bin\Debug\net5.0-windows\Newtonsoft.Json.dll

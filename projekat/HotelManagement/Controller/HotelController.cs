@@ -1,37 +1,44 @@
 using HotelManagement.Model;
 using HotelManagement.Service;
 using System;
+using System.Collections.Generic;
+using System.Windows.Documents;
 
 namespace HotelManagement.Controller
 {
    public class HotelController
    {
 
-        private readonly HotelService _service;
+        private readonly HotelService hotelService;
 
         public HotelController(HotelService service)
         {
-            _service = service;
+            hotelService = service;
         }
 
         public Hotel Accept(string code)
         {
-            return _service.Accept(code);
+            return hotelService.Accept(code);
         }
 
         public Hotel Decline(string code)
         {
-            return _service.Decline(code);
+            return hotelService.Decline(code);
         }
 
         public Hotel CreateHotel(Hotel hotel)
         {
-            return _service.CreateHotel(hotel);
+            return hotelService.CreateHotel(hotel);
         }
 
         public Boolean IsCodeValid(string code)
         {
-            return _service.IsCodeValid(code);
+            return hotelService.IsCodeValid(code);
+        }
+
+        public List<Hotel> GetAll()
+        {
+            return hotelService.GetAll();
         }
       
    

@@ -1,21 +1,50 @@
 using HotelManagement.Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Text;
+using System.Text.Json;
+using System.Windows;
 
 namespace HotelManagement.Repository
 {
    public class HotelRepository
    {
-      private String fileLocation;
+        private List<Hotel> hotels;
+        private string fileLocation;
 
-        public HotelRepository(string fileLocation = null) 
+        public HotelRepository() 
         {
-            this.fileLocation = fileLocation ?? "Resources/hotels.json";
+            fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Resources\\hotels.json";
+            ReadJson();
         }
-      
-      public List<Hotel> GetAll()
+
+        private void ReadJson()
+        {
+            if (!File.Exists(fileLocation))
+            {
+                File.Create(fileLocation).Close();
+            }
+
+            StreamReader r = new StreamReader(fileLocation);
+
+            string json = r.ReadToEnd();
+            if (json != "")
+            {
+                hotels = JsonConvert.DeserializeObject<List<Hotel>>(json);
+            }
+        }
+
+        private void WriteToJson()
+        {
+            string json = JsonConvert.SerializeObject(hotels, Formatting.Indented);
+            File.WriteAllText(fileLocation, json);
+        }
+
+        public List<Hotel> GetAll()
       {
-         throw new NotImplementedException();
+            return hotels;
       }
       
       public List<Hotel> SortByName()

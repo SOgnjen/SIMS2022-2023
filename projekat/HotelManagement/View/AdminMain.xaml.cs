@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HotelManagement.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,19 @@ namespace HotelManagement.View
     /// </summary>
     public partial class AdminMain : Window
     {
+        App app = (App)Application.Current;
+
+        List<Hotel> AllHotels;
+
         public AdminMain()
         {
             InitializeComponent();
+            AllHotels = app.hotelController.GetAll();
+
+            DataContext = this;
+
+            hotelDataGrid.ItemsSource = null;
+            hotelDataGrid.ItemsSource = AllHotels;
         }
     }
 }

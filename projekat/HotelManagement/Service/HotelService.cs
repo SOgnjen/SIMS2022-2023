@@ -1,9 +1,21 @@
+using HotelManagement.Model;
+using HotelManagement.Repository;
 using System;
+using System.Collections.Generic;
+using System.Windows.Documents;
 
 namespace HotelManagement.Service
 {
    public class HotelService
    {
+
+        private HotelRepository hotelRepository;
+
+        public HotelService(HotelRepository hotelRepository)
+        {
+            this.hotelRepository = hotelRepository;
+        }
+
       public HotelManagement.Model.Hotel Accept(String code)
       {
          throw new NotImplementedException();
@@ -23,8 +35,12 @@ namespace HotelManagement.Service
       {
          throw new NotImplementedException();
       }
+
+        public List<Hotel> GetAll()
+        {
+            return hotelRepository.GetAll();
+        }
       
-      public HotelManagement.Repository.HotelRepository hotelRepository;
-   
+    
    }
 }

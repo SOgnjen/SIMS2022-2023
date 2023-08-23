@@ -22,8 +22,10 @@ namespace HotelManagement
         private static readonly ReservationRepository reservationRepository = new ReservationRepository();
 
         private static readonly UserService userService = new UserService(userRepository);
+        private static readonly HotelService hotelService = new HotelService(hotelRepository);
 
         public readonly UserController userController = new UserController(userService);
+        public readonly HotelController hotelController = new HotelController(hotelService);
 
     }
 }

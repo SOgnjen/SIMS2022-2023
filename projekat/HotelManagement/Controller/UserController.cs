@@ -7,46 +7,46 @@ namespace HotelManagement.Controller
    public class UserController
    {
 
-        private readonly UserService _service;
+        private readonly UserService userService;
 
         public UserController(UserService service)
         {
-            _service = service;
+            userService = service;
         }
 
         public User Login(string email, string password)
         {
-            return _service.Login(email, password);
+            return userService.Login(email, password);
         }
 
         public Boolean IsJmbgValid(string jmbg)
         {
-            return _service.IsJmbgValid(jmbg);
+            return userService.IsJmbgValid(jmbg);
         }
       
         public Boolean IsEmailValid(string email)
         {
-            return _service.IsEmailValid(email);
+            return userService.IsEmailValid(email);
         }
       
         public User Register( User user)
         {
-            return _service.Register(user);
+            return userService.Register(user);
         }
       
         public User Block(string email)
         {
-            return _service.Block(email);
+            return userService.Block(email);
         }
       
         public User Unblock(string email)
         {
-            return _service.Unblock(email);
+            return userService.Unblock(email);
         }
 
         public User getByEmail(string email)
         {
-            return _service.GetByEmail(email);
+            return userService.GetByEmail(email);
         }
       
    

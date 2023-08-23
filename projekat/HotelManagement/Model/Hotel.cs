@@ -9,7 +9,7 @@ namespace HotelManagement.Model
         public string Code { get; set; }
         public string Name { get; set; }
         public int BuiltIn { get; set; }
-        public Dictionary<string, Apartment> Appartments { get; set; }
+        public Dictionary<string, Apartment> Apartments { get; set; }
         public int Stars { get; set; }
         public string OwnersJmbg { get; set; }
         public Boolean Accepted { get; set; } = false;
@@ -20,7 +20,7 @@ namespace HotelManagement.Model
             Code = code;
             Name = name;
             BuiltIn = builtIn;
-            Appartments = appartments;
+            Apartments = appartments;
             Stars = stars;
             OwnersJmbg = ownersJmbg;
             Accepted = accepted;

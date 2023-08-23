@@ -1,10 +1,92 @@
-{
-  "exclude": [
-    "**/bin",
-    "**/bower_components",
-    "**/jspm_packages",
-    "**/node_modules",
-    "**/obj",
-    "**/platforms"
-  ]
-}
+[
+  {
+    "Code": "H001",
+    "Name": "Grand Hotel",
+    "BuiltIn": 1990,
+    "Apartments": {
+      "A001": {
+        "Name": "Luxury Suite",
+        "Description": "Spacious suite with a view",
+        "Rooms": 3,
+        "MaxGuests": 6
+      },
+      "A002": {
+        "Name": "Standard Room",
+        "Description": "Comfortable standard room",
+        "Rooms": 1,
+        "MaxGuests": 2
+      }
+    },
+    "Stars": 5,
+    "OwnersJmbg": "1234567890123",
+    "Accepted": true,
+    "Status": 1
+  },
+  {
+    "Code": "H002",
+    "Name": "Seaside Resort",
+    "BuiltIn": 2005,
+    "Apartments": {
+      "A003": {
+        "Name": "Ocean View Suite",
+        "Description": "Suite with a stunning ocean view",
+        "Rooms": 2,
+        "MaxGuests": 4
+      },
+      "A004": {
+        "Name": "Family Room",
+        "Description": "Spacious room for families",
+        "Rooms": 2,
+        "MaxGuests": 4
+      }
+    },
+    "Stars": 4,
+    "OwnersJmbg": "9876543210987",
+    "Accepted": true,
+    "Status": 1
+  },
+  {
+    "Code": "H003",
+    "Name": "Mountain Lodge",
+    "BuiltIn": 1985,
+    "Apartments": {},
+    "Stars": 3,
+    "OwnersJmbg": "5555555555555",
+    "Accepted": false,
+    "Status": 0
+  },
+  {
+    "Code": "H004",
+    "Name": "Urban Oasis",
+    "BuiltIn": 2012,
+    "Apartments": {
+      "A005": {
+        "Name": "City View Suite",
+        "Description": "Suite with a city view",
+        "Rooms": 2,
+        "MaxGuests": 4
+      }
+    },
+    "Stars": 4,
+    "OwnersJmbg": "9876543210987",
+    "Accepted": true,
+    "Status": 1
+  },
+  {
+    "Code": "H005",
+    "Name": "Riverside Lodge",
+    "BuiltIn": 1998,
+    "Apartments": {
+      "A006": {
+        "Name": "Riverside Cabin",
+        "Description": "Cozy cabin by the river",
+        "Rooms": 1,
+        "MaxGuests": 2
+      }
+    },
+    "Stars": 3,
+    "OwnersJmbg": "5555555555555",
+    "Accepted": true,
+    "Status": 1
+  }
+]
