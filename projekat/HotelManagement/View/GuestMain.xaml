@@ -190,7 +190,7 @@
                     </Grid>
                 </TabItem>
                 
-                <TabItem Header="My Reservations" Style="{DynamicResource TabItemStyle}">
+                <TabItem Header="My Reservations" Width="150" Style="{DynamicResource TabItemStyle}">
                     <Grid>
                         <TextBlock Text="Hotels"
                                    Foreground="{DynamicResource SecondaryTextColor}"
@@ -228,6 +228,13 @@
                                         <DataGridTextColumn Header="Date" Binding="{Binding Date}" CanUserSort="False"/>
                                         <DataGridTextColumn Header="Status" Binding="{Binding Status}" CanUserSort="False" />
                                         <DataGridTextColumn Header="Declined Because" Binding="{Binding DeclinedBecause}" CanUserSort="False" />
+                                        <DataGridTemplateColumn Header="Cancel">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Button Content="Cancel Reservation" Click="CancelReservation"/>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
                                     </DataGrid.Columns>
                                 </DataGrid>
                             </ScrollViewer>

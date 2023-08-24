@@ -1,6 +1,8 @@
 ﻿using HotelManagement.Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -296,7 +298,63 @@ namespace HotelManagement.View
             reservationDataGrid.ItemsSource = filteredReservations;
         }
 
+        private void CancelReservation(object sender, RoutedEventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            Reservation reservation = clickedButton.DataContext as Reservation;
 
+            if (reservation != null)
+            {
+                if (reservation.Status == ReservationStatus.Waiting || reservation.Status == ReservationStatus.Accepted)
+                {
+                    reservation.Status = ReservationStatus.Cancelled;
+                    reservation.DeclinedBecause = "Cancelled by user";
 
+                    List<Reservation> reservations = LoadReservationsFromJsonFile();
+
+                    Reservation existingReservation = reservations.Find(r => r.Id == reservation.Id);
+                    if (existingReservation != null)
+                    {
+                        existingReservation.Status = reservation.Status;
+                        existingReservation.DeclinedBecause = reservation.DeclinedBecause;
+
+                        SaveReservationsToJsonFile(reservations);
+
+                        reservationDataGrid.Items.Refresh();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Reservation not found.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("This reservation cannot be cancelled.");
+                }
+            }
+        }
+
+        private List<Reservation> LoadReservationsFromJsonFile()
+        {
+            string jsonFilePath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Resources\\reservations.json";
+
+            if (File.Exists(jsonFilePath))
+            {
+                string jsonData = File.ReadAllText(jsonFilePath);
+                List<Reservation> reservations = JsonConvert.DeserializeObject<List<Reservation>>(jsonData);
+                return reservations;
+            }
+            else
+            {
+                return new List<Reservation>();
+            }
+        }
+
+        private void SaveReservationsToJsonFile(List<Reservation> reservations)
+        {
+            string jsonFilePath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Resources\\reservations.json";
+            string jsonData = JsonConvert.SerializeObject(reservations, Formatting.Indented);
+            File.WriteAllText(jsonFilePath, jsonData);
+        }
     }
 }
