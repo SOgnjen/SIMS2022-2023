@@ -81,7 +81,7 @@ namespace HotelManagement
                 else if(loggedUser.Type == (UserType)1)
                 {
                     this.Hide();
-                    GuestMain guestMain = new GuestMain();
+                    GuestMain guestMain = new GuestMain(loggedUser);
                     guestMain.Show();
                 }
                 else

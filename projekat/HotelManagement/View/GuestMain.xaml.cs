@@ -24,7 +24,11 @@ namespace HotelManagement.View
 
         List<Hotel> AcceptedHotels;
 
-        public GuestMain()
+        private User LoggedUser;
+
+        List<Reservation> AllReservations;
+
+        public GuestMain(User loggedUser)
         {
             InitializeComponent();
             AcceptedHotels = app.hotelController.GetByAccepted(true);
@@ -33,6 +37,12 @@ namespace HotelManagement.View
 
             hotelDataGrid.ItemsSource = null;
             hotelDataGrid.ItemsSource = AcceptedHotels;
+
+            AllReservations = loggedUser.Reservations;
+
+            reservationDataGrid.ItemsSource = null;
+            reservationDataGrid.ItemsSource = AllReservations;
+
         }
 
         private void SearchHotelsByCode(object sender, RoutedEventArgs e)
@@ -268,6 +278,25 @@ namespace HotelManagement.View
 
             hotelDataGrid.ItemsSource = hotelsWithMatchingApartments;
         }
+
+        private void SearchReservationsByStatus(object sender, RoutedEventArgs e)
+        {
+            ComboBoxItem selectedStatusItem = (ComboBoxItem)searchByStatus.SelectedItem;
+
+            if (selectedStatusItem == null)
+            {
+                MessageBox.Show("Please select a reservation status.");
+                return;
+            }
+
+            ReservationStatus selectedStatus = (ReservationStatus)Enum.Parse(typeof(ReservationStatus), selectedStatusItem.Tag.ToString());
+
+            List<Reservation> filteredReservations = AllReservations.Where(reservation => reservation.Status == selectedStatus).ToList();
+
+            reservationDataGrid.ItemsSource = filteredReservations;
+        }
+
+
 
     }
 }

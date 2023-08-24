@@ -190,13 +190,48 @@
                     </Grid>
                 </TabItem>
                 
-                <TabItem Header="Reservations" Style="{DynamicResource TabItemStyle}">
+                <TabItem Header="My Reservations" Style="{DynamicResource TabItemStyle}">
                     <Grid>
                         <TextBlock Text="Hotels"
                                    Foreground="{DynamicResource SecondaryTextColor}"
                                    FontSize="20"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center"/>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="0" Margin="5">
+                                <DockPanel Margin="5">
+                                    <Label Width="150">Search By Status:</Label>
+                                    <ComboBox x:Name="searchByStatus" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" Background="#FFC6C6F3">
+                                        <ComboBoxItem Content="Waiting" Tag="Waiting"/>
+                                        <ComboBoxItem Content="Accepted" Tag="Accepted"/>
+                                        <ComboBoxItem Content="Declined" Tag="Declined"/>
+                                        <ComboBoxItem Content="Cancelled" Tag="Cancelled"/>
+                                    </ComboBox>
+                                    <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Search" Background="#FF8585B1" Click="SearchReservationsByStatus" />
+                                </DockPanel>
+                            </StackPanel>
+                            <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                                <DataGrid x:Name="reservationDataGrid"
+                                          AutoGenerateColumns="False"
+                                          IsReadOnly="True"
+                                          Width="753"
+                                          HorizontalAlignment="Left"
+                                          Grid.ColumnSpan="2"
+                                          Background="#FF8585B1"
+                                          ItemsSource="{Binding AllReservations}">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Id" Binding="{Binding Id}" CanUserSort="False" />
+                                        <DataGridTextColumn Header="Date" Binding="{Binding Date}" CanUserSort="False"/>
+                                        <DataGridTextColumn Header="Status" Binding="{Binding Status}" CanUserSort="False" />
+                                        <DataGridTextColumn Header="Declined Because" Binding="{Binding DeclinedBecause}" CanUserSort="False" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </ScrollViewer>
+                        </Grid>
                     </Grid>
                 </TabItem>
             </TabControl>
