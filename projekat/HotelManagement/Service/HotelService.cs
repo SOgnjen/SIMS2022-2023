@@ -31,7 +31,7 @@ namespace HotelManagement.Service
          throw new NotImplementedException();
       }
       
-      public Boolean IsCodeValid(String code)
+      public Boolean IsCodeValid(string code)
       {
          throw new NotImplementedException();
       }
@@ -39,6 +39,11 @@ namespace HotelManagement.Service
         public List<Hotel> GetAll()
         {
             return hotelRepository.GetAll();
+        }
+
+        public List<Hotel> GetByAccepted(bool accepted)
+        {
+            return hotelRepository.GetByAccepted(accepted);
         }
       
     

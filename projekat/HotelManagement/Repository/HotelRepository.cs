@@ -43,9 +43,24 @@ namespace HotelManagement.Repository
         }
 
         public List<Hotel> GetAll()
-      {
+        {
             return hotels;
-      }
+        }
+
+        public List<Hotel> GetByAccepted(bool accepted)
+        {
+            List<Hotel> result = new List<Hotel>();
+
+            foreach (Hotel hotel in hotels)
+            {
+                if (hotel.Accepted == accepted)
+                {
+                    result.Add(hotel);
+                }
+            }
+
+            return result;
+        }
       
       public List<Hotel> SortByName()
       {

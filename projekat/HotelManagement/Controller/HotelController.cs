@@ -40,6 +40,11 @@ namespace HotelManagement.Controller
         {
             return hotelService.GetAll();
         }
+
+        public List<Hotel> GetByAccepted(bool accepted)
+        {
+            return hotelService.GetByAccepted(accepted);
+        }
       
    
    }

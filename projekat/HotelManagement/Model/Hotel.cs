@@ -12,7 +12,7 @@ namespace HotelManagement.Model
         public Dictionary<string, Apartment> Apartments { get; set; }
         public int Stars { get; set; }
         public string OwnersJmbg { get; set; }
-        public Boolean Accepted { get; set; } = false;
+        public bool Accepted { get; set; } = false;
         public HotelStatus Status { get; set; }
       
         public Hotel(string code, string name, int builtIn, Dictionary<string, Apartment> appartments, int stars, string ownersJmbg, bool accepted, HotelStatus status)
