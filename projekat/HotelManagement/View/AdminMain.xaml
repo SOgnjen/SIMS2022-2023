@@ -214,7 +214,7 @@
                                     <ComboBoxItem Content="Owner" Tag="Owner"/>
                                 </ComboBox>
                             </DockPanel>
-                            <Button Content="Add New User" Width="150" Margin="5" Click="Button_Click_1"/>
+                            <Button Content="Add New User" Width="150" Margin="5" Click="AddHotel"/>
                         </StackPanel>
                     </Grid>
             </TabItem>
@@ -261,7 +261,7 @@
                                         <DataGridTemplateColumn Header="Block">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <Button Content="Un/Block" Click="Button_Click"/>
+                                                    <Button Content="Un/Block" Click="AddUser"/>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
@@ -274,11 +274,29 @@
 
                 <TabItem Header="Add Hotel" Style="{DynamicResource TabItemStyle}">
                     <Grid>
-                        <TextBlock Text="Add Hotel"
-                                   Foreground="{DynamicResource SecondaryTextColor}"
-                                   FontSize="20"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Center"/>
+                        <StackPanel Margin="0,0,0.4,0.2" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+                            <DockPanel Margin="5">
+                                <Label Width="70">Code:</Label>
+                                <TextBox x:Name="codeBox" Width="150" HorizontalAlignment="Left" Margin="5, 0, 0, 0" Background="#FFD8D8F6"/>
+                            </DockPanel>
+                            <DockPanel Margin="5">
+                                <Label Width="70">Name:</Label>
+                                <TextBox x:Name="hotelNameBox" Width="150" HorizontalAlignment="Left" Margin="5, 0, 0, 0" Background="#FFD8D8F6"/>
+                            </DockPanel>
+                            <DockPanel Margin="5">
+                                <Label Width="70">Built In:</Label>
+                                <TextBox x:Name="builtInBox" Width="150" HorizontalAlignment="Left" Margin="5, 0, 0, 0" Background="#FFD8D8F6"/>
+                            </DockPanel>
+                            <DockPanel Margin="5">
+                                <Label Width="70">Stars:</Label>
+                                <TextBox x:Name="starsBox" Width="150" HorizontalAlignment="Left" Margin="5, 0, 0, 0" Background="#FFD8D8F6"/>
+                            </DockPanel>
+                            <DockPanel Margin="5">
+                                <Label Width="70">Owners JMBG:</Label>
+                                <TextBox x:Name="ownersJmbgBox" Width="150" HorizontalAlignment="Left" Margin="5, 0, 0, 0" Background="#FFD8D8F6"/>
+                            </DockPanel>
+                            <Button Content="Add New Hotel" Width="150" Margin="5" Click="AddHotel"/>
+                        </StackPanel>
                     </Grid>
                 </TabItem>
             </TabControl>

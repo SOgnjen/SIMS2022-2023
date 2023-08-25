@@ -26,9 +26,11 @@ namespace HotelManagement.Service
          throw new NotImplementedException();
       }
       
-      public HotelManagement.Model.Hotel CreateHotel(HotelManagement.Model.Hotel hotel)
+      public void AddHotel(string code, string name, int builtIn, Dictionary<string, Apartment> appartments, int stars, string ownersJmbg, bool accepted, HotelStatus status)
       {
-         throw new NotImplementedException();
+         Hotel newHotel = new Hotel(code, name, builtIn, appartments, stars, ownersJmbg, accepted, status);
+
+            hotelRepository.AddHotel(newHotel);
       }
       
       public Boolean IsCodeValid(string code)

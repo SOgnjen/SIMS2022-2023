@@ -362,7 +362,7 @@ namespace HotelManagement.View
             File.WriteAllText(jsonFilePath, jsonData);
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void AddUser(object sender, RoutedEventArgs e)
         {
             string jmbg = jmbgBox.Text;
             string email = emailBox.Text;
@@ -397,5 +397,32 @@ namespace HotelManagement.View
             }
         }
 
+        private void AddHotel(object sender, RoutedEventArgs e)
+        {
+            string code = codeBox.Text;
+            string name = hotelNameBox.Text;
+            int builtIn = int.Parse(builtInBox.Text);
+            int stars = int.Parse(starsBox.Text);
+            string ownersJmbg = ownersJmbgBox.Text;
+
+            flag = false;
+
+            foreach (var hotel in AcceptedHotels)
+            {
+                if (code == hotel.Code)
+                {
+                    MessageBox.Show("Hotel with this code already exists!");
+                    flag = true;
+                    break;
+                }
+            }
+
+            if (!flag)
+            {
+                app.hotelController.AddHotel(code, name, builtIn, new Dictionary<string, Apartment>(), stars, ownersJmbg, false, HotelStatus.Waiting);
+                MessageBox.Show("Hotel created");
+            }
+
+        }
     }
 }

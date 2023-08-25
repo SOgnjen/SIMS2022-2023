@@ -5,16 +5,20 @@
     "BuiltIn": 1990,
     "Apartments": {
       "A001": {
+        "ApartmentNumber": null,
         "Name": "Luxury Suite",
         "Description": "Spacious suite with a view",
         "Rooms": 3,
-        "MaxGuests": 6
+        "MaxGuests": 6,
+        "Reservations": null
       },
       "A002": {
+        "ApartmentNumber": null,
         "Name": "Standard Room",
         "Description": "Comfortable standard room",
         "Rooms": 1,
-        "MaxGuests": 2
+        "MaxGuests": 2,
+        "Reservations": null
       }
     },
     "Stars": 5,
@@ -28,16 +32,20 @@
     "BuiltIn": 2005,
     "Apartments": {
       "A003": {
+        "ApartmentNumber": null,
         "Name": "Ocean View Suite",
         "Description": "Suite with a stunning ocean view",
         "Rooms": 2,
-        "MaxGuests": 4
+        "MaxGuests": 4,
+        "Reservations": null
       },
       "A004": {
+        "ApartmentNumber": null,
         "Name": "Family Room",
         "Description": "Spacious room for families",
         "Rooms": 2,
-        "MaxGuests": 4
+        "MaxGuests": 4,
+        "Reservations": null
       }
     },
     "Stars": 4,
@@ -61,10 +69,12 @@
     "BuiltIn": 2012,
     "Apartments": {
       "A005": {
+        "ApartmentNumber": null,
         "Name": "City View Suite",
         "Description": "Suite with a city view",
         "Rooms": 2,
-        "MaxGuests": 4
+        "MaxGuests": 4,
+        "Reservations": null
       }
     },
     "Stars": 4,
@@ -78,15 +88,47 @@
     "BuiltIn": 1998,
     "Apartments": {
       "A006": {
+        "ApartmentNumber": null,
         "Name": "Riverside Cabin",
         "Description": "Cozy cabin by the river",
         "Rooms": 1,
-        "MaxGuests": 2
+        "MaxGuests": 2,
+        "Reservations": null
       }
     },
     "Stars": 3,
     "OwnersJmbg": "5555555555555",
     "Accepted": true,
     "Status": 1
+  },
+  {
+    "Code": "",
+    "Name": "asd",
+    "BuiltIn": 12,
+    "Apartments": {},
+    "Stars": 5,
+    "OwnersJmbg": "12",
+    "Accepted": false,
+    "Status": 0
+  },
+  {
+    "Code": "H111",
+    "Name": "Vojvodina",
+    "BuiltIn": 1999,
+    "Apartments": {},
+    "Stars": 5,
+    "OwnersJmbg": "123",
+    "Accepted": false,
+    "Status": 0
+  },
+  {
+    "Code": "H0011",
+    "Name": "Vojvodina",
+    "BuiltIn": 1999,
+    "Apartments": {},
+    "Stars": 5,
+    "OwnersJmbg": "123",
+    "Accepted": false,
+    "Status": 0
   }
 ]

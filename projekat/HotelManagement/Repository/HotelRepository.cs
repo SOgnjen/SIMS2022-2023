@@ -102,15 +102,18 @@ namespace HotelManagement.Repository
          throw new NotImplementedException();
       }
       
-      public HotelManagement.Model.Hotel AddHotel(HotelManagement.Model.Hotel hotel)
+      public void AddHotel(Hotel hotel)
       {
-         throw new NotImplementedException();
+            hotels.Add(hotel);
+            WriteToJson();
       }
       
       public HotelManagement.Model.Hotel UpdateHotel(HotelManagement.Model.Hotel hotel)
       {
          throw new NotImplementedException();
       }
+
+
    
    }
 }

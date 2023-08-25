@@ -26,9 +26,9 @@ namespace HotelManagement.Controller
             return hotelService.Decline(code);
         }
 
-        public Hotel CreateHotel(Hotel hotel)
+        public void AddHotel(string code, string name, int builtIn, Dictionary<string, Apartment> appartments, int stars, string ownersJmbg, bool accepted, HotelStatus status)
         {
-            return hotelService.CreateHotel(hotel);
+            hotelService.AddHotel(code, name, builtIn, appartments, stars, ownersJmbg, accepted, status);
         }
 
         public Boolean IsCodeValid(string code)
