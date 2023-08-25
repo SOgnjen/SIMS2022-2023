@@ -10,7 +10,6 @@ namespace HotelManagement.Model
         public string Description { get; set; }
         public int Rooms { get; set; }
         public int MaxGuests { get; set; }
-      
         public List<Reservation> Reservations { get; set; }
 
         public Apartment(string apartmentNumber, string name, string description, int rooms, int maxGuests, List<Reservation> reservations)

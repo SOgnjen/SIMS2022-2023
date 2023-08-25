@@ -1,31 +1,58 @@
 using HotelManagement.Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace HotelManagement.Repository
 {
    public class ApartmentRepository
    {
-      private string fileLocation;
+        private List<Apartment> apartments;
+        private string fileLocation;
 
-        public ApartmentRepository(string fileLocation = null)
+        public ApartmentRepository()
         {
-            this.fileLocation = fileLocation ?? "Resources/apartments.json";
+            fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Resources\\apartments.json";
+            ReadJson();
+        }
+
+        private void ReadJson()
+        {
+            if (!File.Exists(fileLocation))
+            {
+                File.Create(fileLocation).Close();
+            }
+
+            StreamReader r = new StreamReader(fileLocation);
+
+            string json = r.ReadToEnd();
+            if (json != "")
+            {
+                apartments = JsonConvert.DeserializeObject<List<Apartment>>(json);
+            }
+        }
+
+        private void WriteToJson()
+        {
+            string json = JsonConvert.SerializeObject(apartments, Formatting.Indented);
+            File.WriteAllText(fileLocation, json);
         }
 
         public List<Apartment> GetAll()
-      {
-         throw new NotImplementedException();
-      }
+        {
+            return apartments;
+        }
       
       public HotelManagement.Model.Apartment GetByName(string name)
       {
          throw new NotImplementedException();
       }
       
-      public HotelManagement.Model.Apartment AddApartment(HotelManagement.Model.Apartment apartment)
+      public void AddApartment(Apartment apartment)
       {
-         throw new NotImplementedException();
+         apartments.Add(apartment);
+            WriteToJson();
       }
       
       public HotelManagement.Model.Apartment UpdateApartment(HotelManagement.Model.Apartment apartment)

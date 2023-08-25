@@ -61,6 +61,21 @@ namespace HotelManagement.Repository
 
             return result;
         }
+
+        public List<Hotel> GetByOwnersJmbg(string ownersJmbg)
+        {
+            List<Hotel> result = new List<Hotel>();
+
+            foreach(Hotel hotel in hotels)
+            {
+                if(hotel.OwnersJmbg == ownersJmbg && (hotel.Status == HotelStatus.Waiting || hotel.Status == HotelStatus.Accepted))
+                {
+                    result.Add(hotel);
+                }
+            }
+
+            return result;
+        }
       
       public List<Hotel> SortByName()
       {

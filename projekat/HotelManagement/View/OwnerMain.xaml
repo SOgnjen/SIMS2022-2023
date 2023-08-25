@@ -191,13 +191,34 @@
                 </TabItem>
 
                 <TabItem Header="Waiting Hotels" Style="{DynamicResource TabItemStyle}">
-                    <Grid>
-                        <TextBlock Text="Waiting Hotels"
-                                   Foreground="{DynamicResource SecondaryTextColor}"
-                                   FontSize="20"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Center"/>
-                    </Grid>
+                    <DataGrid x:Name="myWaitingHotelsDataGrid"
+                                          AutoGenerateColumns="False"
+                                          IsReadOnly="True"
+                                          Width="753"
+                                          HorizontalAlignment="Left"
+                                          Grid.ColumnSpan="2"
+                                          Background="#FF8585B1"
+                                          ItemsSource="{Binding OwnersHotels}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Code" Binding="{Binding Code}" CanUserSort="False" />
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" CanUserSort="True"/>
+                            <DataGridTextColumn Header="Built In" Binding="{Binding BuiltIn}" CanUserSort="False" />
+                            <DataGridTextColumn Header="Stars" Binding="{Binding Stars}" CanUserSort="True" />
+                            <DataGridTemplateColumn Header="Apartments" Width="*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ItemsControl ItemsSource="{Binding Apartments}" HorizontalAlignment="Left">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding Value.Name}" Margin="2"/>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </TabItem>
 
                 <TabItem Header="Add Apartment" Style="{DynamicResource TabItemStyle}">

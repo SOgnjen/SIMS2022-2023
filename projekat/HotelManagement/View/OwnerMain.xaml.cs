@@ -24,15 +24,25 @@ namespace HotelManagement.View
 
         List<Hotel> AcceptedHotels;
 
-        public OwnerMain()
+        List<Hotel> OwnersHotels;
+
+        public OwnerMain(User loggedUser)
         {
             InitializeComponent();
             AcceptedHotels = app.hotelController.GetByAccepted(true);
+
+            string ownersJmbg = loggedUser.Jmbg;
+
+            OwnersHotels = app.hotelController.GetByOwnersJmbg(ownersJmbg);
+
 
             DataContext = this;
 
             hotelDataGrid.ItemsSource = null;
             hotelDataGrid.ItemsSource = AcceptedHotels;
+
+            myWaitingHotelsDataGrid.ItemsSource = null;
+            myWaitingHotelsDataGrid.ItemsSource = OwnersHotels;
         }
 
         private void SearchHotelsByCode(object sender, RoutedEventArgs e)

@@ -1,10 +1,21 @@
+using HotelManagement.Model;
+using HotelManagement.Repository;
 using System;
+using System.Collections.Generic;
+using System.Windows.Documents;
 
 namespace HotelManagement.Service
 {
    public class ApartmentService
    {
-      public HotelManagement.Model.Apartment CreateApartment(HotelManagement.Model.Apartment apartment)
+        private ApartmentRepository apartmentRespository;
+
+        public ApartmentService(ApartmentRepository apartmentRespository)
+        {
+            this.apartmentRespository = apartmentRespository;
+        }
+
+      public void AddApartment(Apartment apartment)
       {
          throw new NotImplementedException();
       }
@@ -14,7 +25,11 @@ namespace HotelManagement.Service
          throw new NotImplementedException();
       }
       
-      public HotelManagement.Repository.ApartmentRepository apartmentRepository;
+        public List<Apartment> GetAll()
+        {
+            return apartmentRespository.GetAll();
+        }
+        
    
    }
 }

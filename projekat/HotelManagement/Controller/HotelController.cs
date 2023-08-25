@@ -45,6 +45,11 @@ namespace HotelManagement.Controller
         {
             return hotelService.GetByAccepted(accepted);
         }
+
+        public List<Hotel> GetByOwnersJmbg(string ownersJmbg)
+        {
+            return hotelService.GetByOwnersJmbg(ownersJmbg);
+        }
       
    
    }

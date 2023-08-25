@@ -1,22 +1,48 @@
 using HotelManagement.Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace HotelManagement.Repository
 {
    public class ReservationRepository
    {
-      private String fileLocation;
+      private List<Reservation> reservations;
+        private string fileLocation;
 
-        public ReservationRepository(string fileLocation = null)
+        public ReservationRepository()
         {
-            this.fileLocation = fileLocation ?? "Resources/reservations.json";
+            fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Resources\\reservations.json";
+            ReadJson();
+        }
+
+        private void ReadJson()
+        {
+            if (!File.Exists(fileLocation))
+            {
+                File.Create(fileLocation).Close();
+            }
+
+            StreamReader r = new StreamReader(fileLocation);
+
+            string json = r.ReadToEnd();
+            if (json != "")
+            {
+                reservations = JsonConvert.DeserializeObject<List<Reservation>>(json);
+            }
+        }
+
+        private void WriteToJson()
+        {
+            string json = JsonConvert.SerializeObject(reservations, Formatting.Indented);
+            File.WriteAllText(fileLocation, json);
         }
 
         public List<Reservation> GetAll()
-      {
-         throw new NotImplementedException();
-      }
+        {
+            return reservations;
+        }
       
       public List<Reservation> WaitingReservations()
       {
@@ -37,11 +63,12 @@ namespace HotelManagement.Repository
       {
          throw new NotImplementedException();
       }
-      
-      public HotelManagement.Model.Reservation AddReservation(HotelManagement.Model.Reservation reservation)
-      {
-         throw new NotImplementedException();
-      }
+
+        public void AddReservation(Reservation reservation)
+        {
+            reservations.Add(reservation);
+            WriteToJson();
+        }
       
       public HotelManagement.Model.Reservation UpdateReservation(HotelManagement.Model.Reservation reservation)
       {

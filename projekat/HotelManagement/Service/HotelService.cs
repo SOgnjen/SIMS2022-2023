@@ -47,6 +47,11 @@ namespace HotelManagement.Service
         {
             return hotelRepository.GetByAccepted(accepted);
         }
+
+        public List<Hotel> GetByOwnersJmbg(string ownersJmbg)
+        {
+            return hotelRepository.GetByOwnersJmbg(ownersJmbg);
+        }
       
     
    }

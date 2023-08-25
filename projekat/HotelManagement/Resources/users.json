@@ -76,7 +76,62 @@
     "Phone": "555-555-5555",
     "Type": 2,
     "Blocked": false,
-    "Hotels": [],
+    "Hotels": [
+      {
+        "Code": "H001",
+        "Name": "Grand Hotel",
+        "BuiltIn": 1990,
+        "Apartments": {
+          "A001": {
+            "ApartmentNumber": null,
+            "Name": "Luxury Suite",
+            "Description": "Spacious suite with a view",
+            "Rooms": 3,
+            "MaxGuests": 6,
+            "Reservations": null
+          },
+          "A002": {
+            "ApartmentNumber": null,
+            "Name": "Standard Room",
+            "Description": "Comfortable standard room",
+            "Rooms": 1,
+            "MaxGuests": 2,
+            "Reservations": null
+          }
+        },
+        "Stars": 5,
+        "OwnersJmbg": "5555555555555",
+        "Accepted": true,
+        "Status": 1
+      },
+      {
+        "Code": "H002",
+        "Name": "Seaside Resort",
+        "BuiltIn": 2005,
+        "Apartments": {
+          "A003": {
+            "ApartmentNumber": null,
+            "Name": "Ocean View Suite",
+            "Description": "Suite with a stunning ocean view",
+            "Rooms": 2,
+            "MaxGuests": 4,
+            "Reservations": null
+          },
+          "A004": {
+            "ApartmentNumber": null,
+            "Name": "Family Room",
+            "Description": "Spacious room for families",
+            "Rooms": 2,
+            "MaxGuests": 4,
+            "Reservations": null
+          }
+        },
+        "Stars": 4,
+        "OwnersJmbg": "5555555555555",
+        "Accepted": true,
+        "Status": 1
+      }
+    ],
     "Reservations": [
       {
         "Id": 3,

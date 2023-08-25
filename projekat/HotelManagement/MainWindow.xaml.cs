@@ -87,7 +87,7 @@ namespace HotelManagement
                 else
                 {
                     this.Hide();
-                    OwnerMain ownerMain = new OwnerMain();
+                    OwnerMain ownerMain = new OwnerMain(loggedUser);
                     ownerMain.Show();
                 }
             }

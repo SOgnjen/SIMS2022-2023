@@ -1,37 +1,44 @@
 using HotelManagement.Model;
 using HotelManagement.Service;
 using System;
+using System.Collections.Generic;
+using System.Windows.Documents;
 
 namespace HotelManagement.Controller
 {
    public class ReservationController
    {
 
-        private readonly ReservationService _service;
+        private readonly ReservationService reservationService;
 
         public ReservationController(ReservationService service)
         {
-            _service = service;
+            reservationService = service;
         }
 
         public Reservation Cancel(int id)
         {
-            return _service.Cancel(id);
+            return reservationService.Cancel(id);
         }
 
         public Reservation Accept(int id)
         {
-            return _service.Accept(id);
+            return reservationService.Accept(id);
         }
 
         public Reservation Decline(int id)
         {
-            return _service.Decline(id);
+            return reservationService.Decline(id);
         }
 
-        public Reservation CreateReservation(string apartmentName, DateTime date)
+        public void AddReservation(int id, DateTime date, ReservationStatus status, string declinedBecause)
         {
-            return _service.CreateReservation(apartmentName, date);
+            reservationService.AddReservation(id, date, status, declinedBecause);
+        }
+
+        public List<Reservation> GetAll()
+        {
+            return reservationService.GetAll();
         }
       
    

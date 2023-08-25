@@ -1,4 +1,5 @@
-﻿using HotelManagement.Model;
+﻿using HotelManagement.Controller;
+using HotelManagement.Model;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,8 @@ namespace HotelManagement.View
 
         List<Reservation> AllReservations;
 
+        List<Apartment> AllApartments;
+
         public GuestMain(User loggedUser)
         {
             InitializeComponent();
@@ -44,6 +47,11 @@ namespace HotelManagement.View
 
             reservationDataGrid.ItemsSource = null;
             reservationDataGrid.ItemsSource = AllReservations;
+
+            AllApartments = app.apartmentController.GetAll();
+
+            apartmentComboBox.ItemsSource = null;
+            apartmentComboBox.ItemsSource = AllApartments;
 
         }
 
@@ -356,5 +364,14 @@ namespace HotelManagement.View
             string jsonData = JsonConvert.SerializeObject(reservations, Formatting.Indented);
             File.WriteAllText(jsonFilePath, jsonData);
         }
+
+        private void AddReservation(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        
+
+        
     }
 }

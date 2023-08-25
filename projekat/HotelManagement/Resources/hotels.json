@@ -22,7 +22,7 @@
       }
     },
     "Stars": 5,
-    "OwnersJmbg": "1234567890123",
+    "OwnersJmbg": "5555555555555",
     "Accepted": true,
     "Status": 1
   },
@@ -49,9 +49,9 @@
       }
     },
     "Stars": 4,
-    "OwnersJmbg": "9876543210987",
-    "Accepted": true,
-    "Status": 1
+    "OwnersJmbg": "5555555555555",
+    "Accepted": false,
+    "Status": 0
   },
   {
     "Code": "H003",
@@ -59,7 +59,7 @@
     "BuiltIn": 1985,
     "Apartments": {},
     "Stars": 3,
-    "OwnersJmbg": "5555555555555",
+    "OwnersJmbg": "111111111",
     "Accepted": false,
     "Status": 0
   },
@@ -97,7 +97,7 @@
       }
     },
     "Stars": 3,
-    "OwnersJmbg": "5555555555555",
+    "OwnersJmbg": "111111111111",
     "Accepted": true,
     "Status": 1
   },

@@ -1,26 +1,33 @@
 using HotelManagement.Model;
 using HotelManagement.Service;
 using System;
+using System.Collections.Generic;
+using System.Windows.Documents;
 
 namespace HotelManagement.Controller
 {
    public class ApartmentController
    {
-        private readonly ApartmentService _service;
+        private readonly ApartmentService apartmantService;
 
         public ApartmentController(ApartmentService service)
         {
-            _service = service;
+            apartmantService = service;
         }
 
-        public Apartment CreateApartment(Apartment apartment)
+        public void AddApartment(Apartment apartment)
         {
-            return _service.CreateApartment(apartment);
+            apartmantService.AddApartment(apartment);
         }
 
         public Boolean IsNameValid(string name)
         {
-            return _service.IsNameValid(name);
+            return apartmantService.IsNameValid(name);
+        }
+
+        public List<Apartment> GetAll()
+        {
+            return apartmantService.GetAll();
         }
          
    }
