@@ -31,12 +31,14 @@ namespace HotelManagement.Service
          throw new NotImplementedException();
       }
       
-      public HotelManagement.Model.User Register(HotelManagement.Model.User user)
+      public void AddUser(string jmbg, string email, string password, string name, string surname, string phone, UserType type, bool blocked, List<Hotel> hotels, List<Reservation> reservations)
       {
-         throw new NotImplementedException();
+            User newUser = new User(jmbg, email, password, name, surname, phone, type, blocked, hotels, reservations);
+
+            userRepository.AddUser(newUser);
       }
       
-      public HotelManagement.Model.User Block(String email)
+      public HotelManagement.Model.User Block(string email)
       {
          throw new NotImplementedException();
       }

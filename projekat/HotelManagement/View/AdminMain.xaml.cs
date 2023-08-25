@@ -28,6 +28,8 @@ namespace HotelManagement.View
 
         List<User> AllUsers;
 
+        bool flag = false;
+
         public AdminMain()
         {
             InitializeComponent();
@@ -359,5 +361,41 @@ namespace HotelManagement.View
             string jsonData = JsonConvert.SerializeObject(users, Formatting.Indented);
             File.WriteAllText(jsonFilePath, jsonData);
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            string jmbg = jmbgBox.Text;
+            string email = emailBox.Text;
+            string password = passwordBox.Text;
+            string name = nameBox.Text;
+            string surname = surnameBox.Text;
+            string phone = phoneBox.Text;
+
+            ComboBoxItem selectedComboBoxItem = userTypeBox.SelectedItem as ComboBoxItem;
+
+            if (selectedComboBoxItem != null)
+            {
+                UserType type = (UserType)Enum.Parse(typeof(UserType), selectedComboBoxItem.Tag.ToString());
+
+                foreach (var user in AllUsers)
+                {
+                    if (jmbg == user.Jmbg || email == user.Email)
+                    {
+                        MessageBox.Show("User with this email or jmbg already exists!");
+                        flag = true;
+                        break;
+                    }
+                }
+
+                if (!flag)
+                {
+                    app.userController.AddUser(jmbg, email, password, name, surname, phone, type, false, new List<Hotel>(), new List<Reservation>());
+                    MessageBox.Show("User created");
+
+                    userDataGrid.Items.Refresh();
+                }
+            }
+        }
+
     }
 }

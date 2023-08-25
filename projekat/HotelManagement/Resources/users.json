@@ -8,7 +8,6 @@
     "Phone": "123-456-7890",
     "Type": 0,
     "Blocked": false,
-    "Unsuccessful": 0,
     "Hotels": [],
     "Reservations": [
       {
@@ -40,7 +39,6 @@
     "Phone": "987-654-3210",
     "Type": 1,
     "Blocked": false,
-    "Unsuccessful": 0,
     "Hotels": [],
     "Reservations": [
       {
@@ -78,7 +76,6 @@
     "Phone": "555-555-5555",
     "Type": 2,
     "Blocked": false,
-    "Unsuccessful": 0,
     "Hotels": [],
     "Reservations": [
       {
@@ -104,7 +101,6 @@
     "Phone": "222-222-2222",
     "Type": 1,
     "Blocked": false,
-    "Unsuccessful": 0,
     "Hotels": [],
     "Reservations": [
       {
@@ -124,7 +120,102 @@
     "Phone": "999-999-9999",
     "Type": 0,
     "Blocked": false,
-    "Unsuccessful": 0,
+    "Hotels": [],
+    "Reservations": []
+  },
+  {
+    "Jmbg": "123321",
+    "Email": "srdicognjen@gmail.com",
+    "Password": "123321",
+    "Name": "Ognjen",
+    "Surname": "Srdic",
+    "Phone": "123321",
+    "Type": 1,
+    "Blocked": false,
+    "Hotels": [],
+    "Reservations": []
+  },
+  {
+    "Jmbg": "1233211",
+    "Email": "asd@asd.com",
+    "Password": "123321",
+    "Name": "asd",
+    "Surname": "asd",
+    "Phone": "asd",
+    "Type": 1,
+    "Blocked": false,
+    "Hotels": [],
+    "Reservations": []
+  },
+  {
+    "Jmbg": "1",
+    "Email": "1",
+    "Password": "1",
+    "Name": "1",
+    "Surname": "1",
+    "Phone": "1",
+    "Type": 1,
+    "Blocked": false,
+    "Hotels": [],
+    "Reservations": []
+  },
+  {
+    "Jmbg": "2",
+    "Email": "2",
+    "Password": "2",
+    "Name": "2",
+    "Surname": "2",
+    "Phone": "2",
+    "Type": 1,
+    "Blocked": false,
+    "Hotels": [],
+    "Reservations": []
+  },
+  {
+    "Jmbg": "3",
+    "Email": "3",
+    "Password": "3",
+    "Name": "3",
+    "Surname": "3",
+    "Phone": "3",
+    "Type": 1,
+    "Blocked": false,
+    "Hotels": [],
+    "Reservations": []
+  },
+  {
+    "Jmbg": "4",
+    "Email": "4",
+    "Password": "4",
+    "Name": "4",
+    "Surname": "4",
+    "Phone": "4",
+    "Type": 1,
+    "Blocked": false,
+    "Hotels": [],
+    "Reservations": []
+  },
+  {
+    "Jmbg": "8",
+    "Email": "8",
+    "Password": "8",
+    "Name": "8",
+    "Surname": "8",
+    "Phone": "8",
+    "Type": 2,
+    "Blocked": false,
+    "Hotels": [],
+    "Reservations": []
+  },
+  {
+    "Jmbg": "7",
+    "Email": "7",
+    "Password": "7",
+    "Name": "7",
+    "Surname": "7",
+    "Phone": "7",
+    "Type": 1,
+    "Blocked": false,
     "Hotels": [],
     "Reservations": []
   }

@@ -31,9 +31,9 @@ namespace HotelManagement.Controller
             return userService.IsEmailValid(email);
         }
       
-        public User Register( User user)
+        public void AddUser(string jmbg, string email, string password, string name, string surname, string phone, UserType type, bool blocked, List<Hotel> hotels, List<Reservation> reservations)
         {
-            return userService.Register(user);
+            userService.AddUser(jmbg, email, password, name, surname, phone, type, blocked, hotels, reservations);
         }
       
         public User Block(string email)
@@ -54,6 +54,11 @@ namespace HotelManagement.Controller
         public List<User> GetAll()
         {
             return userService.GetAll();
+        }
+
+        public void AddUser(User user)
+        {
+
         }
       
    

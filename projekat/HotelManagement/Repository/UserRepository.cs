@@ -77,11 +77,12 @@ namespace HotelManagement.Repository
         {
             return users.FirstOrDefault(user => user.Email == email);
         }
-      
-      public HotelManagement.Model.User AddUser(HotelManagement.Model.User user)
-      {
-         throw new NotImplementedException();
-      }
+
+        public void AddUser(User user)
+        {
+            users.Add(user);
+            WriteToJson();
+        }
       
       public HotelManagement.Model.User UpdateUser(HotelManagement.Model.User user)
       {

@@ -13,12 +13,11 @@ namespace HotelManagement.Model
         public string Phone { get; set; }
         public UserType Type { get; set; }
         public bool Blocked { get; set; } = false;
-        public int Unsuccessful { get; set; } = 0;
         public List<Hotel> Hotels { get; set; }
         public List<Reservation> Reservations { get; set; }
       
       
-      public User(string jmbg, string email, string password, string name, string surname, string phone, UserType type, bool blocked, int unsuccessful, List<Hotel> hotels, List<Reservation> reservations)
+      public User(string jmbg, string email, string password, string name, string surname, string phone, UserType type, bool blocked, List<Hotel> hotels, List<Reservation> reservations)
         {
             Jmbg = jmbg;
             Email = email;
@@ -28,7 +27,6 @@ namespace HotelManagement.Model
             Phone = phone;
             Type = type;
             Blocked = blocked;
-            Unsuccessful = unsuccessful;
             Hotels = hotels;
             Reservations = reservations;
         }
