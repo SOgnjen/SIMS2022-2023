@@ -1,6 +1,8 @@
 ﻿using HotelManagement.Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +26,8 @@ namespace HotelManagement.View
 
         List<Hotel> AcceptedHotels;
 
+        List<User> AllUsers;
+
         public AdminMain()
         {
             InitializeComponent();
@@ -33,6 +37,11 @@ namespace HotelManagement.View
 
             hotelDataGrid.ItemsSource = null;
             hotelDataGrid.ItemsSource = AcceptedHotels;
+
+            AllUsers = app.userController.GetAll();
+
+            userDataGrid.ItemsSource = null;
+            userDataGrid.ItemsSource = AllUsers;
         }
 
         private void SearchHotelsByCode(object sender, RoutedEventArgs e)
@@ -267,6 +276,88 @@ namespace HotelManagement.View
             }
 
             hotelDataGrid.ItemsSource = hotelsWithMatchingApartments;
+        }
+
+        private void SearchUsersByType(object sender, RoutedEventArgs e)
+        {
+            ComboBoxItem selectedTypeItem = (ComboBoxItem)searchByType.SelectedItem;
+
+            if (selectedTypeItem == null)
+            {
+                MessageBox.Show("Please select a user type.");
+                return;
+            }
+
+            UserType selectedType = (UserType)Enum.Parse(typeof(UserType), selectedTypeItem.Tag.ToString());
+
+            List<User> filteredUsers = AllUsers.Where(user => user.Type == selectedType).ToList();
+
+            userDataGrid.ItemsSource = filteredUsers;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            User user = clickedButton.DataContext as User;
+
+            if (user != null)
+            {
+                if (user.Blocked == false)
+                {
+                    user.Blocked = true;
+
+                    List<User> users = LoadUsersFromJsonFile();
+
+                    User existingUser = users.Find(u => u.Jmbg == user.Jmbg);
+                    if (existingUser != null)
+                    {
+                        existingUser.Blocked = user.Blocked;
+
+                        SaveUsersToJsonFile(users);
+
+                        userDataGrid.Items.Refresh();
+                    }
+                }
+                else
+                {
+                    user.Blocked = false;
+
+                    List<User> users = LoadUsersFromJsonFile();
+
+                    User existingUser = users.Find(u => u.Jmbg == user.Jmbg);
+                    if (existingUser != null)
+                    {
+                        existingUser.Blocked = user.Blocked;
+
+                        SaveUsersToJsonFile(users);
+
+                        userDataGrid.Items.Refresh();
+                    }
+                }
+            }
+        }
+
+        private List<User> LoadUsersFromJsonFile()
+        {
+            string jsonFilePath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Resources\\users.json";
+
+            if (File.Exists(jsonFilePath))
+            {
+                string jsonData = File.ReadAllText(jsonFilePath);
+                List<User> users = JsonConvert.DeserializeObject<List<User>>(jsonData);
+                return users;
+            }
+            else
+            {
+                return new List<User>();
+            }
+        }
+
+        private void SaveUsersToJsonFile(List<User> users)
+        {
+            string jsonFilePath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Resources\\users.json";
+            string jsonData = JsonConvert.SerializeObject(users, Formatting.Indented);
+            File.WriteAllText(jsonFilePath, jsonData);
         }
     }
 }

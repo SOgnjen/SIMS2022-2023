@@ -1,6 +1,8 @@
 using HotelManagement.Model;
 using HotelManagement.Repository;
 using System;
+using System.Collections.Generic;
+using System.Windows.Documents;
 
 namespace HotelManagement.Service
 {
@@ -47,6 +49,11 @@ namespace HotelManagement.Service
         public User GetByEmail(string email)
         {
             return userRepository.GetByEmail(email);
+        }
+
+        public List<User> GetAll()
+        {
+            return userRepository.GetAll();
         }
       
    

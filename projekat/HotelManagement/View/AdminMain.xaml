@@ -197,7 +197,50 @@
                                    FontSize="20"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center"/>
-                </Grid>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="0" Margin="5">
+                                <DockPanel Margin="5">
+                                    <Label Width="150">Search By User Type:</Label>
+                                    <ComboBox x:Name="searchByType" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" Background="#FFC6C6F3">
+                                        <ComboBoxItem Content="Guest" Tag="Guest"/>
+                                        <ComboBoxItem Content="Owner" Tag="Owner"/>
+                                    </ComboBox>
+                                    <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Search" Background="#FF8585B1" Click="SearchUsersByType"/>
+                                </DockPanel>
+                            </StackPanel>
+                            <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                                <DataGrid x:Name="userDataGrid"
+                                          AutoGenerateColumns="False"
+                                          IsReadOnly="True"
+                                          Width="753"
+                                          HorizontalAlignment="Left"
+                                          Grid.ColumnSpan="2"
+                                          Background="#FF8585B1"
+                                          ItemsSource="{Binding AcceptedHotels}">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="JMBG" Binding="{Binding Jmbg}" CanUserSort="False" />
+                                        <DataGridTextColumn Header="Email" Binding="{Binding Email}" CanUserSort="False"/>
+                                        <DataGridTextColumn Header="Name" Binding="{Binding Name}" CanUserSort="True" />
+                                        <DataGridTextColumn Header="Surname" Binding="{Binding Surname}" CanUserSort="True" />
+                                        <DataGridTextColumn Header="Phone" Binding="{Binding Phone}" CanUserSort="False"/>
+                                        <DataGridTextColumn Header="User Type" Binding="{Binding Type}" CanUserSort="False"/>
+                                        <DataGridTextColumn Header="Blocked" Binding="{Binding Blocked}" CanUserSort="False"/>
+                                        <DataGridTemplateColumn Header="Block">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Button Content="Un/Block" Click="Button_Click"/>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </ScrollViewer>
+                        </Grid>
+                    </Grid>
             </TabItem>
 
                 <TabItem Header="Add Hotel" Style="{DynamicResource TabItemStyle}">

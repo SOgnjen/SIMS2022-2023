@@ -1,6 +1,8 @@
 using HotelManagement.Model;
 using HotelManagement.Service;
 using System;
+using System.Collections.Generic;
+using System.Windows.Documents;
 
 namespace HotelManagement.Controller
 {
@@ -47,6 +49,11 @@ namespace HotelManagement.Controller
         public User getByEmail(string email)
         {
             return userService.GetByEmail(email);
+        }
+
+        public List<User> GetAll()
+        {
+            return userService.GetAll();
         }
       
    
