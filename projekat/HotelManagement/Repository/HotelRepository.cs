@@ -36,7 +36,7 @@ namespace HotelManagement.Repository
             }
         }
 
-        private void WriteToJson()
+        public void WriteToJson()
         {
             string json = JsonConvert.SerializeObject(hotels, Formatting.Indented);
             File.WriteAllText(fileLocation, json);
@@ -112,10 +112,10 @@ namespace HotelManagement.Repository
          throw new NotImplementedException();
       }
       
-      public HotelManagement.Model.Hotel GetByCode(String code)
-      {
-         throw new NotImplementedException();
-      }
+        public Hotel GetByCode(string code)
+        {
+            return hotels.Find(hotel => hotel.Code == code);
+        }
       
       public void AddHotel(Hotel hotel)
       {

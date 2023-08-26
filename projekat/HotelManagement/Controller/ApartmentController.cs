@@ -8,26 +8,27 @@ namespace HotelManagement.Controller
 {
    public class ApartmentController
    {
-        private readonly ApartmentService apartmantService;
+        private readonly ApartmentService apartmentService;
 
         public ApartmentController(ApartmentService service)
         {
-            apartmantService = service;
+            apartmentService = service;
         }
 
-        public void AddApartment(Apartment apartment)
+        public void CreateApartment(string hotelCode, string apartmentNumber, string name, string description, int rooms, int maxGuests, List<Reservation> reservations)
         {
-            apartmantService.AddApartment(apartment);
+            apartmentService.CreateApartment(hotelCode, apartmentNumber, name, description, rooms, maxGuests, reservations);
         }
+
 
         public Boolean IsNameValid(string name)
         {
-            return apartmantService.IsNameValid(name);
+            return apartmentService.IsNameValid(name);
         }
 
         public List<Apartment> GetAll()
         {
-            return apartmantService.GetAll();
+            return apartmentService.GetAll();
         }
          
    }

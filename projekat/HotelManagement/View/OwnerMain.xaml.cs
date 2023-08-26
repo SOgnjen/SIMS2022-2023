@@ -1,4 +1,5 @@
 ﻿using HotelManagement.Model;
+using HotelManagement.Repository;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,8 @@ namespace HotelManagement.View
 
         private User loggedUser;
 
+        List<Apartment> AllApartments;
+
         public OwnerMain(User loggedUser)
         {
             InitializeComponent();
@@ -48,6 +51,10 @@ namespace HotelManagement.View
 
             myWaitingHotelsDataGrid.ItemsSource = null;
             myWaitingHotelsDataGrid.ItemsSource = OwnersHotels;
+
+            ownersAcceptedHotelsComboBox.ItemsSource = OwnersHotels.Where(hotel => hotel.Status == HotelStatus.Accepted);
+
+            AllApartments = app.apartmentController.GetAll();
         }
 
         private void SearchHotelsByCode(object sender, RoutedEventArgs e)
@@ -323,6 +330,13 @@ namespace HotelManagement.View
             AcceptedHotels = app.hotelController.GetByAccepted(true);
             hotelDataGrid.ItemsSource = null;
             hotelDataGrid.ItemsSource = AcceptedHotels;
+
+            hotelDataGrid.Items.Refresh();
+        }
+
+        private void RefreshAllAppartments()
+        {
+            AllApartments = app.apartmentController.GetAll();
         }
 
         private List<Hotel> LoadHotelsFromJsonFile()
@@ -385,6 +399,46 @@ namespace HotelManagement.View
             OwnersHotels = app.hotelController.GetByOwnersJmbg(loggedUser.Jmbg);
             myWaitingHotelsDataGrid.ItemsSource = null;
             myWaitingHotelsDataGrid.ItemsSource = OwnersHotels;
+
+            myWaitingHotelsDataGrid.Items.Refresh();
+        }
+
+        private void AddApartment(object sender, RoutedEventArgs e)
+        {
+            string hotelCode = (string)ownersAcceptedHotelsComboBox.SelectedValue;
+            string apartmentNumber = apartmentNumberBox.Text;
+            string name = apartmentNameBox.Text;
+            string description = descriptionBox.Text;
+
+            bool apartmentExists = AllApartments.Any(apartment =>
+                apartment.ApartmentNumber == apartmentNumber || apartment.Name == name);
+
+            if (apartmentExists)
+            {
+                MessageBox.Show("An apartment with the same name or apartment number already exists.");
+                return;
+            }
+
+            if (!int.TryParse(roomsBox.Text, out int rooms))
+            {
+                MessageBox.Show("Invalid value for rooms.");
+                return;
+            }
+
+            if (!int.TryParse(maxGuestsBox.Text, out int maxGuests))
+            {
+                MessageBox.Show("Invalid value for max guests.");
+                return;
+            }
+
+            List<Reservation> reservations = new List<Reservation>();
+
+            app.apartmentController.CreateApartment(hotelCode, apartmentNumber, name, description, rooms, maxGuests, reservations);
+
+            RefreshAcceptedHotels();
+            RefreshOwnersHotels(loggedUser);
+
+            MessageBox.Show("Apartment Created");
         }
 
     }

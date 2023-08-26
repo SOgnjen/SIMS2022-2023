@@ -19,6 +19,14 @@
         "Rooms": 1,
         "MaxGuests": 2,
         "Reservations": null
+      },
+      "lt": {
+        "ApartmentNumber": "lt",
+        "Name": "lt",
+        "Description": "last time try",
+        "Rooms": 123,
+        "MaxGuests": 123,
+        "Reservations": []
       }
     },
     "Stars": 5,
@@ -51,7 +59,7 @@
     "Stars": 4,
     "OwnersJmbg": "5555555555555",
     "Accepted": false,
-    "Status": 2
+    "Status": 0
   },
   {
     "Code": "H003",

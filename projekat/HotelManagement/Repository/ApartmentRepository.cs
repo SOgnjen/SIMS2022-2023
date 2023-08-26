@@ -10,6 +10,7 @@ namespace HotelManagement.Repository
    {
         private List<Apartment> apartments;
         private string fileLocation;
+        private HotelRepository hotelRepository = new HotelRepository();
 
         public ApartmentRepository()
         {
@@ -49,13 +50,29 @@ namespace HotelManagement.Repository
          throw new NotImplementedException();
       }
       
-      public void AddApartment(Apartment apartment)
-      {
-         apartments.Add(apartment);
+        public void AddApartment(Apartment apartment)
+        {
+            apartments.Add(apartment);
             WriteToJson();
-      }
-      
-      public HotelManagement.Model.Apartment UpdateApartment(HotelManagement.Model.Apartment apartment)
+        }
+
+        public void CreateApartment(string hotelCode, Apartment apartment)
+        {
+            Hotel selectedHotel = hotelRepository.GetByCode(hotelCode);
+
+            if (selectedHotel != null)
+            {
+                Apartment newApartment = apartment;
+                selectedHotel.Apartments.Add(apartment.ApartmentNumber, newApartment);
+
+                hotelRepository.WriteToJson();
+            }
+            apartments.Add(apartment);
+            WriteToJson();
+        }
+
+
+        public HotelManagement.Model.Apartment UpdateApartment(HotelManagement.Model.Apartment apartment)
       {
          throw new NotImplementedException();
       }

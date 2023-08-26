@@ -240,11 +240,35 @@
 
                 <TabItem Header="Add Apartment" Style="{DynamicResource TabItemStyle}">
                     <Grid>
-                        <TextBlock Text="Add Apartment"
-                                   Foreground="{DynamicResource SecondaryTextColor}"
-                                   FontSize="20"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Center"/>
+                        <StackPanel Margin="0,0,0.4,0.2" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+                            <DockPanel Margin="5">
+                                <Label Width="70">Hotel:</Label>
+                                <ComboBox x:Name="ownersAcceptedHotelsComboBox" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" Background="#FFC6C6F3"
+                                          DisplayMemberPath="Name" SelectedValuePath="Code">
+                                </ComboBox>
+                            </DockPanel>
+                            <DockPanel Margin="5">
+                                <Label Width="70">Apartment Number:</Label>
+                                <TextBox x:Name="apartmentNumberBox" Width="150" HorizontalAlignment="Left" Margin="5, 0, 0, 0" Background="#FFD8D8F6"/>
+                            </DockPanel>
+                            <DockPanel Margin="5">
+                                <Label Width="70">Name:</Label>
+                                <TextBox x:Name="apartmentNameBox" Width="150" HorizontalAlignment="Left" Margin="5, 0, 0, 0" Background="#FFD8D8F6"/>
+                            </DockPanel>
+                            <DockPanel Margin="5">
+                                <Label Width="70">Description:</Label>
+                                <TextBox x:Name="descriptionBox" Width="150" HorizontalAlignment="Left" Margin="5, 0, 0, 0" Background="#FFD8D8F6"/>
+                            </DockPanel>
+                            <DockPanel Margin="5">
+                                <Label Width="70">Rooms:</Label>
+                                <TextBox x:Name="roomsBox" Width="150" HorizontalAlignment="Left" Margin="5, 0, 0, 0" Background="#FFD8D8F6"/>
+                            </DockPanel>
+                            <DockPanel Margin="5">
+                                <Label Width="70">Max Guests:</Label>
+                                <TextBox x:Name="maxGuestsBox" Width="150" HorizontalAlignment="Left" Margin="5, 0, 0, 0" Background="#FFD8D8F6"/>
+                            </DockPanel>
+                            <Button Content="Add New Apartment" Width="150" Margin="5" Click="AddApartment"/>
+                        </StackPanel>
                     </Grid>
                 </TabItem>
             </TabControl>

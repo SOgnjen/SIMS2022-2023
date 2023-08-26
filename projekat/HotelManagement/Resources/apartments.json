@@ -46,5 +46,21 @@
     "Rooms": 1,
     "MaxGuests": 2,
     "Reservations": []
+  },
+  {
+    "ApartmentNumber": "A007",
+    "Name": "Moj apartman",
+    "Description": "Za probu",
+    "Rooms": 4,
+    "MaxGuests": 4,
+    "Reservations": []
+  },
+  {
+    "ApartmentNumber": "lt",
+    "Name": "lt",
+    "Description": "last time try",
+    "Rooms": 123,
+    "MaxGuests": 123,
+    "Reservations": []
   }
 ]
