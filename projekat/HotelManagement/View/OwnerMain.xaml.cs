@@ -1,6 +1,8 @@
 ﻿using HotelManagement.Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,9 +28,12 @@ namespace HotelManagement.View
 
         List<Hotel> OwnersHotels;
 
+        private User loggedUser;
+
         public OwnerMain(User loggedUser)
         {
             InitializeComponent();
+            this.loggedUser = loggedUser;
             AcceptedHotels = app.hotelController.GetByAccepted(true);
 
             string ownersJmbg = loggedUser.Jmbg;
@@ -279,16 +284,108 @@ namespace HotelManagement.View
             hotelDataGrid.ItemsSource = hotelsWithMatchingApartments;
         }
 
+        private void AcceptHotel(object sender, RoutedEventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            Hotel hotel = clickedButton.DataContext as Hotel;
 
+            if(hotel != null)
+            {
+                if(hotel.Status == HotelStatus.Accepted)
+                {
+                    MessageBox.Show("Hotel already accepted");
+                    return;
+                }
+                hotel.Accepted = true;
+                hotel.Status = HotelStatus.Accepted;
 
+                List<Hotel> hotels = LoadHotelsFromJsonFile();
 
+                Hotel existingHotel = hotels.Find(h => h.Code == hotel.Code);
+                if(existingHotel != null)
+                {
+                    existingHotel.Accepted = hotel.Accepted;
+                    existingHotel.Status = hotel.Status;
 
+                    SaveHotelsToJsonFile(hotels);
 
+                    MessageBox.Show("Hotel Accepted");
 
+                    RefreshAcceptedHotels();
 
+                    myWaitingHotelsDataGrid.Items.Refresh();
+                }
+            }
+        }
 
+        private void RefreshAcceptedHotels()
+        {
+            AcceptedHotels = app.hotelController.GetByAccepted(true);
+            hotelDataGrid.ItemsSource = null;
+            hotelDataGrid.ItemsSource = AcceptedHotels;
+        }
 
+        private List<Hotel> LoadHotelsFromJsonFile()
+        {
+            string jsonFilePath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Resources\\hotels.json";
 
+            if (File.Exists(jsonFilePath))
+            {
+                string jsonData = File.ReadAllText(jsonFilePath);
+                List<Hotel> hotels = JsonConvert.DeserializeObject<List<Hotel>>(jsonData);
+                return hotels;
+            }
+            else
+            {
+                return new List<Hotel>();
+            }
+        }
+
+        private void SaveHotelsToJsonFile(List<Hotel> hotels)
+        {
+            string jsonFilePath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Resources\\hotels.json";
+            string jsonData = JsonConvert.SerializeObject(hotels, Formatting.Indented);
+            File.WriteAllText(jsonFilePath, jsonData);
+        }
+
+        private void DeclineHotel(object sender, RoutedEventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            Hotel hotel = clickedButton.DataContext as Hotel;
+
+            if (hotel != null)
+            {
+                if (hotel.Status == HotelStatus.Accepted)
+                {
+                    MessageBox.Show("Hotel already accepted");
+                    return;
+                }
+                hotel.Accepted = false;
+                hotel.Status = HotelStatus.Declined;
+
+                List<Hotel> hotels = LoadHotelsFromJsonFile();
+
+                Hotel existingHotel = hotels.Find(h => h.Code == hotel.Code);
+                if (existingHotel != null)
+                {
+                    existingHotel.Accepted = hotel.Accepted;
+                    existingHotel.Status = hotel.Status;
+
+                    SaveHotelsToJsonFile(hotels);
+
+                    MessageBox.Show("Hotel Declined");
+
+                    RefreshOwnersHotels(loggedUser);
+                }
+            }
+        }
+
+        private void RefreshOwnersHotels(User loggedUser)
+        {
+            OwnersHotels = app.hotelController.GetByOwnersJmbg(loggedUser.Jmbg);
+            myWaitingHotelsDataGrid.ItemsSource = null;
+            myWaitingHotelsDataGrid.ItemsSource = OwnersHotels;
+        }
 
     }
 }

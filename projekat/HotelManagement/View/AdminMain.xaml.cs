@@ -297,7 +297,7 @@ namespace HotelManagement.View
             userDataGrid.ItemsSource = filteredUsers;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void BlockUser(object sender, RoutedEventArgs e)
         {
             Button clickedButton = sender as Button;
             User user = clickedButton.DataContext as User;

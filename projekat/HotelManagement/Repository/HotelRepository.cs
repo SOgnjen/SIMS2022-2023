@@ -68,7 +68,7 @@ namespace HotelManagement.Repository
 
             foreach(Hotel hotel in hotels)
             {
-                if(hotel.OwnersJmbg == ownersJmbg && (hotel.Status == HotelStatus.Waiting || hotel.Status == HotelStatus.Accepted))
+                if(hotel.OwnersJmbg == ownersJmbg && hotel.Status != HotelStatus.Declined)
                 {
                     result.Add(hotel);
                 }

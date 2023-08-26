@@ -245,7 +245,7 @@
                                 <DataGrid x:Name="userDataGrid"
                                           AutoGenerateColumns="False"
                                           IsReadOnly="True"
-                                          Width="753"
+                                          Width="900"
                                           HorizontalAlignment="Left"
                                           Grid.ColumnSpan="2"
                                           Background="#FF8585B1"
@@ -261,7 +261,7 @@
                                         <DataGridTemplateColumn Header="Block">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <Button Content="Un/Block" Click="AddUser"/>
+                                                    <Button Content="Un/Block" Click="BlockUser"/>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>

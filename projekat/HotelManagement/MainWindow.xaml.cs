@@ -60,9 +60,9 @@ namespace HotelManagement
                 }
             }
 
-            if(loggedUser == null) 
+            if(loggedUser == null || loggedUser.Blocked) 
             {
-                MessageBox.Show("Invalid email");
+                MessageBox.Show("Invalid email or user blocked");
                 counter++;
             }
             else if(loggedUser.Password != password)
