@@ -33,6 +33,8 @@ namespace HotelManagement.View
 
         List<Apartment> AllApartments;
 
+        List<Reservation> OwnersReservations;
+
         public OwnerMain(User loggedUser)
         {
             InitializeComponent();
@@ -55,6 +57,13 @@ namespace HotelManagement.View
             ownersAcceptedHotelsComboBox.ItemsSource = OwnersHotels.Where(hotel => hotel.Status == HotelStatus.Accepted);
 
             AllApartments = app.apartmentController.GetAll();
+
+            OwnersReservations = app.userController.GetAllGetAllReservationsOfOwner(loggedUser.Jmbg);
+
+            reservationDataGrid.ItemsSource = null;
+            reservationDataGrid.ItemsSource = OwnersReservations;
+
+            ShowOwnersReservations();
         }
 
         private void SearchHotelsByCode(object sender, RoutedEventArgs e)
@@ -439,6 +448,28 @@ namespace HotelManagement.View
             RefreshOwnersHotels(loggedUser);
 
             MessageBox.Show("Apartment Created");
+        }
+
+        private void ShowOwnersReservations()
+        {
+            StringBuilder reservationInfo = new StringBuilder();
+
+            foreach (var reservation in OwnersReservations)
+            {
+                string reservationStatus = reservation.Status == ReservationStatus.Accepted ? "Accepted" : "Declined";
+                string reservationDetails = $"Reservation ID: {reservation.Id}\nDate: {reservation.Date}\nStatus: {reservationStatus}\nDeclined Because: {reservation.DeclinedBecause}\n\n";
+
+                reservationInfo.Append(reservationDetails);
+            }
+
+            if (reservationInfo.Length == 0)
+            {
+                MessageBox.Show("You don't have any reservations.");
+            }
+            else
+            {
+                MessageBox.Show($"Your reservations:\n\n{reservationInfo.ToString()}");
+            }
         }
 
     }

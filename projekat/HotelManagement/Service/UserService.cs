@@ -57,7 +57,12 @@ namespace HotelManagement.Service
         {
             return userRepository.GetAll();
         }
-      
-   
-   }
+
+        public List<Reservation> GetAllReservationsOfOwner(string ownersJmbg)
+        {
+            return userRepository.GetAllReservationsOfOwner(ownersJmbg);
+        }
+
+
+    }
 }

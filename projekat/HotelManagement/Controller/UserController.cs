@@ -56,11 +56,12 @@ namespace HotelManagement.Controller
             return userService.GetAll();
         }
 
-        public void AddUser(User user)
+        public List<Reservation> GetAllGetAllReservationsOfOwner(string ownersJmbg)
         {
-
+            return userService.GetAllReservationsOfOwner(ownersJmbg);
         }
-      
-   
+
+
+
    }
 }

@@ -10,7 +10,26 @@
         "Description": "Spacious suite with a view",
         "Rooms": 3,
         "MaxGuests": 6,
-        "Reservations": null
+        "Reservations": [
+          {
+            "Id": 1,
+            "Date": "2023-08-25",
+            "Status": 0,
+            "DeclinedBecause": ""
+          },
+          {
+            "Id": 5,
+            "Date": "2023-10-15",
+            "Status": 0,
+            "DeclinedBecause": ""
+          },
+          {
+            "Id": 8,
+            "Date": "2023-11-15",
+            "Status": 0,
+            "DeclinedBecause": ""
+          }
+        ]
       },
       "A002": {
         "ApartmentNumber": null,
@@ -18,7 +37,14 @@
         "Description": "Comfortable standard room",
         "Rooms": 1,
         "MaxGuests": 2,
-        "Reservations": null
+        "Reservations": [
+          {
+            "Id": 2,
+            "Date": "2023-09-10",
+            "Status": 1,
+            "DeclinedBecause": ""
+          }
+        ]
       },
       "lt": {
         "ApartmentNumber": "lt",
@@ -45,7 +71,14 @@
         "Description": "Suite with a stunning ocean view",
         "Rooms": 2,
         "MaxGuests": 4,
-        "Reservations": null
+        "Reservations": [
+          {
+            "Id": 3,
+            "Date": "2023-08-28",
+            "Status": 2,
+            "DeclinedBecause": "Apartment already booked"
+          }
+        ]
       },
       "A004": {
         "ApartmentNumber": null,
@@ -53,7 +86,7 @@
         "Description": "Spacious room for families",
         "Rooms": 2,
         "MaxGuests": 4,
-        "Reservations": null
+        "Reservations": []
       }
     },
     "Stars": 4,
@@ -82,7 +115,7 @@
         "Description": "Suite with a city view",
         "Rooms": 2,
         "MaxGuests": 4,
-        "Reservations": null
+        "Reservations": []
       }
     },
     "Stars": 4,
@@ -101,7 +134,7 @@
         "Description": "Cozy cabin by the river",
         "Rooms": 1,
         "MaxGuests": 2,
-        "Reservations": null
+        "Reservations": []
       }
     },
     "Stars": 3,

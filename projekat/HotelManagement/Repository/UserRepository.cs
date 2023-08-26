@@ -14,6 +14,7 @@ namespace HotelManagement.Repository
    {
         private List<User> users;
         private string fileLocation;
+        private HotelRepository hotelRepository = new HotelRepository();
 
         public UserRepository()
         {
@@ -68,14 +69,43 @@ namespace HotelManagement.Repository
          throw new NotImplementedException();
       }
       
-      public User GetByJmbg(String jmbg)
+      public User GetByJmbg(string jmbg)
       {
-         throw new NotImplementedException();
-      }
+            return users.FirstOrDefault(user => user.Jmbg == jmbg);
+        }
 
         public User GetByEmail(string email)
         {
             return users.FirstOrDefault(user => user.Email == email);
+        }
+
+        public List<Reservation> GetAllReservationsOfOwner(string ownersJmbg)
+        {
+            List<Reservation> ownerReservations = new List<Reservation>();
+
+            List<Hotel> ownerHotels = hotelRepository.GetByOwnersJmbg(ownersJmbg);
+
+            foreach (var hotel in ownerHotels)
+            {
+                var hotelApartments = hotel.Apartments.Values;
+
+                foreach (var apartment in hotelApartments)
+                {
+                    if (apartment.Reservations != null)
+                    {
+                        foreach (var reservation in apartment.Reservations)
+                        {
+                            if (reservation.Status == ReservationStatus.Waiting ||
+                                reservation.Status == ReservationStatus.Accepted)
+                            {
+                                ownerReservations.Add(reservation);
+                            }
+                        }
+                    }
+                }
+            }
+
+            return ownerReservations;
         }
 
         public void AddUser(User user)
