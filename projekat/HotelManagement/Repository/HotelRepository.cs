@@ -9,12 +9,12 @@ using System.Windows;
 
 namespace HotelManagement.Repository
 {
-   public class HotelRepository
-   {
+    public class HotelRepository
+    {
         private List<Hotel> hotels;
         private string fileLocation;
 
-        public HotelRepository() 
+        public HotelRepository()
         {
             fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Resources\\hotels.json";
             ReadJson();
@@ -66,9 +66,9 @@ namespace HotelManagement.Repository
         {
             List<Hotel> result = new List<Hotel>();
 
-            foreach(Hotel hotel in hotels)
+            foreach (Hotel hotel in hotels)
             {
-                if(hotel.OwnersJmbg == ownersJmbg && hotel.Status != HotelStatus.Declined)
+                if (hotel.OwnersJmbg == ownersJmbg && hotel.Status != HotelStatus.Declined)
                 {
                     result.Add(hotel);
                 }
@@ -76,59 +76,59 @@ namespace HotelManagement.Repository
 
             return result;
         }
-      
-      public List<Hotel> SortByName()
-      {
-         throw new NotImplementedException();
-      }
-      
-      public List<Hotel> SortByStars()
-      {
-         throw new NotImplementedException();
-      }
-      
-      public List<Hotel> SearchByCode(String code)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public List<Hotel> SearchByName(String name)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public List<Hotel> SearchByBuiltIn(int buildIn)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public List<Hotel> SearchByStarts(int stars)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public List<Hotel> SearchByAppartments(int rooms, int persons)
-      {
-         throw new NotImplementedException();
-      }
-      
+
+        public List<Hotel> SortByName()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Hotel> SortByStars()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Hotel> SearchByCode(string code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Hotel> SearchByName(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Hotel> SearchByBuiltIn(int buildIn)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Hotel> SearchByStarts(int stars)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Hotel> SearchByAppartments(int rooms, int persons)
+        {
+            throw new NotImplementedException();
+        }
+
         public Hotel GetByCode(string code)
         {
             return hotels.Find(hotel => hotel.Code == code);
         }
-      
-      public void AddHotel(Hotel hotel)
-      {
+
+        public void AddHotel(Hotel hotel)
+        {
             hotels.Add(hotel);
             WriteToJson();
-      }
-      
-      public HotelManagement.Model.Hotel UpdateHotel(HotelManagement.Model.Hotel hotel)
-      {
-         throw new NotImplementedException();
-      }
+        }
+
+        public Hotel UpdateHotel(Hotel hotel)
+        {
+            throw new NotImplementedException();
+        }
 
 
-   
-   }
+
+    }
 }

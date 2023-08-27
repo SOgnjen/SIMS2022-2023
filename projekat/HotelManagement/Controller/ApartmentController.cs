@@ -21,7 +21,7 @@ namespace HotelManagement.Controller
         }
 
 
-        public Boolean IsNameValid(string name)
+        public bool IsNameValid(string name)
         {
             return apartmentService.IsNameValid(name);
         }

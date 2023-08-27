@@ -6,9 +6,9 @@ using System.IO;
 
 namespace HotelManagement.Repository
 {
-   public class ReservationRepository
-   {
-      private List<Reservation> reservations;
+    public class ReservationRepository
+    {
+        private List<Reservation> reservations;
         private string fileLocation;
 
         public ReservationRepository()
@@ -43,37 +43,37 @@ namespace HotelManagement.Repository
         {
             return reservations;
         }
-      
-      public List<Reservation> WaitingReservations()
-      {
-         throw new NotImplementedException();
-      }
-      
-      public List<Reservation> AcceptedReservations()
-      {
-         throw new NotImplementedException();
-      }
-      
-      public List<Reservation> DeclinedReservations()
-      {
-         throw new NotImplementedException();
-      }
-      
-      public HotelManagement.Model.Reservation GetById(int id)
-      {
-         throw new NotImplementedException();
-      }
+
+        public List<Reservation> WaitingReservations()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Reservation> AcceptedReservations()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Reservation> DeclinedReservations()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Reservation GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
 
         public void AddReservation(Reservation reservation)
         {
             reservations.Add(reservation);
             WriteToJson();
         }
-      
-      public HotelManagement.Model.Reservation UpdateReservation(HotelManagement.Model.Reservation reservation)
-      {
-         throw new NotImplementedException();
-      }
-   
-   }
+
+        public Reservation UpdateReservation(Reservation reservation)
+        {
+            throw new NotImplementedException();
+        }
+
+    }
 }

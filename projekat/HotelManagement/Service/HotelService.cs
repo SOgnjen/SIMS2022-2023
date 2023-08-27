@@ -6,8 +6,8 @@ using System.Windows.Documents;
 
 namespace HotelManagement.Service
 {
-   public class HotelService
-   {
+    public class HotelService
+    {
 
         private HotelRepository hotelRepository;
 
@@ -16,27 +16,27 @@ namespace HotelManagement.Service
             this.hotelRepository = hotelRepository;
         }
 
-      public HotelManagement.Model.Hotel Accept(String code)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public HotelManagement.Model.Hotel Decline(String code)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public void AddHotel(string code, string name, int builtIn, Dictionary<string, Apartment> appartments, int stars, string ownersJmbg, bool accepted, HotelStatus status)
-      {
-         Hotel newHotel = new Hotel(code, name, builtIn, appartments, stars, ownersJmbg, accepted, status);
+        public Hotel Accept(string code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Hotel Decline(string code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddHotel(string code, string name, int builtIn, Dictionary<string, Apartment> appartments, int stars, string ownersJmbg, bool accepted, HotelStatus status)
+        {
+            Hotel newHotel = new Hotel(code, name, builtIn, appartments, stars, ownersJmbg, accepted, status);
 
             hotelRepository.AddHotel(newHotel);
-      }
-      
-      public Boolean IsCodeValid(string code)
-      {
-         throw new NotImplementedException();
-      }
+        }
+
+        public bool IsCodeValid(string code)
+        {
+            throw new NotImplementedException();
+        }
 
         public List<Hotel> GetAll()
         {
@@ -52,7 +52,7 @@ namespace HotelManagement.Service
         {
             return hotelRepository.GetByOwnersJmbg(ownersJmbg);
         }
-      
-    
-   }
+
+
+    }
 }

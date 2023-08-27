@@ -31,7 +31,7 @@ namespace HotelManagement.Controller
             hotelService.AddHotel(code, name, builtIn, appartments, stars, ownersJmbg, accepted, status);
         }
 
-        public Boolean IsCodeValid(string code)
+        public bool IsCodeValid(string code)
         {
             return hotelService.IsCodeValid(code);
         }

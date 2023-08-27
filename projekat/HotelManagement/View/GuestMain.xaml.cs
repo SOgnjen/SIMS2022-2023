@@ -25,33 +25,33 @@ namespace HotelManagement.View
     {
         App app = (App)Application.Current;
 
-        List<Hotel> AcceptedHotels;
+        List<Hotel> acceptedHotels;
 
-        private User LoggedUser;
+        private User loggedUser;
 
-        List<Reservation> AllReservations;
+        List<Reservation> allReservations;
 
-        List<Apartment> AllApartments;
+        List<Apartment> allApartments;
 
         public GuestMain(User loggedUser)
         {
             InitializeComponent();
-            AcceptedHotels = app.hotelController.GetByAccepted(true);
+            acceptedHotels = app.hotelController.GetByAccepted(true);
 
             DataContext = this;
 
             hotelDataGrid.ItemsSource = null;
-            hotelDataGrid.ItemsSource = AcceptedHotels;
+            hotelDataGrid.ItemsSource = acceptedHotels;
 
-            AllReservations = loggedUser.Reservations;
+            allReservations = loggedUser.Reservations;
 
             reservationDataGrid.ItemsSource = null;
-            reservationDataGrid.ItemsSource = AllReservations;
+            reservationDataGrid.ItemsSource = allReservations;
 
-            AllApartments = app.apartmentController.GetAll();
+            allApartments = app.apartmentController.GetAll();
 
             apartmentComboBox.ItemsSource = null;
-            apartmentComboBox.ItemsSource = AllApartments;
+            apartmentComboBox.ItemsSource = allApartments;
 
         }
 
@@ -63,7 +63,7 @@ namespace HotelManagement.View
             }
 
             List<Hotel> acceptedHotelsByCode = new List<Hotel>();
-            foreach (var h in AcceptedHotels)
+            foreach (var h in acceptedHotels)
             {
                 if (h.Code.ToLower().Contains(searchByCode.Text.ToLower()))
                 {
@@ -81,7 +81,7 @@ namespace HotelManagement.View
             }
 
             List<Hotel> AcceptedHotelsByName = new List<Hotel>();
-            foreach (var h in AcceptedHotels)
+            foreach (var h in acceptedHotels)
             {
                 if (h.Name.ToLower().Contains(searchByName.Text.ToLower()))
                 {
@@ -99,7 +99,7 @@ namespace HotelManagement.View
             }
 
             List<Hotel> acceptedHotelsByBuiltIn = new List<Hotel>();
-            foreach (var h in AcceptedHotels)
+            foreach (var h in acceptedHotels)
             {
                 try
                 {
@@ -124,7 +124,7 @@ namespace HotelManagement.View
             }
 
             List<Hotel> acceptedHotelsByStars = new List<Hotel>();
-            foreach (var h in AcceptedHotels)
+            foreach (var h in acceptedHotels)
             {
                 try
                 {
@@ -158,7 +158,7 @@ namespace HotelManagement.View
                 return;
             }
 
-            foreach (var hotel in AcceptedHotels)
+            foreach (var hotel in acceptedHotels)
             {
                 foreach (var apartment in hotel.Apartments.Values)
                 {
@@ -190,7 +190,7 @@ namespace HotelManagement.View
                 return;
             }
 
-            foreach (var hotel in AcceptedHotels)
+            foreach (var hotel in acceptedHotels)
             {
                 foreach (var apartment in hotel.Apartments.Values)
                 {
@@ -237,7 +237,7 @@ namespace HotelManagement.View
                     return;
                 }
 
-                foreach (var hotel in AcceptedHotels)
+                foreach (var hotel in acceptedHotels)
                 {
                     foreach (var apartment in hotel.Apartments.Values)
                     {
@@ -245,7 +245,7 @@ namespace HotelManagement.View
                             apartment.MaxGuests == maxGuestsCondition)
                         {
                             hotelsWithMatchingApartments.Add(hotel);
-                            break; // Break once we find a matching apartment in this hotel
+                            break;
                         }
                     }
                 }
@@ -267,7 +267,7 @@ namespace HotelManagement.View
                     return;
                 }
 
-                foreach (var hotel in AcceptedHotels)
+                foreach (var hotel in acceptedHotels)
                 {
                     foreach (var apartment in hotel.Apartments.Values)
                     {
@@ -301,7 +301,7 @@ namespace HotelManagement.View
 
             ReservationStatus selectedStatus = (ReservationStatus)Enum.Parse(typeof(ReservationStatus), selectedStatusItem.Tag.ToString());
 
-            List<Reservation> filteredReservations = AllReservations.Where(reservation => reservation.Status == selectedStatus).ToList();
+            List<Reservation> filteredReservations = allReservations.Where(reservation => reservation.Status == selectedStatus).ToList();
 
             reservationDataGrid.ItemsSource = filteredReservations;
         }

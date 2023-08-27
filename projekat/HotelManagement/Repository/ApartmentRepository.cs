@@ -6,8 +6,8 @@ using System.IO;
 
 namespace HotelManagement.Repository
 {
-   public class ApartmentRepository
-   {
+    public class ApartmentRepository
+    {
         private List<Apartment> apartments;
         private string fileLocation;
         private HotelRepository hotelRepository = new HotelRepository();
@@ -44,12 +44,12 @@ namespace HotelManagement.Repository
         {
             return apartments;
         }
-      
-      public HotelManagement.Model.Apartment GetByName(string name)
-      {
-         throw new NotImplementedException();
-      }
-      
+
+        public Apartment GetByName(string name)
+        {
+            throw new NotImplementedException();
+        }
+
         public void AddApartment(Apartment apartment)
         {
             apartments.Add(apartment);
@@ -72,10 +72,10 @@ namespace HotelManagement.Repository
         }
 
 
-        public HotelManagement.Model.Apartment UpdateApartment(HotelManagement.Model.Apartment apartment)
-      {
-         throw new NotImplementedException();
-      }
-   
-   }
+        public Apartment UpdateApartment(Apartment apartment)
+        {
+            throw new NotImplementedException();
+        }
+
+    }
 }

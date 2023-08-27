@@ -7,7 +7,7 @@ namespace HotelManagement
 {
     public partial class MainWindow : Window
     {
-        public bool IsDarkTheme { get; set; }
+        public bool isDarkTheme { get; set; }
         private readonly PaletteHelper paletteHelper = new PaletteHelper();
 
         public App app = (App)Application.Current;
@@ -25,14 +25,14 @@ namespace HotelManagement
         {
             ITheme theme = paletteHelper.GetTheme();
 
-            if(IsDarkTheme = theme.GetBaseTheme() == BaseTheme.Dark)
+            if(isDarkTheme = theme.GetBaseTheme() == BaseTheme.Dark)
             {
-                IsDarkTheme = false;
+                isDarkTheme = false;
                 theme.SetBaseTheme(Theme.Light);
             }
             else
             {
-                IsDarkTheme = true;
+                isDarkTheme = true;
                 theme.SetBaseTheme(Theme.Dark);
             }
             paletteHelper.SetTheme(theme);

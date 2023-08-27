@@ -21,12 +21,12 @@ namespace HotelManagement.Controller
             return userService.Login(email, password);
         }
 
-        public Boolean IsJmbgValid(string jmbg)
+        public bool IsJmbgValid(string jmbg)
         {
             return userService.IsJmbgValid(jmbg);
         }
       
-        public Boolean IsEmailValid(string email)
+        public bool IsEmailValid(string email)
         {
             return userService.IsEmailValid(email);
         }

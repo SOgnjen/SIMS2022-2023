@@ -10,8 +10,8 @@ using System.Xml.Linq;
 
 namespace HotelManagement.Repository
 {
-   public class UserRepository
-   {
+    public class UserRepository
+    {
         private List<User> users;
         private string fileLocation;
         private HotelRepository hotelRepository = new HotelRepository();
@@ -50,27 +50,27 @@ namespace HotelManagement.Repository
         }
 
         public List<User> SortByName()
-      {
-         throw new NotImplementedException();
-      }
-      
-      public List<User> SortBySurname()
-      {
-         throw new NotImplementedException();
-      }
-      
-      public List<User> GuestUser()
-      {
-         throw new NotImplementedException();
-      }
-      
-      public List<User> OwnerUser()
-      {
-         throw new NotImplementedException();
-      }
-      
-      public User GetByJmbg(string jmbg)
-      {
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<User> SortBySurname()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<User> GuestUser()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<User> OwnerUser()
+        {
+            throw new NotImplementedException();
+        }
+
+        public User GetByJmbg(string jmbg)
+        {
             return users.FirstOrDefault(user => user.Jmbg == jmbg);
         }
 
@@ -113,11 +113,11 @@ namespace HotelManagement.Repository
             users.Add(user);
             WriteToJson();
         }
-      
-      public HotelManagement.Model.User UpdateUser(HotelManagement.Model.User user)
-      {
-         throw new NotImplementedException();
-      }
-   
-   }
+
+        public User UpdateUser(User user)
+        {
+            throw new NotImplementedException();
+        }
+
+    }
 }

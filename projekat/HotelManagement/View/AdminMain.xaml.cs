@@ -24,26 +24,26 @@ namespace HotelManagement.View
     {
         App app = (App)Application.Current;
 
-        List<Hotel> AcceptedHotels;
+        List<Hotel> acceptedHotels;
 
-        List<User> AllUsers;
+        List<User> allUsers;
 
         bool flag = false;
 
         public AdminMain()
         {
             InitializeComponent();
-            AcceptedHotels = app.hotelController.GetByAccepted(true);
+            acceptedHotels = app.hotelController.GetByAccepted(true);
 
             DataContext = this;
 
             hotelDataGrid.ItemsSource = null;
-            hotelDataGrid.ItemsSource = AcceptedHotels;
+            hotelDataGrid.ItemsSource = acceptedHotels;
 
-            AllUsers = app.userController.GetAll();
+            allUsers = app.userController.GetAll();
 
             userDataGrid.ItemsSource = null;
-            userDataGrid.ItemsSource = AllUsers;
+            userDataGrid.ItemsSource = allUsers;
         }
 
         private void SearchHotelsByCode(object sender, RoutedEventArgs e)
@@ -54,7 +54,7 @@ namespace HotelManagement.View
             }
 
             List<Hotel> acceptedHotelsByCode = new List<Hotel>();
-            foreach (var h in AcceptedHotels)
+            foreach (var h in acceptedHotels)
             {
                 if (h.Code.ToLower().Contains(searchByCode.Text.ToLower()))
                 {
@@ -72,7 +72,7 @@ namespace HotelManagement.View
             }
 
             List<Hotel> AcceptedHotelsByName = new List<Hotel>();
-            foreach (var h in AcceptedHotels)
+            foreach (var h in acceptedHotels)
             {
                 if (h.Name.ToLower().Contains(searchByName.Text.ToLower()))
                 {
@@ -90,7 +90,7 @@ namespace HotelManagement.View
             }
 
             List<Hotel> acceptedHotelsByBuiltIn = new List<Hotel>();
-            foreach (var h in AcceptedHotels)
+            foreach (var h in acceptedHotels)
             {
                 try
                 {
@@ -115,7 +115,7 @@ namespace HotelManagement.View
             }
 
             List<Hotel> acceptedHotelsByStars = new List<Hotel>();
-            foreach (var h in AcceptedHotels)
+            foreach (var h in acceptedHotels)
             {
                 try
                 {
@@ -149,7 +149,7 @@ namespace HotelManagement.View
                 return;
             }
 
-            foreach (var hotel in AcceptedHotels)
+            foreach (var hotel in acceptedHotels)
             {
                 foreach (var apartment in hotel.Apartments.Values)
                 {
@@ -181,7 +181,7 @@ namespace HotelManagement.View
                 return;
             }
 
-            foreach (var hotel in AcceptedHotels)
+            foreach (var hotel in acceptedHotels)
             {
                 foreach (var apartment in hotel.Apartments.Values)
                 {
@@ -228,7 +228,7 @@ namespace HotelManagement.View
                     return;
                 }
 
-                foreach (var hotel in AcceptedHotels)
+                foreach (var hotel in acceptedHotels)
                 {
                     foreach (var apartment in hotel.Apartments.Values)
                     {
@@ -258,7 +258,7 @@ namespace HotelManagement.View
                     return;
                 }
 
-                foreach (var hotel in AcceptedHotels)
+                foreach (var hotel in acceptedHotels)
                 {
                     foreach (var apartment in hotel.Apartments.Values)
                     {
@@ -292,7 +292,7 @@ namespace HotelManagement.View
 
             UserType selectedType = (UserType)Enum.Parse(typeof(UserType), selectedTypeItem.Tag.ToString());
 
-            List<User> filteredUsers = AllUsers.Where(user => user.Type == selectedType).ToList();
+            List<User> filteredUsers = allUsers.Where(user => user.Type == selectedType).ToList();
 
             userDataGrid.ItemsSource = filteredUsers;
         }
@@ -377,7 +377,7 @@ namespace HotelManagement.View
             {
                 UserType type = (UserType)Enum.Parse(typeof(UserType), selectedComboBoxItem.Tag.ToString());
 
-                foreach (var user in AllUsers)
+                foreach (var user in allUsers)
                 {
                     if (jmbg == user.Jmbg || email == user.Email)
                     {
@@ -407,7 +407,7 @@ namespace HotelManagement.View
 
             flag = false;
 
-            foreach (var hotel in AcceptedHotels)
+            foreach (var hotel in acceptedHotels)
             {
                 if (code == hotel.Code)
                 {

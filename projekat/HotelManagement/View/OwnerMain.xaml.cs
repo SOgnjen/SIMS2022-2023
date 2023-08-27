@@ -25,43 +25,43 @@ namespace HotelManagement.View
     {
         App app = (App)Application.Current;
 
-        List<Hotel> AcceptedHotels;
+        List<Hotel> acceptedHotels;
 
-        List<Hotel> OwnersHotels;
+        List<Hotel> ownersHotels;
 
         private User loggedUser;
 
-        List<Apartment> AllApartments;
+        List<Apartment> allApartments;
 
-        List<Reservation> OwnersReservations;
+        List<Reservation> ownersReservations;
 
         public OwnerMain(User loggedUser)
         {
             InitializeComponent();
             this.loggedUser = loggedUser;
-            AcceptedHotels = app.hotelController.GetByAccepted(true);
+            acceptedHotels = app.hotelController.GetByAccepted(true);
 
             string ownersJmbg = loggedUser.Jmbg;
 
-            OwnersHotels = app.hotelController.GetByOwnersJmbg(ownersJmbg);
+            ownersHotels = app.hotelController.GetByOwnersJmbg(ownersJmbg);
 
 
             DataContext = this;
 
             hotelDataGrid.ItemsSource = null;
-            hotelDataGrid.ItemsSource = AcceptedHotels;
+            hotelDataGrid.ItemsSource = acceptedHotels;
 
             myWaitingHotelsDataGrid.ItemsSource = null;
-            myWaitingHotelsDataGrid.ItemsSource = OwnersHotels;
+            myWaitingHotelsDataGrid.ItemsSource = ownersHotels;
 
-            ownersAcceptedHotelsComboBox.ItemsSource = OwnersHotels.Where(hotel => hotel.Status == HotelStatus.Accepted);
+            ownersAcceptedHotelsComboBox.ItemsSource = ownersHotels.Where(hotel => hotel.Status == HotelStatus.Accepted);
 
-            AllApartments = app.apartmentController.GetAll();
+            allApartments = app.apartmentController.GetAll();
 
-            OwnersReservations = app.userController.GetAllGetAllReservationsOfOwner(loggedUser.Jmbg);
+            ownersReservations = app.userController.GetAllGetAllReservationsOfOwner(loggedUser.Jmbg);
 
             reservationDataGrid.ItemsSource = null;
-            reservationDataGrid.ItemsSource = OwnersReservations;
+            reservationDataGrid.ItemsSource = ownersReservations;
 
             ShowOwnersReservations();
         }
@@ -74,7 +74,7 @@ namespace HotelManagement.View
             }
 
             List<Hotel> acceptedHotelsByCode = new List<Hotel>();
-            foreach (var h in AcceptedHotels)
+            foreach (var h in acceptedHotels)
             {
                 if (h.Code.ToLower().Contains(searchByCode.Text.ToLower()))
                 {
@@ -92,7 +92,7 @@ namespace HotelManagement.View
             }
 
             List<Hotel> AcceptedHotelsByName = new List<Hotel>();
-            foreach (var h in AcceptedHotels)
+            foreach (var h in acceptedHotels)
             {
                 if (h.Name.ToLower().Contains(searchByName.Text.ToLower()))
                 {
@@ -110,7 +110,7 @@ namespace HotelManagement.View
             }
 
             List<Hotel> acceptedHotelsByBuiltIn = new List<Hotel>();
-            foreach (var h in AcceptedHotels)
+            foreach (var h in acceptedHotels)
             {
                 try
                 {
@@ -135,7 +135,7 @@ namespace HotelManagement.View
             }
 
             List<Hotel> acceptedHotelsByStars = new List<Hotel>();
-            foreach (var h in AcceptedHotels)
+            foreach (var h in acceptedHotels)
             {
                 try
                 {
@@ -169,7 +169,7 @@ namespace HotelManagement.View
                 return;
             }
 
-            foreach (var hotel in AcceptedHotels)
+            foreach (var hotel in acceptedHotels)
             {
                 foreach (var apartment in hotel.Apartments.Values)
                 {
@@ -201,7 +201,7 @@ namespace HotelManagement.View
                 return;
             }
 
-            foreach (var hotel in AcceptedHotels)
+            foreach (var hotel in acceptedHotels)
             {
                 foreach (var apartment in hotel.Apartments.Values)
                 {
@@ -248,7 +248,7 @@ namespace HotelManagement.View
                     return;
                 }
 
-                foreach (var hotel in AcceptedHotels)
+                foreach (var hotel in acceptedHotels)
                 {
                     foreach (var apartment in hotel.Apartments.Values)
                     {
@@ -278,7 +278,7 @@ namespace HotelManagement.View
                     return;
                 }
 
-                foreach (var hotel in AcceptedHotels)
+                foreach (var hotel in acceptedHotels)
                 {
                     foreach (var apartment in hotel.Apartments.Values)
                     {
@@ -336,16 +336,16 @@ namespace HotelManagement.View
 
         private void RefreshAcceptedHotels()
         {
-            AcceptedHotels = app.hotelController.GetByAccepted(true);
+            acceptedHotels = app.hotelController.GetByAccepted(true);
             hotelDataGrid.ItemsSource = null;
-            hotelDataGrid.ItemsSource = AcceptedHotels;
+            hotelDataGrid.ItemsSource = acceptedHotels;
 
             hotelDataGrid.Items.Refresh();
         }
 
         private void RefreshAllAppartments()
         {
-            AllApartments = app.apartmentController.GetAll();
+            allApartments = app.apartmentController.GetAll();
         }
 
         private List<Hotel> LoadHotelsFromJsonFile()
@@ -405,9 +405,9 @@ namespace HotelManagement.View
 
         private void RefreshOwnersHotels(User loggedUser)
         {
-            OwnersHotels = app.hotelController.GetByOwnersJmbg(loggedUser.Jmbg);
+            ownersHotels = app.hotelController.GetByOwnersJmbg(loggedUser.Jmbg);
             myWaitingHotelsDataGrid.ItemsSource = null;
-            myWaitingHotelsDataGrid.ItemsSource = OwnersHotels;
+            myWaitingHotelsDataGrid.ItemsSource = ownersHotels;
 
             myWaitingHotelsDataGrid.Items.Refresh();
         }
@@ -419,7 +419,7 @@ namespace HotelManagement.View
             string name = apartmentNameBox.Text;
             string description = descriptionBox.Text;
 
-            bool apartmentExists = AllApartments.Any(apartment =>
+            bool apartmentExists = allApartments.Any(apartment =>
                 apartment.ApartmentNumber == apartmentNumber || apartment.Name == name);
 
             if (apartmentExists)
@@ -454,7 +454,7 @@ namespace HotelManagement.View
         {
             StringBuilder reservationInfo = new StringBuilder();
 
-            foreach (var reservation in OwnersReservations)
+            foreach (var reservation in ownersReservations)
             {
                 string reservationStatus = reservation.Status == ReservationStatus.Accepted ? "Accepted" : "Declined";
                 string reservationDetails = $"Reservation ID: {reservation.Id}\nDate: {reservation.Date}\nStatus: {reservationStatus}\nDeclined Because: {reservation.DeclinedBecause}\n\n";
@@ -484,7 +484,7 @@ namespace HotelManagement.View
 
             ReservationStatus selectedStatus = (ReservationStatus)Enum.Parse(typeof(ReservationStatus), selectedStatusItem.Tag.ToString());
 
-            List<Reservation> filteredReservations = OwnersReservations.Where(reservation => reservation.Status == selectedStatus).ToList();
+            List<Reservation> filteredReservations = ownersReservations.Where(reservation => reservation.Status == selectedStatus).ToList();
 
             reservationDataGrid.ItemsSource = filteredReservations;
         }
