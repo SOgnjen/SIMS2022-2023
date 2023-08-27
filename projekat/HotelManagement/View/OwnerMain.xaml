@@ -194,7 +194,7 @@
                                         <ComboBoxItem Content="Waiting" Tag="Waiting"/>
                                         <ComboBoxItem Content="Accepted" Tag="Accepted"/>
                                     </ComboBox>
-                                    <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Search" Background="#FF8585B1"/>
+                                    <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Search" Background="#FF8585B1" Click="Button_Click"/>
                                 </DockPanel>
                             </StackPanel>
                             <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">

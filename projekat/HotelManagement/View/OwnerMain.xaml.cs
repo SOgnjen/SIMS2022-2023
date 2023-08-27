@@ -472,5 +472,21 @@ namespace HotelManagement.View
             }
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ComboBoxItem selectedStatusItem = (ComboBoxItem)searchByReservationStatus.SelectedItem;
+
+            if (selectedStatusItem == null)
+            {
+                MessageBox.Show("Please select a reservation status.");
+                return;
+            }
+
+            ReservationStatus selectedStatus = (ReservationStatus)Enum.Parse(typeof(ReservationStatus), selectedStatusItem.Tag.ToString());
+
+            List<Reservation> filteredReservations = OwnersReservations.Where(reservation => reservation.Status == selectedStatus).ToList();
+
+            reservationDataGrid.ItemsSource = filteredReservations;
+        }
     }
 }

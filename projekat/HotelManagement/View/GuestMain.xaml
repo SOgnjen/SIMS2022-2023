@@ -262,6 +262,9 @@
                         </Grid>
                     </Grid>
                 </TabItem>
+                <TabItem Header="Make New Reservation" Width="150" Style="{DynamicResource TabItemStyle}">
+                    
+                </TabItem>
             </TabControl>
         </Border>
     </Grid>
