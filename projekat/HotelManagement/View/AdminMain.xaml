@@ -214,7 +214,7 @@
                                     <ComboBoxItem Content="Owner" Tag="Owner"/>
                                 </ComboBox>
                             </DockPanel>
-                            <Button Content="Add New User" Width="150" Margin="5" Click="AddHotel"/>
+                            <Button Content="Add New User" Width="150" Margin="5" Click="AddUser"/>
                         </StackPanel>
                     </Grid>
             </TabItem>
