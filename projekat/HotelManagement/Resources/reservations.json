@@ -26,7 +26,7 @@
   {
     "Id": 4,
     "Date": "2023-09-15T09:45:00",
-    "Status": 3,
+    "Status": 0,
     "DeclinedBecause": "",
     "OwnersJmbg": "4567890123456",
     "ApartmentName": "Rustic Cabin"
@@ -74,7 +74,7 @@
   {
     "Id": 10,
     "Date": "2023-10-25T13:30:00",
-    "Status": 3,
+    "Status": 0,
     "DeclinedBecause": "",
     "OwnersJmbg": "4567890123456",
     "ApartmentName": "Mountain View Suite"

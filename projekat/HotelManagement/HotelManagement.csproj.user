@@ -13,6 +13,9 @@
     <Compile Update="View\GuestMain.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\HotelsReservations.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\OwnerMain.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -25,6 +28,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\GuestMain.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\HotelsReservations.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\OwnerMain.xaml">

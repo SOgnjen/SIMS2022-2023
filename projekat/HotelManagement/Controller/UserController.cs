@@ -56,7 +56,7 @@ namespace HotelManagement.Controller
             return userService.GetAll();
         }
 
-        public List<Reservation> GetAllGetAllReservationsOfOwner(string ownersJmbg)
+        public List<Reservation> GetAllReservationsOfOwner(string ownersJmbg)
         {
             return userService.GetAllReservationsOfOwner(ownersJmbg);
         }

@@ -1,0 +1,31 @@
+﻿<Window x:Class="HotelManagement.View.HotelsReservations"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HotelManagement.View"
+        mc:Ignorable="d"
+        Title="HotelsReservations" Height="450" Width="800">
+    <Grid>
+        <DataGrid x:Name="reservationsDataGrid"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  HorizontalAlignment="Stretch"
+                  VerticalAlignment="Stretch"
+                  Background="#FF8585B1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" CanUserSort="False"/>
+                <DataGridTextColumn Header="Date" Binding="{Binding Date, StringFormat={}{0:yyyy-MM-dd}}" CanUserSort="False"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding Status}" CanUserSort="False"/>
+                <DataGridTextColumn Header="Declined Because" Binding="{Binding DeclinedBecause}" CanUserSort="False"/>
+                <DataGridTemplateColumn Header="Accept">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Accept" Click="AcceptReservation" Tag="{Binding}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
