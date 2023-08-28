@@ -63,7 +63,6 @@ namespace HotelManagement.View
             reservationDataGrid.ItemsSource = null;
             reservationDataGrid.ItemsSource = OwnersReservations;
 
-            ShowOwnersReservations();
         }
 
         private void SearchHotelsByCode(object sender, RoutedEventArgs e)
@@ -305,34 +304,23 @@ namespace HotelManagement.View
             Button clickedButton = sender as Button;
             Hotel hotel = clickedButton.DataContext as Hotel;
 
-            if(hotel != null)
+            if (hotel != null)
             {
-                if(hotel.Status == HotelStatus.Accepted)
+                bool accepted = app.hotelController.AcceptHotel(hotel.Code);
+
+                if (accepted)
                 {
-                    MessageBox.Show("Hotel already accepted");
-                    return;
-                }
-                hotel.Accepted = true;
-                hotel.Status = HotelStatus.Accepted;
-
-                List<Hotel> hotels = LoadHotelsFromJsonFile();
-
-                Hotel existingHotel = hotels.Find(h => h.Code == hotel.Code);
-                if(existingHotel != null)
-                {
-                    existingHotel.Accepted = hotel.Accepted;
-                    existingHotel.Status = hotel.Status;
-
-                    SaveHotelsToJsonFile(hotels);
-
                     MessageBox.Show("Hotel Accepted");
-
                     RefreshAcceptedHotels();
-
                     myWaitingHotelsDataGrid.Items.Refresh();
+                }
+                else
+                {
+                    MessageBox.Show("Hotel cannot be accepted");
                 }
             }
         }
+
 
         private void RefreshAcceptedHotels()
         {
@@ -378,27 +366,18 @@ namespace HotelManagement.View
 
             if (hotel != null)
             {
-                if (hotel.Status == HotelStatus.Accepted)
+
+                bool declined = app.hotelController.DeclineHotel(hotel.Code);
+
+                if (declined)
                 {
-                    MessageBox.Show("Hotel already accepted");
-                    return;
-                }
-                hotel.Accepted = false;
-                hotel.Status = HotelStatus.Declined;
-
-                List<Hotel> hotels = LoadHotelsFromJsonFile();
-
-                Hotel existingHotel = hotels.Find(h => h.Code == hotel.Code);
-                if (existingHotel != null)
-                {
-                    existingHotel.Accepted = hotel.Accepted;
-                    existingHotel.Status = hotel.Status;
-
-                    SaveHotelsToJsonFile(hotels);
-
                     MessageBox.Show("Hotel Declined");
-
-                    RefreshOwnersHotels(LoggedUser);
+                    RefreshAcceptedHotels();
+                    myWaitingHotelsDataGrid.Items.Refresh();
+                }
+                else
+                {
+                    MessageBox.Show("Hotel cannot be declined");
                 }
             }
         }
@@ -418,6 +397,16 @@ namespace HotelManagement.View
             string apartmentNumber = apartmentNumberBox.Text;
             string name = apartmentNameBox.Text;
             string description = descriptionBox.Text;
+            string roomsText = roomsBox.Text;
+            string maxGuestsText = maxGuestsBox.Text;
+
+            if (string.IsNullOrWhiteSpace(apartmentNumber) || string.IsNullOrWhiteSpace(name) ||
+                string.IsNullOrWhiteSpace(description) || string.IsNullOrWhiteSpace(roomsText) ||
+                string.IsNullOrWhiteSpace(maxGuestsText) || hotelCode == null)
+            {
+                MessageBox.Show("All fields are required.", "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
 
             bool apartmentExists = AllApartments.Any(apartment =>
                 apartment.ApartmentNumber == apartmentNumber || apartment.Name == name);
@@ -428,47 +417,29 @@ namespace HotelManagement.View
                 return;
             }
 
-            if (!int.TryParse(roomsBox.Text, out int rooms))
+            if (!int.TryParse(roomsText, out int rooms) || rooms <= 0)
             {
-                MessageBox.Show("Invalid value for rooms.");
+                MessageBox.Show("Invalid value for rooms.", "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
-            if (!int.TryParse(maxGuestsBox.Text, out int maxGuests))
+            if (!int.TryParse(maxGuestsText, out int maxGuests) || maxGuests <= 0)
             {
-                MessageBox.Show("Invalid value for max guests.");
+                MessageBox.Show("Invalid value for max guests.", "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
             app.apartmentController.CreateApartment(apartmentNumber, name, description, rooms, maxGuests, hotelCode);
 
             RefreshAcceptedHotels();
+            hotelDataGrid.Items.Refresh();
+
             RefreshOwnersHotels(LoggedUser);
+            myWaitingHotelsDataGrid.Items.Refresh();
 
             MessageBox.Show("Apartment Created");
         }
 
-        private void ShowOwnersReservations()
-        {
-            StringBuilder reservationInfo = new StringBuilder();
-
-            foreach (var reservation in OwnersReservations)
-            {
-                string reservationStatus = reservation.Status == ReservationStatus.Accepted ? "Accepted" : "Declined";
-                string reservationDetails = $"Reservation ID: {reservation.Id}\nDate: {reservation.Date}\nStatus: {reservationStatus}\nDeclined Because: {reservation.DeclinedBecause}\n\n";
-
-                reservationInfo.Append(reservationDetails);
-            }
-
-            if (reservationInfo.Length == 0)
-            {
-                MessageBox.Show("You don't have any reservations.");
-            }
-            else
-            {
-                MessageBox.Show($"Your reservations:\n\n{reservationInfo.ToString()}");
-            }
-        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

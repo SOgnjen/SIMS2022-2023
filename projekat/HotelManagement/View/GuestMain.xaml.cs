@@ -1,5 +1,6 @@
 ﻿using HotelManagement.Controller;
 using HotelManagement.Model;
+using HotelManagement.Repository;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -35,6 +36,8 @@ namespace HotelManagement.View
 
         List<Apartment> AllApartments;
 
+        List<Reservation> ReservationsToConsider;
+
         public GuestMain(User loggedUser)
         {
             InitializeComponent();
@@ -50,6 +53,10 @@ namespace HotelManagement.View
 
             UserReservations = AllReservations
                 .Where(reservation => reservation.OwnersJmbg == loggedUser.Jmbg)
+                .ToList();
+
+            ReservationsToConsider = AllReservations
+                .Where(reservation => reservation.Status == ReservationStatus.Waiting || reservation.Status == ReservationStatus.Accepted)
                 .ToList();
 
             reservationDataGrid.ItemsSource = null;
@@ -322,25 +329,11 @@ namespace HotelManagement.View
             {
                 if (reservation.Status == ReservationStatus.Waiting || reservation.Status == ReservationStatus.Accepted)
                 {
-                    reservation.Status = ReservationStatus.Cancelled;
-                    reservation.DeclinedBecause = "Cancelled by user";
+                    string cancellationReason = "Cancelled by user";
 
-                    List<Reservation> reservations = LoadReservationsFromJsonFile();
+                    app.reservationController.CancelReservation(reservation.Id, cancellationReason);
 
-                    Reservation existingReservation = reservations.Find(r => r.Id == reservation.Id);
-                    if (existingReservation != null)
-                    {
-                        existingReservation.Status = reservation.Status;
-                        existingReservation.DeclinedBecause = reservation.DeclinedBecause;
-
-                        SaveReservationsToJsonFile(reservations);
-
-                        reservationDataGrid.Items.Refresh();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Reservation not found.");
-                    }
+                    reservationDataGrid.Items.Refresh();
                 }
                 else
                 {
@@ -348,6 +341,7 @@ namespace HotelManagement.View
                 }
             }
         }
+
 
         private List<Reservation> LoadReservationsFromJsonFile()
         {
@@ -385,7 +379,7 @@ namespace HotelManagement.View
 
             string newReservationApartmentName = selectedApartment.Name;
 
-            bool reservationExists = UserReservations.Any(reservation =>
+            bool reservationExists = ReservationsToConsider.Any(reservation =>
                 reservation.ApartmentName == newReservationApartmentName &&
                 reservation.Date.Date == selectedDate.Date.Date);
 

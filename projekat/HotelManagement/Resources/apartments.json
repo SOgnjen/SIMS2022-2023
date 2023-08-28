@@ -94,5 +94,13 @@
     "Rooms": 1,
     "MaxGuests": 2,
     "HotelCode": "H006"
+  },
+  {
+    "ApartmentNumber": "new apartment",
+    "Name": "new apartment",
+    "Description": "new apartment",
+    "Rooms": 1,
+    "MaxGuests": 1,
+    "HotelCode": "H007"
   }
 ]

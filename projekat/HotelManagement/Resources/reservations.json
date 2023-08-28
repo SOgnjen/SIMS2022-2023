@@ -10,8 +10,8 @@
   {
     "Id": 2,
     "Date": "2023-09-05T15:30:00",
-    "Status": 1,
-    "DeclinedBecause": "",
+    "Status": 3,
+    "DeclinedBecause": "Cancelled by user",
     "OwnersJmbg": "2345678901234",
     "ApartmentName": "Standard Room"
   },
@@ -26,7 +26,7 @@
   {
     "Id": 4,
     "Date": "2023-09-15T09:45:00",
-    "Status": 0,
+    "Status": 1,
     "DeclinedBecause": "",
     "OwnersJmbg": "4567890123456",
     "ApartmentName": "Rustic Cabin"
@@ -74,8 +74,8 @@
   {
     "Id": 10,
     "Date": "2023-10-25T13:30:00",
-    "Status": 0,
-    "DeclinedBecause": "",
+    "Status": 2,
+    "DeclinedBecause": "i said so",
     "OwnersJmbg": "4567890123456",
     "ApartmentName": "Mountain View Suite"
   },
@@ -98,16 +98,16 @@
   {
     "Id": 13,
     "Date": "2023-08-11T00:00:00",
-    "Status": 0,
-    "DeclinedBecause": "",
+    "Status": 3,
+    "DeclinedBecause": "Cancelled by user",
     "OwnersJmbg": "2345678901234",
     "ApartmentName": "Nature Retreat"
   },
   {
     "Id": 14,
     "Date": "2023-08-24T00:00:00",
-    "Status": 0,
-    "DeclinedBecause": "",
+    "Status": 3,
+    "DeclinedBecause": "Cancelled by user",
     "OwnersJmbg": "2345678901234",
     "ApartmentName": "Premium Suite"
   },
@@ -118,5 +118,21 @@
     "DeclinedBecause": "",
     "OwnersJmbg": "2345678901234",
     "ApartmentName": "Deluxe Suite"
+  },
+  {
+    "Id": 16,
+    "Date": "2023-09-01T00:00:00",
+    "Status": 1,
+    "DeclinedBecause": "",
+    "OwnersJmbg": "2345678901234",
+    "ApartmentName": "Rustic Cabin"
+  },
+  {
+    "Id": 17,
+    "Date": "2023-08-01T00:00:00",
+    "Status": 0,
+    "DeclinedBecause": "",
+    "OwnersJmbg": "2345678901234",
+    "ApartmentName": "Family Suite"
   }
 ]

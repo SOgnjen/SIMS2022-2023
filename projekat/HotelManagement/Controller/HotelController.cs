@@ -16,25 +16,12 @@ namespace HotelManagement.Controller
             hotelService = service;
         }
 
-        public Hotel Accept(string code)
-        {
-            return hotelService.Accept(code);
-        }
-
-        public Hotel Decline(string code)
-        {
-            return hotelService.Decline(code);
-        }
 
         public void AddHotel(string code, string name, int builtIn, Dictionary<string, Apartment> appartments, int stars, string ownersJmbg, bool accepted, HotelStatus status)
         {
             hotelService.AddHotel(code, name, builtIn, appartments, stars, ownersJmbg, accepted, status);
         }
 
-        public bool IsCodeValid(string code)
-        {
-            return hotelService.IsCodeValid(code);
-        }
 
         public List<Hotel> GetAll()
         {
@@ -50,7 +37,18 @@ namespace HotelManagement.Controller
         {
             return hotelService.GetByOwnersJmbg(ownersJmbg);
         }
-      
-   
+
+        public bool AcceptHotel(string hotelCode)
+        {
+            return hotelService.AcceptHotel(hotelCode);
+        }
+
+        public bool DeclineHotel(string hotelCode)
+        {
+            return hotelService.DeclineHotel(hotelCode);
+        }
+
+
+
    }
 }

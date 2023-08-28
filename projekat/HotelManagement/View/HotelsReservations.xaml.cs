@@ -22,6 +22,7 @@ namespace HotelManagement.View
     /// </summary>
     public partial class HotelsReservations : Window
     {
+        App app = (App)Application.Current;
         private List<Reservation> reservations;
         private string fileLocation;
 
@@ -31,68 +32,57 @@ namespace HotelManagement.View
 
             Title = "Hotel Details - " + selectedHotel.Name;
 
-            // Set the file location for reservations
-            fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Resources\\reservations.json";
-
-            // Load reservations from JSON file
-            LoadReservations();
-        }
-
-        private void LoadReservations()
-        {
-            // Read reservations from the JSON file
-            ReadJson();
-
-            // Bind reservations to the data grid
-            reservationsDataGrid.ItemsSource = reservations;
-        }
-
-        private void ReadJson()
-        {
-            if (!File.Exists(fileLocation))
-            {
-                File.Create(fileLocation).Close();
-            }
-
-            StreamReader r = new StreamReader(fileLocation);
-            string json = r.ReadToEnd();
-            r.Close();
-
-            if (!string.IsNullOrEmpty(json))
-            {
-                reservations = JsonConvert.DeserializeObject<List<Reservation>>(json);
-            }
-            else
-            {
-                reservations = new List<Reservation>();
-            }
-        }
-
-        private void WriteToJson()
-        {
-            string json = JsonConvert.SerializeObject(reservations, Formatting.Indented);
-            File.WriteAllText(fileLocation, json);
         }
 
         private void AcceptReservation(object sender, RoutedEventArgs e)
         {
-            Button button = sender as Button;
-            Reservation reservation = button.Tag as Reservation;
+            Button clickedButton = sender as Button;
+            Reservation reservation = clickedButton.DataContext as Reservation;
 
-            if (reservation.Status == ReservationStatus.Waiting)
+            if (reservation != null)
             {
-                reservation.Status = ReservationStatus.Accepted;
+                bool accepted = app.reservationController.AcceptReservation(reservation.Id);
 
-                // Refresh the data grid
-                reservationsDataGrid.Items.Refresh();
-
-                // Save changes to JSON file
-                WriteToJson();
-            }
-            else
-            {
-                MessageBox.Show("Cannot accept reservation that is not in Waiting status.", "Invalid Action", MessageBoxButton.OK, MessageBoxImage.Warning);
+                if (accepted)
+                {
+                    MessageBox.Show("Reservation Accepted");
+                    reservationsDataGrid.Items.Refresh();
+                }
+                else
+                {
+                    MessageBox.Show("Reservation cannot be accepted");
+                }
             }
         }
+
+        private void DeclineReservation(object sender, RoutedEventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            Reservation reservation = clickedButton.DataContext as Reservation;
+
+            if (reservation != null)
+            {
+                StackPanel stackPanel = clickedButton.Parent as StackPanel;
+                TextBox declinedBecauseTextBox = stackPanel.FindName("declinedBecauseTextBox") as TextBox;
+
+                if (declinedBecauseTextBox != null)
+                {
+                    string declinedBecause = declinedBecauseTextBox.Text.Trim();
+
+                    bool declined = app.reservationController.DeclineReservation(reservation.Id, declinedBecause);
+
+                    if (declined)
+                    {
+                        MessageBox.Show("Reservation Declined");
+                        reservationsDataGrid.Items.Refresh();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Reservation cannot be declined");
+                    }
+                }
+            }
+        }
+
     }
 }

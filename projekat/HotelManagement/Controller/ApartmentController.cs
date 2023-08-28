@@ -22,11 +22,6 @@ namespace HotelManagement.Controller
         }
 
 
-        public bool IsNameValid(string name)
-        {
-            return apartmentService.IsNameValid(name);
-        }
-
         public List<Apartment> GetAll()
         {
             return apartmentService.GetAll();

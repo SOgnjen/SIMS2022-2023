@@ -16,30 +16,30 @@ namespace HotelManagement.Service
         }
 
 
-        public Reservation Cancel(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Reservation Accept(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Reservation Decline(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public void AddReservation(int id, DateTime date, ReservationStatus status, string declinedBecause, string ownerJmbg, string apartmentName)
         {
             Reservation newReservation = new Reservation(id, date, status, declinedBecause, ownerJmbg, apartmentName);
             reservationRepository.AddReservation(newReservation);
         }
 
+        public void CancelReservation(int reservationId, string cancellationReason)
+        {
+            reservationRepository.CancelReservation(reservationId, cancellationReason);
+        }
+
         public List<Reservation> GetAll()
         {
             return reservationRepository.GetAll();
+        }
+
+        public bool AcceptReservation(int reservationId)
+        {
+            return reservationRepository.AcceptReservation(reservationId);
+        }
+
+        public bool DeclineReservation(int reservationId, string declinedBecause)
+        {
+            return reservationRepository.DeclineReservation(reservationId, declinedBecause);
         }
 
     }

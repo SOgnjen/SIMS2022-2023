@@ -21,7 +21,17 @@
                 <DataGridTemplateColumn Header="Accept">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="Accept" Click="AcceptReservation" Tag="{Binding}" />
+                            <Button Content="Accept" Click="AcceptReservation"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Decline">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox x:Name="declinedBecauseTextBox" Width="150" VerticalAlignment="Center"/>
+                                <Button Content="Decline" Click="DeclineReservation"/>
+                            </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

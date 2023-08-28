@@ -77,41 +77,6 @@ namespace HotelManagement.Repository
             return result;
         }
 
-        public List<Hotel> SortByName()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Hotel> SortByStars()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Hotel> SearchByCode(string code)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Hotel> SearchByName(string name)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Hotel> SearchByBuiltIn(int buildIn)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Hotel> SearchByStarts(int stars)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Hotel> SearchByAppartments(int rooms, int persons)
-        {
-            throw new NotImplementedException();
-        }
-
         public Hotel GetByCode(string code)
         {
             return hotels.Find(hotel => hotel.Code == code);
@@ -123,11 +88,45 @@ namespace HotelManagement.Repository
             WriteToJson();
         }
 
-        public Hotel UpdateHotel(Hotel hotel)
+        public bool AcceptHotel(string hotelCode)
         {
-            throw new NotImplementedException();
+            Hotel hotel = hotels.Find(h => h.Code == hotelCode);
+
+            if (hotel != null)
+            {
+                if (hotel.Status != HotelStatus.Waiting)
+                {
+                    return false;
+                }
+
+                hotel.Accepted = true;
+                hotel.Status = HotelStatus.Accepted;
+                WriteToJson();
+                return true;
+            }
+
+            return false;
         }
 
+        public bool DeclineHotel(string hotelCode)
+        {
+            Hotel hotel = hotels.Find(h => h.Code == hotelCode);
+
+            if (hotel != null)
+            {
+                if (hotel.Status != HotelStatus.Waiting)
+                {
+                    return false;
+                }
+
+                hotel.Accepted = false;
+                hotel.Status = HotelStatus.Declined;
+                WriteToJson();
+                return true;
+            }
+
+            return false;
+        }
 
 
     }

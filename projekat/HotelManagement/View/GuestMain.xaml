@@ -154,7 +154,7 @@
                             <DockPanel Margin="5">
                                 <Label Width="150">Search By Apartments:</Label>
                                 <TextBox x:Name="searchByRoomsAndMaxGuests" Width="300" HorizontalAlignment="Left" Margin="5,0,0,0" Background="#FFC6C6F3" Text="1 | 2" />
-                                <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretraži" Background="#FF8585B1" Click="SearchHotelByRoomsAndMaxGuests"/>
+                                <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Search" Background="#FF8585B1" Click="SearchHotelByRoomsAndMaxGuests"/>
                             </DockPanel>
                         </StackPanel>
                         <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
@@ -190,7 +190,7 @@
                     </Grid>
                 </TabItem>
 
-                <TabItem Header="New Reservation" Style="{DynamicResource TabItemStyle}">
+                <TabItem Header="New Reservation" Style="{DynamicResource TabItemStyle}" Width="150">
                     <Grid>
                         <StackPanel Margin="0,0,0.4,0.2" Grid.ColumnSpan="2" HorizontalAlignment="Center">
                             <DockPanel Margin="5">
@@ -210,7 +210,7 @@
                         </StackPanel>
                     </Grid>
                 </TabItem>
-                
+
                 <TabItem Header="My Reservations" Width="150" Style="{DynamicResource TabItemStyle}">
                     <Grid>
                         <TextBlock Text="Hotels"
@@ -261,9 +261,6 @@
                             </ScrollViewer>
                         </Grid>
                     </Grid>
-                </TabItem>
-                <TabItem Header="Make New Reservation" Width="150" Style="{DynamicResource TabItemStyle}">
-                    
                 </TabItem>
             </TabControl>
         </Border>

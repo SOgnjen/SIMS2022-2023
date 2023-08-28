@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Windows;
 
 namespace HotelManagement.Repository
 {
@@ -57,9 +58,22 @@ namespace HotelManagement.Repository
         }
 
 
-        public Apartment UpdateApartment(Apartment apartment)
+        public void CreateApartment(Apartment apartment)
         {
-            throw new NotImplementedException();
+            apartments.Add(apartment);
+            WriteToJson();
+
+            Hotel hotel = hotelRepository.GetByCode(apartment.HotelCode);
+
+            if (hotel != null)
+            {
+                hotel.Apartments[apartment.Name] = apartment;
+                hotelRepository.WriteToJson();
+            }
+            else
+            {
+                MessageBox.Show("Hotel not found for the given apartment.");
+            }
         }
 
     }

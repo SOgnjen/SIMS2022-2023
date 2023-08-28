@@ -6,7 +6,7 @@
     "Name": "John",
     "Surname": "Doe",
     "Phone": "123-456-7890",
-    "Type": "Administrator",
+    "Type": 0,
     "Blocked": false
   },
   {
@@ -16,7 +16,7 @@
     "Name": "Jane",
     "Surname": "Smith",
     "Phone": "987-654-3210",
-    "Type": "Guest",
+    "Type": 1,
     "Blocked": false
   },
   {
@@ -26,7 +26,7 @@
     "Name": "Michael",
     "Surname": "Johnson",
     "Phone": "555-555-5555",
-    "Type": "Guest",
+    "Type": 1,
     "Blocked": true
   },
   {
@@ -36,7 +36,7 @@
     "Name": "Emily",
     "Surname": "Brown",
     "Phone": "777-777-7777",
-    "Type": "Owner",
+    "Type": 2,
     "Blocked": false
   },
   {
@@ -46,7 +46,7 @@
     "Name": "David",
     "Surname": "Wilson",
     "Phone": "222-333-4444",
-    "Type": "Guest",
+    "Type": 1,
     "Blocked": false
   },
   {
@@ -56,7 +56,7 @@
     "Name": "Olivia",
     "Surname": "Taylor",
     "Phone": "888-888-8888",
-    "Type": "Administrator",
+    "Type": 0,
     "Blocked": false
   }
 ]

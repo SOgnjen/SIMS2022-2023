@@ -9,20 +9,22 @@
         "Name": "Deluxe Suite",
         "Description": "Spacious suite with ocean view",
         "Rooms": 2,
-        "MaxGuests": 4
+        "MaxGuests": 4,
+        "HotelCode": null
       },
       "A102": {
         "ApartmentNumber": "A102",
         "Name": "Family Suite",
         "Description": "Perfect for families with children",
         "Rooms": 3,
-        "MaxGuests": 6
+        "MaxGuests": 6,
+        "HotelCode": null
       }
     },
     "Stars": 5,
     "OwnersJmbg": "1234567890123",
     "Accepted": true,
-    "Status": "Accepted"
+    "Status": 1
   },
   {
     "Code": "H002",
@@ -34,20 +36,22 @@
         "Name": "Standard Room",
         "Description": "Comfortable room with essential amenities",
         "Rooms": 1,
-        "MaxGuests": 2
+        "MaxGuests": 2,
+        "HotelCode": null
       },
       "A202": {
         "ApartmentNumber": "A202",
         "Name": "Premium Suite",
         "Description": "Elegant suite with a balcony",
         "Rooms": 2,
-        "MaxGuests": 3
+        "MaxGuests": 3,
+        "HotelCode": null
       }
     },
     "Stars": 3,
     "OwnersJmbg": "2345678901234",
     "Accepted": true,
-    "Status": "Accepted"
+    "Status": 1
   },
   {
     "Code": "H003",
@@ -59,20 +63,22 @@
         "Name": "Sea View Suite",
         "Description": "Breathtaking view of the sea",
         "Rooms": 2,
-        "MaxGuests": 4
+        "MaxGuests": 4,
+        "HotelCode": null
       },
       "A302": {
         "ApartmentNumber": "A302",
         "Name": "Garden Retreat",
         "Description": "Quiet apartment surrounded by nature",
         "Rooms": 1,
-        "MaxGuests": 2
+        "MaxGuests": 2,
+        "HotelCode": null
       }
     },
     "Stars": 4,
     "OwnersJmbg": "3456789012345",
     "Accepted": false,
-    "Status": "Waiting"
+    "Status": 0
   },
   {
     "Code": "H004",
@@ -84,20 +90,22 @@
         "Name": "Rustic Cabin",
         "Description": "Cozy cabin in the woods",
         "Rooms": 1,
-        "MaxGuests": 2
+        "MaxGuests": 2,
+        "HotelCode": null
       },
       "A402": {
         "ApartmentNumber": "A402",
         "Name": "Mountain View Suite",
         "Description": "Panoramic view of the mountains",
         "Rooms": 2,
-        "MaxGuests": 4
+        "MaxGuests": 4,
+        "HotelCode": null
       }
     },
     "Stars": 2,
     "OwnersJmbg": "4567890123456",
     "Accepted": true,
-    "Status": "Accepted"
+    "Status": 1
   },
   {
     "Code": "H005",
@@ -109,20 +117,22 @@
         "Name": "Urban Loft",
         "Description": "Modern loft in the heart of the city",
         "Rooms": 1,
-        "MaxGuests": 3
+        "MaxGuests": 3,
+        "HotelCode": null
       },
       "A502": {
         "ApartmentNumber": "A502",
         "Name": "Cityscape Suite",
         "Description": "Stunning view of the city skyline",
         "Rooms": 2,
-        "MaxGuests": 4
+        "MaxGuests": 4,
+        "HotelCode": null
       }
     },
     "Stars": 3,
     "OwnersJmbg": "5678901234567",
     "Accepted": true,
-    "Status": "Accepted"
+    "Status": 1
   },
   {
     "Code": "H006",
@@ -134,19 +144,60 @@
         "Name": "Riverfront Studio",
         "Description": "Studio apartment by the river",
         "Rooms": 1,
-        "MaxGuests": 2
+        "MaxGuests": 2,
+        "HotelCode": null
       },
       "A602": {
         "ApartmentNumber": "A602",
         "Name": "Nature Retreat",
         "Description": "Escape to the beauty of nature",
         "Rooms": 1,
-        "MaxGuests": 2
+        "MaxGuests": 2,
+        "HotelCode": null
       }
     },
     "Stars": 4,
     "OwnersJmbg": "6789012345678",
     "Accepted": false,
-    "Status": "Declined"
+    "Status": 2
+  },
+  {
+    "Code": "H007",
+    "Name": "To Accept",
+    "BuiltIn": 1999,
+    "Apartments": {
+      "new apartment": {
+        "ApartmentNumber": "new apartment",
+        "Name": "new apartment",
+        "Description": "new apartment",
+        "Rooms": 1,
+        "MaxGuests": 1,
+        "HotelCode": "H007"
+      }
+    },
+    "Stars": 5,
+    "OwnersJmbg": "4567890123456",
+    "Accepted": true,
+    "Status": 1
+  },
+  {
+    "Code": "H011",
+    "Name": "Refres Decline1",
+    "BuiltIn": 1999,
+    "Apartments": {},
+    "Stars": 2,
+    "OwnersJmbg": "4567890123456",
+    "Accepted": false,
+    "Status": 2
+  },
+  {
+    "Code": "H008",
+    "Name": "Decline Works?",
+    "BuiltIn": 1999,
+    "Apartments": {},
+    "Stars": 3,
+    "OwnersJmbg": "4567890123456",
+    "Accepted": false,
+    "Status": 2
   }
 ]

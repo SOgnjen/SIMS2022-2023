@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace HotelManagement.Repository
 {
@@ -44,24 +45,10 @@ namespace HotelManagement.Repository
             return reservations;
         }
 
-        public List<Reservation> WaitingReservations()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Reservation> AcceptedReservations()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Reservation> DeclinedReservations()
-        {
-            throw new NotImplementedException();
-        }
 
         public Reservation GetById(int id)
         {
-            throw new NotImplementedException();
+            return reservations.Find(reservation => reservation.Id == id);
         }
 
         public void AddReservation(Reservation reservation)
@@ -70,9 +57,58 @@ namespace HotelManagement.Repository
             WriteToJson();
         }
 
-        public Reservation UpdateReservation(Reservation reservation)
+        public void CancelReservation(int reservationId, string cancellationReason)
         {
-            throw new NotImplementedException();
+            Reservation reservation = reservations.FirstOrDefault(r => r.Id == reservationId);
+
+            if (reservation != null)
+            {
+                if (reservation.Status == ReservationStatus.Waiting || reservation.Status == ReservationStatus.Accepted)
+                {
+                    reservation.Status = ReservationStatus.Cancelled;
+                    reservation.DeclinedBecause = cancellationReason;
+                    WriteToJson();
+                }
+            }
+        }
+
+        public bool AcceptReservation(int reservationId)
+        {
+            Reservation reservation = GetById(reservationId);
+
+            if (reservation != null)
+            {
+                if (reservation.Status != ReservationStatus.Waiting)
+                {
+                    return false;
+                }
+
+                reservation.Status = ReservationStatus.Accepted;
+                WriteToJson();
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool DeclineReservation(int reservationId, string declinedBecause)
+        {
+            Reservation reservation = GetById(reservationId);
+
+            if (reservation != null)
+            {
+                if (reservation.Status != ReservationStatus.Waiting)
+                {
+                    return false;
+                }
+
+                reservation.Status = ReservationStatus.Declined;
+                reservation.DeclinedBecause = declinedBecause;
+                WriteToJson();
+                return true;
+            }
+
+            return false;
         }
 
     }

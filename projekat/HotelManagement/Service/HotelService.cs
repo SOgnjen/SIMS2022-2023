@@ -16,26 +16,11 @@ namespace HotelManagement.Service
             this.hotelRepository = hotelRepository;
         }
 
-        public Hotel Accept(string code)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Hotel Decline(string code)
-        {
-            throw new NotImplementedException();
-        }
-
         public void AddHotel(string code, string name, int builtIn, Dictionary<string, Apartment> appartments, int stars, string ownersJmbg, bool accepted, HotelStatus status)
         {
             Hotel newHotel = new Hotel(code, name, builtIn, appartments, stars, ownersJmbg, accepted, status);
 
             hotelRepository.AddHotel(newHotel);
-        }
-
-        public bool IsCodeValid(string code)
-        {
-            throw new NotImplementedException();
         }
 
         public List<Hotel> GetAll()
@@ -51,6 +36,16 @@ namespace HotelManagement.Service
         public List<Hotel> GetByOwnersJmbg(string ownersJmbg)
         {
             return hotelRepository.GetByOwnersJmbg(ownersJmbg);
+        }
+
+        public bool AcceptHotel(string hotelCode)
+        {
+            return hotelRepository.AcceptHotel(hotelCode);
+        }
+
+        public bool DeclineHotel(string hotelCode)
+        {
+            return hotelRepository.DeclineHotel(hotelCode);
         }
 
 

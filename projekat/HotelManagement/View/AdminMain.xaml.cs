@@ -24,26 +24,26 @@ namespace HotelManagement.View
     {
         App app = (App)Application.Current;
 
-        List<Hotel> acceptedHotels;
+        List<Hotel> AcceptedHotels;
 
-        List<User> allUsers;
+        List<User> AllUsers;
 
         bool flag = false;
 
         public AdminMain()
         {
             InitializeComponent();
-            acceptedHotels = app.hotelController.GetByAccepted(true);
+            AcceptedHotels = app.hotelController.GetByAccepted(true);
 
             DataContext = this;
 
             hotelDataGrid.ItemsSource = null;
-            hotelDataGrid.ItemsSource = acceptedHotels;
+            hotelDataGrid.ItemsSource = AcceptedHotels;
 
-            allUsers = app.userController.GetAll();
+            AllUsers = app.userController.GetAll();
 
             userDataGrid.ItemsSource = null;
-            userDataGrid.ItemsSource = allUsers;
+            userDataGrid.ItemsSource = AllUsers;
         }
 
         private void SearchHotelsByCode(object sender, RoutedEventArgs e)
@@ -54,7 +54,7 @@ namespace HotelManagement.View
             }
 
             List<Hotel> acceptedHotelsByCode = new List<Hotel>();
-            foreach (var h in acceptedHotels)
+            foreach (var h in AcceptedHotels)
             {
                 if (h.Code.ToLower().Contains(searchByCode.Text.ToLower()))
                 {
@@ -72,7 +72,7 @@ namespace HotelManagement.View
             }
 
             List<Hotel> AcceptedHotelsByName = new List<Hotel>();
-            foreach (var h in acceptedHotels)
+            foreach (var h in AcceptedHotels)
             {
                 if (h.Name.ToLower().Contains(searchByName.Text.ToLower()))
                 {
@@ -90,7 +90,7 @@ namespace HotelManagement.View
             }
 
             List<Hotel> acceptedHotelsByBuiltIn = new List<Hotel>();
-            foreach (var h in acceptedHotels)
+            foreach (var h in AcceptedHotels)
             {
                 try
                 {
@@ -115,7 +115,7 @@ namespace HotelManagement.View
             }
 
             List<Hotel> acceptedHotelsByStars = new List<Hotel>();
-            foreach (var h in acceptedHotels)
+            foreach (var h in AcceptedHotels)
             {
                 try
                 {
@@ -149,7 +149,7 @@ namespace HotelManagement.View
                 return;
             }
 
-            foreach (var hotel in acceptedHotels)
+            foreach (var hotel in AcceptedHotels)
             {
                 foreach (var apartment in hotel.Apartments.Values)
                 {
@@ -181,7 +181,7 @@ namespace HotelManagement.View
                 return;
             }
 
-            foreach (var hotel in acceptedHotels)
+            foreach (var hotel in AcceptedHotels)
             {
                 foreach (var apartment in hotel.Apartments.Values)
                 {
@@ -228,7 +228,7 @@ namespace HotelManagement.View
                     return;
                 }
 
-                foreach (var hotel in acceptedHotels)
+                foreach (var hotel in AcceptedHotels)
                 {
                     foreach (var apartment in hotel.Apartments.Values)
                     {
@@ -236,7 +236,7 @@ namespace HotelManagement.View
                             apartment.MaxGuests == maxGuestsCondition)
                         {
                             hotelsWithMatchingApartments.Add(hotel);
-                            break; // Break once we find a matching apartment in this hotel
+                            break;
                         }
                     }
                 }
@@ -258,7 +258,7 @@ namespace HotelManagement.View
                     return;
                 }
 
-                foreach (var hotel in acceptedHotels)
+                foreach (var hotel in AcceptedHotels)
                 {
                     foreach (var apartment in hotel.Apartments.Values)
                     {
@@ -266,7 +266,7 @@ namespace HotelManagement.View
                             apartment.MaxGuests == maxGuestsAndCondition)
                         {
                             hotelsWithMatchingApartments.Add(hotel);
-                            break; // Break once we find a matching apartment in this hotel
+                            break;
                         }
                     }
                 }
@@ -292,7 +292,7 @@ namespace HotelManagement.View
 
             UserType selectedType = (UserType)Enum.Parse(typeof(UserType), selectedTypeItem.Tag.ToString());
 
-            List<User> filteredUsers = allUsers.Where(user => user.Type == selectedType).ToList();
+            List<User> filteredUsers = AllUsers.Where(user => user.Type == selectedType).ToList();
 
             userDataGrid.ItemsSource = filteredUsers;
         }
@@ -304,40 +304,18 @@ namespace HotelManagement.View
 
             if (user != null)
             {
-                if (user.Blocked == false)
+                if (user.Type != UserType.Administrator)
                 {
-                    user.Blocked = true;
-
-                    List<User> users = LoadUsersFromJsonFile();
-
-                    User existingUser = users.Find(u => u.Jmbg == user.Jmbg);
-                    if (existingUser != null)
-                    {
-                        existingUser.Blocked = user.Blocked;
-
-                        SaveUsersToJsonFile(users);
-
-                        userDataGrid.Items.Refresh();
-                    }
+                    app.userController.BlockUser(user);
+                    userDataGrid.Items.Refresh();
                 }
                 else
                 {
-                    user.Blocked = false;
-
-                    List<User> users = LoadUsersFromJsonFile();
-
-                    User existingUser = users.Find(u => u.Jmbg == user.Jmbg);
-                    if (existingUser != null)
-                    {
-                        existingUser.Blocked = user.Blocked;
-
-                        SaveUsersToJsonFile(users);
-
-                        userDataGrid.Items.Refresh();
-                    }
+                    MessageBox.Show("Cannot block an administrator user.", "Invalid Action", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
         }
+
 
         private List<User> LoadUsersFromJsonFile()
         {
@@ -373,27 +351,46 @@ namespace HotelManagement.View
 
             ComboBoxItem selectedComboBoxItem = userTypeBox.SelectedItem as ComboBoxItem;
 
-            if (selectedComboBoxItem != null)
+            if (string.IsNullOrWhiteSpace(jmbg) || string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password) ||
+                string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(surname) || string.IsNullOrWhiteSpace(phone))
             {
-                UserType type = (UserType)Enum.Parse(typeof(UserType), selectedComboBoxItem.Tag.ToString());
+                MessageBox.Show("All fields are required.", "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
 
-                foreach (var user in allUsers)
+            if (!IsValidEmail(email))
+            {
+                MessageBox.Show("Invalid email format.", "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            UserType type = (UserType)Enum.Parse(typeof(UserType), selectedComboBoxItem.Tag.ToString());
+
+            foreach (var user in AllUsers)
+            {
+                if (jmbg == user.Jmbg || email == user.Email)
                 {
-                    if (jmbg == user.Jmbg || email == user.Email)
-                    {
-                        MessageBox.Show("User with this email or jmbg already exists!");
-                        flag = true;
-                        break;
-                    }
+                    MessageBox.Show("User with this email or JMBG already exists!");
+                    return;
                 }
+            }
 
-                if (!flag)
-                {
-                    app.userController.AddUser(jmbg, email, password, name, surname, phone, type, false);
-                    MessageBox.Show("User created");
+            app.userController.AddUser(jmbg, email, password, name, surname, phone, type, false);
+            MessageBox.Show("User created");
 
-                    userDataGrid.Items.Refresh();
-                }
+            userDataGrid.Items.Refresh();
+        }
+
+        private bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
             }
         }
 
@@ -401,13 +398,25 @@ namespace HotelManagement.View
         {
             string code = codeBox.Text;
             string name = hotelNameBox.Text;
-            int builtIn = int.Parse(builtInBox.Text);
-            int stars = int.Parse(starsBox.Text);
+            string builtInText = builtInBox.Text;
+            string starsText = starsBox.Text;
             string ownersJmbg = ownersJmbgBox.Text;
+
+            if (!int.TryParse(builtInText, out int builtIn))
+            {
+                MessageBox.Show("Built In must be a valid number.");
+                return;
+            }
+
+            if (!int.TryParse(starsText, out int stars))
+            {
+                MessageBox.Show("Stars must be a valid number.");
+                return;
+            }
 
             flag = false;
 
-            foreach (var hotel in acceptedHotels)
+            foreach (var hotel in AcceptedHotels)
             {
                 if (code == hotel.Code)
                 {

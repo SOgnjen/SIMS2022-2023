@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
+using System.Windows;
 using System.Xml.Linq;
 
 namespace HotelManagement.Repository
@@ -50,26 +51,6 @@ namespace HotelManagement.Repository
             return users;
         }
 
-        public List<User> SortByName()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<User> SortBySurname()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<User> GuestUser()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<User> OwnerUser()
-        {
-            throw new NotImplementedException();
-        }
-
         public User GetByJmbg(string jmbg)
         {
             return users.FirstOrDefault(user => user.Jmbg == jmbg);
@@ -80,8 +61,6 @@ namespace HotelManagement.Repository
             return users.FirstOrDefault(user => user.Email == email);
         }
 
-
-        
         public List<Reservation> GetAllReservationsOfOwner(string ownersJmbg)
         {
             List<Reservation> ownerReservations = new List<Reservation>();
@@ -113,10 +92,22 @@ namespace HotelManagement.Repository
             WriteToJson();
         }
 
-        public User UpdateUser(User user)
+        public void BlockUser(User user)
         {
-            throw new NotImplementedException();
+            if (user.Type == UserType.Administrator)
+            {
+                MessageBox.Show("Cannot block an administrator user.", "Invalid Action", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            User existingUser = users.Find(u => u.Jmbg == user.Jmbg);
+            if (existingUser != null)
+            {
+                existingUser.Blocked = !existingUser.Blocked;
+                WriteToJson();
+            }
         }
+
 
     }
 }

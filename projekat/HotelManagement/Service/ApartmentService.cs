@@ -18,13 +18,9 @@ namespace HotelManagement.Service
         public void CreateApartment(string apartmentNumber, string name, string description, int rooms, int maxGuests, string hotelCode)
         {
             Apartment newApartment = new Apartment(apartmentNumber, name, description, rooms, maxGuests, hotelCode);
-            apartmentRespository.AddApartment(newApartment);
+            apartmentRespository.CreateApartment(newApartment);
         }
 
-        public bool IsNameValid(string name)
-        {
-            throw new NotImplementedException();
-        }
 
         public List<Apartment> GetAll()
         {

@@ -16,20 +16,6 @@ namespace HotelManagement.Service
             this.userRepository = userRepository;
         }
 
-        public User Login(string email, string password)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool IsJmbgValid(string jmbg)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool IsEmailValid(string email)
-        {
-            throw new NotImplementedException();
-        }
 
         public void AddUser(string jmbg, string email, string password, string name, string surname, string phone, UserType type, bool blocked)
         {
@@ -38,15 +24,6 @@ namespace HotelManagement.Service
             userRepository.AddUser(newUser);
         }
 
-        public User Block(string email)
-        {
-            throw new NotImplementedException();
-        }
-
-        public User Unblock(string email)
-        {
-            throw new NotImplementedException();
-        }
 
         public User GetByEmail(string email)
         {
@@ -61,6 +38,11 @@ namespace HotelManagement.Service
         public List<Reservation> GetAllReservationsOfOwner(string ownersJmbg)
         {
             return userRepository.GetAllReservationsOfOwner(ownersJmbg);
+        }
+
+        public void BlockUser(User user)
+        {
+            userRepository.BlockUser(user);
         }
 
 
