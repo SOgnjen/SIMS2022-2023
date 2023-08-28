@@ -15,10 +15,10 @@ namespace HotelManagement.Service
             this.apartmentRespository = apartmentRespository;
         }
 
-        public void CreateApartment(string hotelCode, string apartmentNumber, string name, string description, int rooms, int maxGuests, List<Reservation> reservations)
+        public void CreateApartment(string apartmentNumber, string name, string description, int rooms, int maxGuests, string hotelCode)
         {
-            Apartment newApartment = new Apartment(apartmentNumber, name, description, rooms, maxGuests, reservations);
-            apartmentRespository.CreateApartment(hotelCode, newApartment);
+            Apartment newApartment = new Apartment(apartmentNumber, name, description, rooms, maxGuests, hotelCode);
+            apartmentRespository.AddApartment(newApartment);
         }
 
         public bool IsNameValid(string name)

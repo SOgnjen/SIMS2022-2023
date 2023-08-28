@@ -440,9 +440,7 @@ namespace HotelManagement.View
                 return;
             }
 
-            List<Reservation> reservations = new List<Reservation>();
-
-            app.apartmentController.CreateApartment(hotelCode, apartmentNumber, name, description, rooms, maxGuests, reservations);
+            app.apartmentController.CreateApartment(apartmentNumber, name, description, rooms, maxGuests, hotelCode);
 
             RefreshAcceptedHotels();
             RefreshOwnersHotels(loggedUser);

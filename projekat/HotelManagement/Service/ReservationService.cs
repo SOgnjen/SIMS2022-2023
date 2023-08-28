@@ -31,9 +31,9 @@ namespace HotelManagement.Service
             throw new NotImplementedException();
         }
 
-        public void AddReservation(int id, DateTime date, ReservationStatus status, string declinedBecause)
+        public void AddReservation(int id, DateTime date, ReservationStatus status, string declinedBecause, string ownerJmbg, string apartmentName)
         {
-            Reservation newReservation = new Reservation(id, date, status, declinedBecause);
+            Reservation newReservation = new Reservation(id, date, status, declinedBecause, ownerJmbg, apartmentName);
             reservationRepository.AddReservation(newReservation);
         }
 

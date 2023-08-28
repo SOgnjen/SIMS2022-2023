@@ -1,175 +1,152 @@
 [
   {
     "Code": "H001",
-    "Name": "Grand Hotel",
-    "BuiltIn": 1990,
+    "Name": "Luxury Resort",
+    "BuiltIn": 2005,
     "Apartments": {
-      "A001": {
-        "ApartmentNumber": null,
-        "Name": "Luxury Suite",
-        "Description": "Spacious suite with a view",
+      "A101": {
+        "ApartmentNumber": "A101",
+        "Name": "Deluxe Suite",
+        "Description": "Spacious suite with ocean view",
+        "Rooms": 2,
+        "MaxGuests": 4
+      },
+      "A102": {
+        "ApartmentNumber": "A102",
+        "Name": "Family Suite",
+        "Description": "Perfect for families with children",
         "Rooms": 3,
-        "MaxGuests": 6,
-        "Reservations": [
-          {
-            "Id": 1,
-            "Date": "2023-08-25",
-            "Status": 0,
-            "DeclinedBecause": ""
-          },
-          {
-            "Id": 5,
-            "Date": "2023-10-15",
-            "Status": 0,
-            "DeclinedBecause": ""
-          },
-          {
-            "Id": 8,
-            "Date": "2023-11-15",
-            "Status": 0,
-            "DeclinedBecause": ""
-          }
-        ]
-      },
-      "A002": {
-        "ApartmentNumber": null,
-        "Name": "Standard Room",
-        "Description": "Comfortable standard room",
-        "Rooms": 1,
-        "MaxGuests": 2,
-        "Reservations": [
-          {
-            "Id": 2,
-            "Date": "2023-09-10",
-            "Status": 1,
-            "DeclinedBecause": ""
-          }
-        ]
-      },
-      "lt": {
-        "ApartmentNumber": "lt",
-        "Name": "lt",
-        "Description": "last time try",
-        "Rooms": 123,
-        "MaxGuests": 123,
-        "Reservations": []
+        "MaxGuests": 6
       }
     },
     "Stars": 5,
-    "OwnersJmbg": "5555555555555",
+    "OwnersJmbg": "1234567890123",
     "Accepted": true,
-    "Status": 1
+    "Status": "Accepted"
   },
   {
     "Code": "H002",
-    "Name": "Seaside Resort",
-    "BuiltIn": 2005,
+    "Name": "Cozy Inn",
+    "BuiltIn": 1998,
     "Apartments": {
-      "A003": {
-        "ApartmentNumber": null,
-        "Name": "Ocean View Suite",
-        "Description": "Suite with a stunning ocean view",
-        "Rooms": 2,
-        "MaxGuests": 4,
-        "Reservations": [
-          {
-            "Id": 3,
-            "Date": "2023-08-28",
-            "Status": 2,
-            "DeclinedBecause": "Apartment already booked"
-          }
-        ]
+      "A201": {
+        "ApartmentNumber": "A201",
+        "Name": "Standard Room",
+        "Description": "Comfortable room with essential amenities",
+        "Rooms": 1,
+        "MaxGuests": 2
       },
-      "A004": {
-        "ApartmentNumber": null,
-        "Name": "Family Room",
-        "Description": "Spacious room for families",
+      "A202": {
+        "ApartmentNumber": "A202",
+        "Name": "Premium Suite",
+        "Description": "Elegant suite with a balcony",
         "Rooms": 2,
-        "MaxGuests": 4,
-        "Reservations": []
+        "MaxGuests": 3
       }
     },
-    "Stars": 4,
-    "OwnersJmbg": "5555555555555",
-    "Accepted": false,
-    "Status": 0
+    "Stars": 3,
+    "OwnersJmbg": "2345678901234",
+    "Accepted": true,
+    "Status": "Accepted"
   },
   {
     "Code": "H003",
-    "Name": "Mountain Lodge",
-    "BuiltIn": 1985,
-    "Apartments": {},
-    "Stars": 3,
-    "OwnersJmbg": "111111111",
-    "Accepted": false,
-    "Status": 0
-  },
-  {
-    "Code": "H004",
-    "Name": "Urban Oasis",
-    "BuiltIn": 2012,
+    "Name": "Seaside Hotel",
+    "BuiltIn": 2010,
     "Apartments": {
-      "A005": {
-        "ApartmentNumber": null,
-        "Name": "City View Suite",
-        "Description": "Suite with a city view",
+      "A301": {
+        "ApartmentNumber": "A301",
+        "Name": "Sea View Suite",
+        "Description": "Breathtaking view of the sea",
         "Rooms": 2,
-        "MaxGuests": 4,
-        "Reservations": []
+        "MaxGuests": 4
+      },
+      "A302": {
+        "ApartmentNumber": "A302",
+        "Name": "Garden Retreat",
+        "Description": "Quiet apartment surrounded by nature",
+        "Rooms": 1,
+        "MaxGuests": 2
       }
     },
     "Stars": 4,
-    "OwnersJmbg": "9876543210987",
+    "OwnersJmbg": "3456789012345",
+    "Accepted": false,
+    "Status": "Waiting"
+  },
+  {
+    "Code": "H004",
+    "Name": "Mountain Lodge",
+    "BuiltIn": 1985,
+    "Apartments": {
+      "A401": {
+        "ApartmentNumber": "A401",
+        "Name": "Rustic Cabin",
+        "Description": "Cozy cabin in the woods",
+        "Rooms": 1,
+        "MaxGuests": 2
+      },
+      "A402": {
+        "ApartmentNumber": "A402",
+        "Name": "Mountain View Suite",
+        "Description": "Panoramic view of the mountains",
+        "Rooms": 2,
+        "MaxGuests": 4
+      }
+    },
+    "Stars": 2,
+    "OwnersJmbg": "4567890123456",
     "Accepted": true,
-    "Status": 1
+    "Status": "Accepted"
   },
   {
     "Code": "H005",
-    "Name": "Riverside Lodge",
-    "BuiltIn": 1998,
+    "Name": "City View Hotel",
+    "BuiltIn": 2000,
     "Apartments": {
-      "A006": {
-        "ApartmentNumber": null,
-        "Name": "Riverside Cabin",
-        "Description": "Cozy cabin by the river",
+      "A501": {
+        "ApartmentNumber": "A501",
+        "Name": "Urban Loft",
+        "Description": "Modern loft in the heart of the city",
         "Rooms": 1,
-        "MaxGuests": 2,
-        "Reservations": []
+        "MaxGuests": 3
+      },
+      "A502": {
+        "ApartmentNumber": "A502",
+        "Name": "Cityscape Suite",
+        "Description": "Stunning view of the city skyline",
+        "Rooms": 2,
+        "MaxGuests": 4
       }
     },
     "Stars": 3,
-    "OwnersJmbg": "111111111111",
+    "OwnersJmbg": "5678901234567",
     "Accepted": true,
-    "Status": 1
+    "Status": "Accepted"
   },
   {
-    "Code": "",
-    "Name": "asd",
-    "BuiltIn": 12,
-    "Apartments": {},
-    "Stars": 5,
-    "OwnersJmbg": "12",
+    "Code": "H006",
+    "Name": "Riverside Retreat",
+    "BuiltIn": 2015,
+    "Apartments": {
+      "A601": {
+        "ApartmentNumber": "A601",
+        "Name": "Riverfront Studio",
+        "Description": "Studio apartment by the river",
+        "Rooms": 1,
+        "MaxGuests": 2
+      },
+      "A602": {
+        "ApartmentNumber": "A602",
+        "Name": "Nature Retreat",
+        "Description": "Escape to the beauty of nature",
+        "Rooms": 1,
+        "MaxGuests": 2
+      }
+    },
+    "Stars": 4,
+    "OwnersJmbg": "6789012345678",
     "Accepted": false,
-    "Status": 0
-  },
-  {
-    "Code": "H111",
-    "Name": "Vojvodina",
-    "BuiltIn": 1999,
-    "Apartments": {},
-    "Stars": 5,
-    "OwnersJmbg": "123",
-    "Accepted": false,
-    "Status": 0
-  },
-  {
-    "Code": "H0011",
-    "Name": "Vojvodina",
-    "BuiltIn": 1999,
-    "Apartments": {},
-    "Stars": 5,
-    "OwnersJmbg": "123",
-    "Accepted": false,
-    "Status": 0
+    "Status": "Declined"
   }
 ]

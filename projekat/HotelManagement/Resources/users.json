@@ -1,285 +1,62 @@
 [
   {
     "Jmbg": "1234567890123",
-    "Email": "admin@example.com",
-    "Password": "admin123",
-    "Name": "Admin",
-    "Surname": "Smith",
+    "Email": "user1@example.com",
+    "Password": "user1password",
+    "Name": "John",
+    "Surname": "Doe",
     "Phone": "123-456-7890",
-    "Type": 0,
-    "Blocked": false,
-    "Hotels": [],
-    "Reservations": [
-      {
-        "Id": 1,
-        "Date": "2023-08-25",
-        "Status": 0,
-        "DeclinedBecause": ""
-      },
-      {
-        "Id": 5,
-        "Date": "2023-10-15",
-        "Status": 0,
-        "DeclinedBecause": ""
-      },
-      {
-        "Id": 8,
-        "Date": "2023-11-15",
-        "Status": 0,
-        "DeclinedBecause": ""
-      }
-    ]
+    "Type": "Administrator",
+    "Blocked": false
   },
   {
-    "Jmbg": "9876543210987",
-    "Email": "guest@example.com",
-    "Password": "guest123",
-    "Name": "Guest",
-    "Surname": "Johnson",
+    "Jmbg": "2345678901234",
+    "Email": "user2@example.com",
+    "Password": "user2password",
+    "Name": "Jane",
+    "Surname": "Smith",
     "Phone": "987-654-3210",
-    "Type": 1,
-    "Blocked": false,
-    "Hotels": [],
-    "Reservations": [
-      {
-        "Id": 2,
-        "Date": "2023-09-10",
-        "Status": 1,
-        "DeclinedBecause": ""
-      },
-      {
-        "Id": 4,
-        "Date": "2023-09-05",
-        "Status": 3,
-        "DeclinedBecause": ""
-      },
-      {
-        "Id": 6,
-        "Date": "2023-10-20",
-        "Status": 1,
-        "DeclinedBecause": ""
-      },
-      {
-        "Id": 10,
-        "Date": "2023-12-20",
-        "Status": 1,
-        "DeclinedBecause": ""
-      }
-    ]
+    "Type": "Guest",
+    "Blocked": false
   },
   {
-    "Jmbg": "5555555555555",
-    "Email": "owner@example.com",
-    "Password": "owner123",
-    "Name": "Owner",
-    "Surname": "Williams",
+    "Jmbg": "3456789012345",
+    "Email": "user3@example.com",
+    "Password": "user3password",
+    "Name": "Michael",
+    "Surname": "Johnson",
     "Phone": "555-555-5555",
-    "Type": 2,
-    "Blocked": false,
-    "Hotels": [
-      {
-        "Code": "H001",
-        "Name": "Grand Hotel",
-        "BuiltIn": 1990,
-        "Apartments": {
-          "A001": {
-            "ApartmentNumber": null,
-            "Name": "Luxury Suite",
-            "Description": "Spacious suite with a view",
-            "Rooms": 3,
-            "MaxGuests": 6,
-            "Reservations": [
-              {
-                "Id": 1,
-                "Date": "2023-08-25",
-                "Status": 0,
-                "DeclinedBecause": ""
-              }
-            ]
-          },
-          "A002": {
-            "ApartmentNumber": null,
-            "Name": "Standard Room",
-            "Description": "Comfortable standard room",
-            "Rooms": 1,
-            "MaxGuests": 2,
-            "Reservations": []
-          }
-        },
-        "Stars": 5,
-        "OwnersJmbg": "5555555555555",
-        "Accepted": true,
-        "Status": 1
-      },
-      {
-        "Code": "H002",
-        "Name": "Seaside Resort",
-        "BuiltIn": 2005,
-        "Apartments": {
-          "A003": {
-            "ApartmentNumber": null,
-            "Name": "Ocean View Suite",
-            "Description": "Suite with a stunning ocean view",
-            "Rooms": 2,
-            "MaxGuests": 4,
-            "Reservations": [
-              {
-                "Id": 3,
-                "Date": "2023-08-28",
-                "Status": 2,
-                "DeclinedBecause": "Apartment already booked"
-              }
-            ]
-          },
-          "A004": {
-            "ApartmentNumber": null,
-            "Name": "Family Room",
-            "Description": "Spacious room for families",
-            "Rooms": 2,
-            "MaxGuests": 4,
-            "Reservations": [
-              {
-                "Id": 9,
-                "Date": "2023-12-02",
-                "Status": 2,
-                "DeclinedBecause": "Unavailable apartment"
-              }
-            ]
-          }
-        },
-        "Stars": 4,
-        "OwnersJmbg": "5555555555555",
-        "Accepted": true,
-        "Status": 1
-      }
-    ],
-    "Reservations": []
+    "Type": "Guest",
+    "Blocked": true
   },
   {
-    "Jmbg": "2222222222222",
-    "Email": "user@example.com",
-    "Password": "user123",
-    "Name": "Regular",
-    "Surname": "User",
-    "Phone": "222-222-2222",
-    "Type": 1,
-    "Blocked": false,
-    "Hotels": [],
-    "Reservations": [
-      {
-        "Id": 7,
-        "Date": "2023-11-05",
-        "Status": 1,
-        "DeclinedBecause": ""
-      }
-    ]
+    "Jmbg": "4567890123456",
+    "Email": "user4@example.com",
+    "Password": "user4password",
+    "Name": "Emily",
+    "Surname": "Brown",
+    "Phone": "777-777-7777",
+    "Type": "Owner",
+    "Blocked": false
   },
   {
-    "Jmbg": "9999999999999",
-    "Email": "manager@example.com",
-    "Password": "manager123",
-    "Name": "Hotel",
-    "Surname": "Manager",
-    "Phone": "999-999-9999",
-    "Type": 0,
-    "Blocked": false,
-    "Hotels": [],
-    "Reservations": []
+    "Jmbg": "5678901234567",
+    "Email": "user5@example.com",
+    "Password": "user5password",
+    "Name": "David",
+    "Surname": "Wilson",
+    "Phone": "222-333-4444",
+    "Type": "Guest",
+    "Blocked": false
   },
   {
-    "Jmbg": "123321",
-    "Email": "srdicognjen@gmail.com",
-    "Password": "123321",
-    "Name": "Ognjen",
-    "Surname": "Srdic",
-    "Phone": "123321",
-    "Type": 1,
-    "Blocked": false,
-    "Hotels": [],
-    "Reservations": []
-  },
-  {
-    "Jmbg": "1233211",
-    "Email": "asd@asd.com",
-    "Password": "123321",
-    "Name": "asd",
-    "Surname": "asd",
-    "Phone": "asd",
-    "Type": 1,
-    "Blocked": false,
-    "Hotels": [],
-    "Reservations": []
-  },
-  {
-    "Jmbg": "1",
-    "Email": "1",
-    "Password": "1",
-    "Name": "1",
-    "Surname": "1",
-    "Phone": "1",
-    "Type": 1,
-    "Blocked": false,
-    "Hotels": [],
-    "Reservations": []
-  },
-  {
-    "Jmbg": "2",
-    "Email": "2",
-    "Password": "2",
-    "Name": "2",
-    "Surname": "2",
-    "Phone": "2",
-    "Type": 1,
-    "Blocked": false,
-    "Hotels": [],
-    "Reservations": []
-  },
-  {
-    "Jmbg": "3",
-    "Email": "3",
-    "Password": "3",
-    "Name": "3",
-    "Surname": "3",
-    "Phone": "3",
-    "Type": 1,
-    "Blocked": false,
-    "Hotels": [],
-    "Reservations": []
-  },
-  {
-    "Jmbg": "4",
-    "Email": "4",
-    "Password": "4",
-    "Name": "4",
-    "Surname": "4",
-    "Phone": "4",
-    "Type": 1,
-    "Blocked": false,
-    "Hotels": [],
-    "Reservations": []
-  },
-  {
-    "Jmbg": "8",
-    "Email": "8",
-    "Password": "8",
-    "Name": "8",
-    "Surname": "8",
-    "Phone": "8",
-    "Type": 2,
-    "Blocked": false,
-    "Hotels": [],
-    "Reservations": []
-  },
-  {
-    "Jmbg": "7",
-    "Email": "7",
-    "Password": "7",
-    "Name": "7",
-    "Surname": "7",
-    "Phone": "7",
-    "Type": 1,
-    "Blocked": false,
-    "Hotels": [],
-    "Reservations": []
+    "Jmbg": "6789012345678",
+    "Email": "user6@example.com",
+    "Password": "user6password",
+    "Name": "Olivia",
+    "Surname": "Taylor",
+    "Phone": "888-888-8888",
+    "Type": "Administrator",
+    "Blocked": false
   }
 ]

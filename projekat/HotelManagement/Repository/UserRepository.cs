@@ -15,6 +15,7 @@ namespace HotelManagement.Repository
         private List<User> users;
         private string fileLocation;
         private HotelRepository hotelRepository = new HotelRepository();
+        private ReservationRepository reservationRepository = new ReservationRepository();
 
         public UserRepository()
         {
@@ -79,6 +80,8 @@ namespace HotelManagement.Repository
             return users.FirstOrDefault(user => user.Email == email);
         }
 
+
+        
         public List<Reservation> GetAllReservationsOfOwner(string ownersJmbg)
         {
             List<Reservation> ownerReservations = new List<Reservation>();
@@ -87,19 +90,14 @@ namespace HotelManagement.Repository
 
             foreach (var hotel in ownerHotels)
             {
-                var hotelApartments = hotel.Apartments.Values;
-
-                foreach (var apartment in hotelApartments)
+                foreach (var apartment in hotel.Apartments.Values)
                 {
-                    if (apartment.Reservations != null)
+                    foreach (var reservation in reservationRepository.GetAll())
                     {
-                        foreach (var reservation in apartment.Reservations)
+                        if ((reservation.Status == ReservationStatus.Waiting || reservation.Status == ReservationStatus.Accepted)
+                            && reservation.ApartmentName == apartment.Name)
                         {
-                            if (reservation.Status == ReservationStatus.Waiting ||
-                                reservation.Status == ReservationStatus.Accepted)
-                            {
-                                ownerReservations.Add(reservation);
-                            }
+                            ownerReservations.Add(reservation);
                         }
                     }
                 }
@@ -107,6 +105,7 @@ namespace HotelManagement.Repository
 
             return ownerReservations;
         }
+
 
         public void AddUser(User user)
         {

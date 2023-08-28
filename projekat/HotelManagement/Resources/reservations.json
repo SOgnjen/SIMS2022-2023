@@ -1,62 +1,122 @@
 [
   {
     "Id": 1,
-    "Date": "2023-08-25",
+    "Date": "2023-08-27T10:00:00",
     "Status": 0,
-    "DeclinedBecause": ""
+    "DeclinedBecause": "",
+    "OwnersJmbg": "1234567890123",
+    "ApartmentName": "Deluxe Suite"
   },
   {
     "Id": 2,
-    "Date": "2023-09-10",
+    "Date": "2023-09-05T15:30:00",
     "Status": 1,
-    "DeclinedBecause": ""
+    "DeclinedBecause": "",
+    "OwnersJmbg": "2345678901234",
+    "ApartmentName": "Standard Room"
   },
   {
     "Id": 3,
-    "Date": "2023-08-28",
+    "Date": "2023-09-10T12:00:00",
     "Status": 2,
-    "DeclinedBecause": "Apartment already booked"
+    "DeclinedBecause": "Apartment already booked",
+    "OwnersJmbg": "3456789012345",
+    "ApartmentName": "Sea View Suite"
   },
   {
     "Id": 4,
-    "Date": "2023-09-05",
+    "Date": "2023-09-15T09:45:00",
     "Status": 3,
-    "DeclinedBecause": ""
+    "DeclinedBecause": "",
+    "OwnersJmbg": "4567890123456",
+    "ApartmentName": "Rustic Cabin"
   },
   {
     "Id": 5,
-    "Date": "2023-10-15",
+    "Date": "2023-09-20T18:00:00",
     "Status": 0,
-    "DeclinedBecause": ""
+    "DeclinedBecause": "",
+    "OwnersJmbg": "5678901234567",
+    "ApartmentName": "Urban Loft"
   },
   {
     "Id": 6,
-    "Date": "2023-10-20",
+    "Date": "2023-09-25T14:15:00",
     "Status": 1,
-    "DeclinedBecause": ""
+    "DeclinedBecause": "",
+    "OwnersJmbg": "6789012345678",
+    "ApartmentName": "Riverfront Studio"
   },
   {
     "Id": 7,
-    "Date": "2023-11-05",
-    "Status": 1,
-    "DeclinedBecause": ""
+    "Date": "2023-10-03T20:30:00",
+    "Status": 0,
+    "DeclinedBecause": "",
+    "OwnersJmbg": "1234567890123",
+    "ApartmentName": "Family Suite"
   },
   {
     "Id": 8,
-    "Date": "2023-11-15",
-    "Status": 0,
-    "DeclinedBecause": ""
+    "Date": "2023-10-10T11:45:00",
+    "Status": 2,
+    "DeclinedBecause": "Unavailable during requested dates",
+    "OwnersJmbg": "2345678901234",
+    "ApartmentName": "Premium Suite"
   },
   {
     "Id": 9,
-    "Date": "2023-12-02",
-    "Status": 2,
-    "DeclinedBecause": "Unavailable apartment"
+    "Date": "2023-10-18T16:20:00",
+    "Status": 1,
+    "DeclinedBecause": "",
+    "OwnersJmbg": "3456789012345",
+    "ApartmentName": "Garden Retreat"
   },
   {
     "Id": 10,
-    "Date": "2023-12-20",
-    "Status": 1,
-    "DeclinedBecause": ""
+    "Date": "2023-10-25T13:30:00",
+    "Status": 3,
+    "DeclinedBecause": "",
+    "OwnersJmbg": "4567890123456",
+    "ApartmentName": "Mountain View Suite"
+  },
+  {
+    "Id": 11,
+    "Date": "2023-11-02T09:00:00",
+    "Status": 0,
+    "DeclinedBecause": "",
+    "OwnersJmbg": "5678901234567",
+    "ApartmentName": "Cityscape Suite"
+  },
+  {
+    "Id": 12,
+    "Date": "2023-08-01T00:00:00",
+    "Status": 3,
+    "DeclinedBecause": "Cancelled by user",
+    "OwnersJmbg": "2345678901234",
+    "ApartmentName": "Family Suite"
+  },
+  {
+    "Id": 13,
+    "Date": "2023-08-11T00:00:00",
+    "Status": 0,
+    "DeclinedBecause": "",
+    "OwnersJmbg": "2345678901234",
+    "ApartmentName": "Nature Retreat"
+  },
+  {
+    "Id": 14,
+    "Date": "2023-08-24T00:00:00",
+    "Status": 0,
+    "DeclinedBecause": "",
+    "OwnersJmbg": "2345678901234",
+    "ApartmentName": "Premium Suite"
+  },
+  {
+    "Id": 15,
+    "Date": "2023-08-03T00:00:00",
+    "Status": 0,
+    "DeclinedBecause": "",
+    "OwnersJmbg": "2345678901234",
+    "ApartmentName": "Deluxe Suite"
   }
 ]

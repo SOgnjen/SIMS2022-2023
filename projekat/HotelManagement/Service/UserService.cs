@@ -31,9 +31,9 @@ namespace HotelManagement.Service
             throw new NotImplementedException();
         }
 
-        public void AddUser(string jmbg, string email, string password, string name, string surname, string phone, UserType type, bool blocked, List<Hotel> hotels, List<Reservation> reservations)
+        public void AddUser(string jmbg, string email, string password, string name, string surname, string phone, UserType type, bool blocked)
         {
-            User newUser = new User(jmbg, email, password, name, surname, phone, type, blocked, hotels, reservations);
+            User newUser = new User(jmbg, email, password, name, surname, phone, type, blocked);
 
             userRepository.AddUser(newUser);
         }

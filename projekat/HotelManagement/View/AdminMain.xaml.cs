@@ -389,7 +389,7 @@ namespace HotelManagement.View
 
                 if (!flag)
                 {
-                    app.userController.AddUser(jmbg, email, password, name, surname, phone, type, false, new List<Hotel>(), new List<Reservation>());
+                    app.userController.AddUser(jmbg, email, password, name, surname, phone, type, false);
                     MessageBox.Show("User created");
 
                     userDataGrid.Items.Refresh();

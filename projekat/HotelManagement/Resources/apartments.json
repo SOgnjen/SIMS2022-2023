@@ -1,112 +1,98 @@
 [
   {
-    "ApartmentNumber": "A001",
-    "Name": "Luxury Suite",
-    "Description": "Spacious suite with a view",
+    "ApartmentNumber": "A101",
+    "Name": "Deluxe Suite",
+    "Description": "Spacious suite with ocean view",
+    "Rooms": 2,
+    "MaxGuests": 4,
+    "HotelCode": "H001"
+  },
+  {
+    "ApartmentNumber": "A102",
+    "Name": "Family Suite",
+    "Description": "Perfect for families with children",
     "Rooms": 3,
     "MaxGuests": 6,
-    "Reservations": [
-      {
-        "Id": 1,
-        "Date": "2023-08-25",
-        "Status": 0,
-        "DeclinedBecause": ""
-      },
-      {
-        "Id": 5,
-        "Date": "2023-10-15",
-        "Status": 0,
-        "DeclinedBecause": ""
-      },
-      {
-        "Id": 8,
-        "Date": "2023-11-15",
-        "Status": 0,
-        "DeclinedBecause": ""
-      }
-    ]
+    "HotelCode": "H001"
   },
   {
-    "ApartmentNumber": "A002",
+    "ApartmentNumber": "A201",
     "Name": "Standard Room",
-    "Description": "Comfortable standard room",
+    "Description": "Comfortable room with essential amenities",
     "Rooms": 1,
     "MaxGuests": 2,
-    "Reservations": [
-      {
-        "Id": 2,
-        "Date": "2023-09-10",
-        "Status": 1,
-        "DeclinedBecause": ""
-      }
-    ]
+    "HotelCode": "H002"
   },
   {
-    "ApartmentNumber": "A003",
-    "Name": "Ocean View Suite",
-    "Description": "Suite with a stunning ocean view",
+    "ApartmentNumber": "A202",
+    "Name": "Premium Suite",
+    "Description": "Elegant suite with a balcony",
+    "Rooms": 2,
+    "MaxGuests": 3,
+    "HotelCode": "H002"
+  },
+  {
+    "ApartmentNumber": "A301",
+    "Name": "Sea View Suite",
+    "Description": "Breathtaking view of the sea",
     "Rooms": 2,
     "MaxGuests": 4,
-    "Reservations": [
-      {
-        "Id": 3,
-        "Date": "2023-08-28",
-        "Status": 2,
-        "DeclinedBecause": "Apartment already booked"
-      }
-    ]
+    "HotelCode": "H003"
   },
   {
-    "ApartmentNumber": "A004",
-    "Name": "Family Room",
-    "Description": "Spacious room for families",
-    "Rooms": 2,
-    "MaxGuests": 4,
-    "Reservations": [
-      {
-        "Id": 4,
-        "Date": "2023-09-05",
-        "Status": 3,
-        "DeclinedBecause": ""
-      }
-    ]
-  },
-  {
-    "ApartmentNumber": "A005",
-    "Name": "City View Suite",
-    "Description": "Suite with a city view",
-    "Rooms": 2,
-    "MaxGuests": 4,
-    "Reservations": [
-      {
-        "Id": 6,
-        "Date": "2023-10-20",
-        "Status": 1,
-        "DeclinedBecause": ""
-      }
-    ]
-  },
-  {
-    "ApartmentNumber": "A006",
-    "Name": "Riverside Cabin",
-    "Description": "Cozy cabin by the river",
+    "ApartmentNumber": "A302",
+    "Name": "Garden Retreat",
+    "Description": "Quiet apartment surrounded by nature",
     "Rooms": 1,
     "MaxGuests": 2,
-    "Reservations": [
-      {
-        "Id": 7,
-        "Date": "2023-11-05",
-        "Status": 1,
-        "DeclinedBecause": ""
-      }
-    ]
+    "HotelCode": "H003"
   },
   {
-    "ApartmentNumber": "A007",
-    "Name": "Moj apartman",
-    "Description": "Za probu",
-    "Rooms": 4,
+    "ApartmentNumber": "A401",
+    "Name": "Rustic Cabin",
+    "Description": "Cozy cabin in the woods",
+    "Rooms": 1,
+    "MaxGuests": 2,
+    "HotelCode": "H004"
+  },
+  {
+    "ApartmentNumber": "A402",
+    "Name": "Mountain View Suite",
+    "Description": "Panoramic view of the mountains",
+    "Rooms": 2,
     "MaxGuests": 4,
-    "Reservations": []
+    "HotelCode": "H004"
+  },
+  {
+    "ApartmentNumber": "A501",
+    "Name": "Urban Loft",
+    "Description": "Modern loft in the heart of the city",
+    "Rooms": 1,
+    "MaxGuests": 3,
+    "HotelCode": "H005"
+  },
+  {
+    "ApartmentNumber": "A502",
+    "Name": "Cityscape Suite",
+    "Description": "Stunning view of the city skyline",
+    "Rooms": 2,
+    "MaxGuests": 4,
+    "HotelCode": "H005"
+  },
+  {
+    "ApartmentNumber": "A601",
+    "Name": "Riverfront Studio",
+    "Description": "Studio apartment by the river",
+    "Rooms": 1,
+    "MaxGuests": 2,
+    "HotelCode": "H006"
+  },
+  {
+    "ApartmentNumber": "A602",
+    "Name": "Nature Retreat",
+    "Description": "Escape to the beauty of nature",
+    "Rooms": 1,
+    "MaxGuests": 2,
+    "HotelCode": "H006"
   }
 ]

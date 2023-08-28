@@ -31,9 +31,9 @@ namespace HotelManagement.Controller
             return reservationService.Decline(id);
         }
 
-        public void AddReservation(int id, DateTime date, ReservationStatus status, string declinedBecause)
+        public void AddReservation(int id, DateTime date, ReservationStatus status, string declinedBecause, string ownersJmbg, string apartmentName)
         {
-            reservationService.AddReservation(id, date, status, declinedBecause);
+            reservationService.AddReservation(id, date, status, declinedBecause, ownersJmbg, apartmentName);
         }
 
         public List<Reservation> GetAll()

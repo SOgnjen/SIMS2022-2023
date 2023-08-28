@@ -25,33 +25,40 @@ namespace HotelManagement.View
     {
         App app = (App)Application.Current;
 
-        List<Hotel> acceptedHotels;
+        List<Hotel> AcceptedHotels;
 
-        private User loggedUser;
+        private User LoggedUser;
 
-        List<Reservation> allReservations;
+        List<Reservation> AllReservations;
 
-        List<Apartment> allApartments;
+        List<Reservation> UserReservations;
+
+        List<Apartment> AllApartments;
 
         public GuestMain(User loggedUser)
         {
             InitializeComponent();
-            acceptedHotels = app.hotelController.GetByAccepted(true);
+            LoggedUser = loggedUser;
+            AcceptedHotels = app.hotelController.GetByAccepted(true);
 
             DataContext = this;
 
             hotelDataGrid.ItemsSource = null;
-            hotelDataGrid.ItemsSource = acceptedHotels;
+            hotelDataGrid.ItemsSource = AcceptedHotels;
 
-            allReservations = loggedUser.Reservations;
+            AllReservations = app.reservationController.GetAll();
+
+            UserReservations = AllReservations
+                .Where(reservation => reservation.OwnersJmbg == loggedUser.Jmbg)
+                .ToList();
 
             reservationDataGrid.ItemsSource = null;
-            reservationDataGrid.ItemsSource = allReservations;
+            reservationDataGrid.ItemsSource = UserReservations;
 
-            allApartments = app.apartmentController.GetAll();
+            AllApartments = app.apartmentController.GetAll();
 
             apartmentComboBox.ItemsSource = null;
-            apartmentComboBox.ItemsSource = allApartments;
+            apartmentComboBox.ItemsSource = AllApartments;
 
         }
 
@@ -63,7 +70,7 @@ namespace HotelManagement.View
             }
 
             List<Hotel> acceptedHotelsByCode = new List<Hotel>();
-            foreach (var h in acceptedHotels)
+            foreach (var h in AcceptedHotels)
             {
                 if (h.Code.ToLower().Contains(searchByCode.Text.ToLower()))
                 {
@@ -81,7 +88,7 @@ namespace HotelManagement.View
             }
 
             List<Hotel> AcceptedHotelsByName = new List<Hotel>();
-            foreach (var h in acceptedHotels)
+            foreach (var h in AcceptedHotels)
             {
                 if (h.Name.ToLower().Contains(searchByName.Text.ToLower()))
                 {
@@ -99,7 +106,7 @@ namespace HotelManagement.View
             }
 
             List<Hotel> acceptedHotelsByBuiltIn = new List<Hotel>();
-            foreach (var h in acceptedHotels)
+            foreach (var h in AcceptedHotels)
             {
                 try
                 {
@@ -124,7 +131,7 @@ namespace HotelManagement.View
             }
 
             List<Hotel> acceptedHotelsByStars = new List<Hotel>();
-            foreach (var h in acceptedHotels)
+            foreach (var h in AcceptedHotels)
             {
                 try
                 {
@@ -158,7 +165,7 @@ namespace HotelManagement.View
                 return;
             }
 
-            foreach (var hotel in acceptedHotels)
+            foreach (var hotel in AcceptedHotels)
             {
                 foreach (var apartment in hotel.Apartments.Values)
                 {
@@ -190,7 +197,7 @@ namespace HotelManagement.View
                 return;
             }
 
-            foreach (var hotel in acceptedHotels)
+            foreach (var hotel in AcceptedHotels)
             {
                 foreach (var apartment in hotel.Apartments.Values)
                 {
@@ -237,7 +244,7 @@ namespace HotelManagement.View
                     return;
                 }
 
-                foreach (var hotel in acceptedHotels)
+                foreach (var hotel in AcceptedHotels)
                 {
                     foreach (var apartment in hotel.Apartments.Values)
                     {
@@ -267,7 +274,7 @@ namespace HotelManagement.View
                     return;
                 }
 
-                foreach (var hotel in acceptedHotels)
+                foreach (var hotel in AcceptedHotels)
                 {
                     foreach (var apartment in hotel.Apartments.Values)
                     {
@@ -301,7 +308,7 @@ namespace HotelManagement.View
 
             ReservationStatus selectedStatus = (ReservationStatus)Enum.Parse(typeof(ReservationStatus), selectedStatusItem.Tag.ToString());
 
-            List<Reservation> filteredReservations = allReservations.Where(reservation => reservation.Status == selectedStatus).ToList();
+            List<Reservation> filteredReservations = UserReservations.Where(reservation => reservation.Status == selectedStatus).ToList();
 
             reservationDataGrid.ItemsSource = filteredReservations;
         }
@@ -367,11 +374,54 @@ namespace HotelManagement.View
 
         private void AddReservation(object sender, RoutedEventArgs e)
         {
-            
+            DateTime selectedDate = datePicker.SelectedDate ?? DateTime.Today;
+
+            Apartment selectedApartment = apartmentComboBox.SelectedItem as Apartment;
+            if (selectedApartment == null)
+            {
+                MessageBox.Show("Please select an apartment.");
+                return;
+            }
+
+            string newReservationApartmentName = selectedApartment.Name;
+
+            bool reservationExists = UserReservations.Any(reservation =>
+                reservation.ApartmentName == newReservationApartmentName &&
+                reservation.Date.Date == selectedDate.Date.Date);
+
+            if (reservationExists)
+            {
+                MessageBox.Show("A reservation for the selected apartment and date already exists.");
+                return;
+            }
+
+            int maxId = AllReservations.Count > 0 ? AllReservations.Max(reservation => reservation.Id) : 0;
+            int newReservationId = maxId + 1;
+
+            ReservationStatus newReservationStatus = ReservationStatus.Waiting;
+            string newReservationDeclinedBecause = "";
+            string newReservationOwnersJmbg = LoggedUser.Jmbg;
+
+            app.reservationController.AddReservation(newReservationId, selectedDate, newReservationStatus, newReservationDeclinedBecause, newReservationOwnersJmbg, newReservationApartmentName);
+
+            AllReservations = app.reservationController.GetAll();
+
+            UserReservations = AllReservations
+                .Where(reservation => reservation.OwnersJmbg == LoggedUser.Jmbg)
+                .ToList();
+
+            reservationDataGrid.ItemsSource = null;
+            reservationDataGrid.ItemsSource = UserReservations;
+
+            apartmentComboBox.SelectedItem = null;
+
+            MessageBox.Show("Reservation added successfully.");
         }
 
-        
 
-        
+
+
+
+
     }
 }
